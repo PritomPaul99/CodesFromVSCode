@@ -4,8 +4,7 @@ using namespace std;
 
 int main()
 {
-    int x = -10;
-    cout << (10 ^ 20);
+    cout << 0 % 2;
 
     return 0;
 }
