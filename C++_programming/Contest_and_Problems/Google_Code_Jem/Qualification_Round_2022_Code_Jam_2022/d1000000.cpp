@@ -67,6 +67,8 @@ void solve()
         }
     }
     cout << ck << endl;
+
+    // I have changed here
 }
 
 int main()
