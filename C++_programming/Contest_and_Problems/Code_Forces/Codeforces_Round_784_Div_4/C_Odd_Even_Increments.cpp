@@ -51,28 +51,30 @@ void solve()
     int n;
     cin >> n;
     int arr[n];
-    for (int i = 0; i < n; i++)
+    set<int> s1, s2;
+    fo(i, n)
     {
         cin >> arr[i];
-    }
 
-    if (n % 2 == 0)
+        if (i % 2 == 0)
+        {
+            s1.insert(arr[i]%2);
+        }
+        else
+        {
+            s2.insert(arr[i]%2);
+        }
+    } 
+
+    if(s1.size() == 1 && s2.size()==1)
     {
-        int arr1[n / 2], arr2[n / 2];
-        for (int i = 0; i < n / 2; i += 2)
-        {
-            arr1[i] = arr[i];
-        }
-        for (int i = 0; i < n / 2; i++)
-        {
-            cout << arr1[i] << " ";
-        }
+        cout << "YES" << endl;
     }
     else
     {
+        cout << "NO" << endl;
     }
 }
-
 int main()
 {
     FastIO;
