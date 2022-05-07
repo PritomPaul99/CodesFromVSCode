@@ -48,15 +48,42 @@ using namespace std;
 
 void solve()
 {
-    int n;
-    cin >> n;
-    string s[n], t[n];
+    ll a, b, c, x, y;
+    cin >> a >> b >> c >> x >> y;
 
-    for (int i = 0; i < n; i++)
+    if (a >= x && b >= y)
     {
-        cin >> s[i] >> t[i];
+        cout << "Yes" << endl;
+        return;
     }
-    
+
+    if (x > a && y <= b)
+    {
+        int f = c + a;
+        if (f + b >= x + y)
+        {
+            cout << "Yes" << endl;
+            return;
+        }
+    }
+    if (x <= a && y > b)
+    {
+        int f = c + b;
+        if (f + a >= x + y)
+        {
+            cout << "Yes" << endl;
+            return;
+        }
+    }
+    if (a + b + c >= x + y)
+    {
+        if (a + b <= x + y)
+        {
+            cout << "Yes" << endl;
+            return;
+        }
+    }
+    cout << "No" << endl;
 }
 
 int main()
@@ -67,7 +94,10 @@ int main()
     f_output;
 #endif
 
-    solve();
+    int ttt;
+    cin >> ttt;
+    while (ttt--)
+        solve();
 
     return 0;
 }

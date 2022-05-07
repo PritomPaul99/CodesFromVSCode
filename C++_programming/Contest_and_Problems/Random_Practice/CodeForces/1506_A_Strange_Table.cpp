@@ -48,14 +48,9 @@ using namespace std;
 
 void solve()
 {
-    int n;
-    cin >> n;
-    string s[n], t[n];
+    int n, m, x;
+    cin >> n >> m >> x;
 
-    for (int i = 0; i < n; i++)
-    {
-        cin >> s[i] >> t[i];
-    }
     
 }
 
@@ -67,7 +62,10 @@ int main()
     f_output;
 #endif
 
-    solve();
+    int ttt;
+    cin >> ttt;
+    while (ttt--)
+        solve();
 
     return 0;
 }
