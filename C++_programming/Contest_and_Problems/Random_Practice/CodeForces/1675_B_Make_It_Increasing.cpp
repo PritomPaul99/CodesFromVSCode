@@ -46,26 +46,27 @@ const ll Mod = 1e9 + 7;
 
 using namespace std;
 
-ll max(int p, int q)
-{
-    if (p > q)
-        return p;
-    return q;
-}
-
 void solve()
 {
-    ll a, b, c, x, y;
-    cin >> a >> b >> c >> x >> y;
-
-    if (max(0, x - a) + max(0, y - b) <= c)
+    ll n;
+    cin >> n;
+    ll arr[n];
+    fo(i, n) cin >> arr[i];
+    ll q = 0;
+    for (int i = n - 2; i >= 0; i--)
     {
-        cout << "Yes" << endl;
+        while (arr[i] >= arr[i + 1] && arr[i] > 0)
+        {
+            arr[i] /= 2;
+            q++;
+        }
+        if (arr[i + 1] == arr[i])
+        {
+            cout << -1 << endl;
+            return;
+        }
     }
-    else
-    {
-        cout << "No" << endl;
-    }
+    cout << q << endl;
 }
 
 int main()
