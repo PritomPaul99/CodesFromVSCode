@@ -32,6 +32,7 @@ const ll Mod = 1e9 + 7;
 #define d_sort(arr, size) sort(arr, arr + n, greater<int>())
 #define min_el(arr, size) *min_element(arr1, arr1 + n)
 #define max_el(arr, size) *max_element(arr1, arr1 + n)
+#define _ain(arr, n) fo(i, n) cin >> arr[i]
 // cout << fixed << setprecision(__n) << x << endl;
 #define FSP(x) fixed << setprecision(x)
 // Vector
@@ -46,13 +47,34 @@ const ll Mod = 1e9 + 7;
 
 using namespace std;
 
-int arr[510];
 void solve()
 {
-    string a, b, c;
-    cin >> a >> b >> c;
 
-    if (a == "")
+    string s;
+    cin >> s;
+
+    if (s[0] == 'B' || s[s.length()-1] == 'A')
+    {
+        cout << "No" << nl;
+    }
+    else
+    {
+        int n = s.size(), c1 = 0, c2=0;
+
+        for (int i = 0; i < n; i++)
+        {
+            if (s[i] == 'A')
+                c1++;
+            else
+                c2++;
+            if ((c1-c2) < 0)
+            {
+                cout << "No" << nl;
+                return;
+            }
+        }
+        cout << "Yes" << endl;
+    }
 }
 
 int main()
@@ -62,14 +84,16 @@ int main()
     f_input;
     f_output;
 #endif
-//unsolved
-    for (int i = 0; i < 501; i++)
-    {
-        arr[i] = (i * (i + 1)) / 2;
-    }
-    
 
-    solve();
+    int ttt;
+    cin >> ttt;
+    int t = 1;
+    while (ttt--)
+    {
+        // cout << "Test:" << t << endl;
+        solve();
+        // t++;
+    }
 
     return 0;
 }

@@ -30,8 +30,9 @@ const ll Mod = 1e9 + 7;
 #define eol cout << endl
 #define a_sort(ar, size) sort(ar, ar + size)
 #define d_sort(arr, size) sort(arr, arr + n, greater<int>())
-#define min_el(arr, size) *min_element(arr1, arr1 + n)
-#define max_el(arr, size) *max_element(arr1, arr1 + n)
+#define min_el(arr, size) *min_element(arr, arr + n)
+#define max_el(arr, size) *max_element(arr, arr + n)
+#define _ain(arr, n) fo(i, n) cin >> arr[i]
 // cout << fixed << setprecision(__n) << x << endl;
 #define FSP(x) fixed << setprecision(x)
 // Vector
@@ -46,13 +47,26 @@ const ll Mod = 1e9 + 7;
 
 using namespace std;
 
-int arr[510];
 void solve()
 {
-    string a, b, c;
-    cin >> a >> b >> c;
+    int n;
+    cin >> n;
+    int arr[n];
+    fo(i, n) cin >> arr[i];
 
-    if (a == "")
+    int min = min_el(arr, n);
+
+    int cnt = 0;
+
+    for (int i = 0; i < n; i++)
+    {
+        while(arr[i] != min)
+        {
+            arr[i]--;
+            cnt++;
+        }
+    }
+    cout << cnt << nl;
 }
 
 int main()
@@ -62,14 +76,11 @@ int main()
     f_input;
     f_output;
 #endif
-//unsolved
-    for (int i = 0; i < 501; i++)
-    {
-        arr[i] = (i * (i + 1)) / 2;
-    }
-    
 
-    solve();
+    int ttt;
+    cin >> ttt;
+    while (ttt--)
+        solve();
 
     return 0;
 }

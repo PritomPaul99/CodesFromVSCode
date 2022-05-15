@@ -51,7 +51,7 @@ void solve()
     int n, m, x;
     cin >> n >> m >> x;
 
-    
+    //unsolved
 }
 
 int main()
