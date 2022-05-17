@@ -24,14 +24,14 @@ const ll Mod = 1e9 + 7;
 #define rev(v) reverse(v.begin(), v.end())
 #define srt(v) sort(v.begin(), v.end())
 // Array
-#define mems(a, x) memset(a, x, sizeof(a))      // Works only for 0 and -1
-#define ass_vel(ar, n, x) f(a, 0, n) ar[a] = x  // Set value in array
-#define parr(a, n) fo(i, n) cout << a[i] << " " // Print array
+#define mems(a, x) memset(a, x, sizeof(a))        // Works only for 0 and -1
+#define ass_vel(ar, n, x) fo(i, n) ar[i] = x      // Set value in array
+#define parr(ar, n) fo(i, n) cout << ar[i] << " " // Print array
 #define eol cout << endl
 #define a_sort(ar, size) sort(ar, ar + size)
 #define d_sort(arr, size) sort(arr, arr + n, greater<int>())
-#define min_el(arr, size) *min_element(arr1, arr1 + n)
-#define max_el(arr, size) *max_element(arr1, arr1 + n)
+#define min_el(arr, size) *min_element(arr, arr + n)
+#define max_el(arr, size) *max_element(arr, arr + n)
 #define _ain(arr, n) fo(i, n) cin >> arr[i]
 // cout << fixed << setprecision(__n) << x << endl;
 #define FSP(x) fixed << setprecision(x)
@@ -51,63 +51,34 @@ void solve()
 {
     ll n, q;
     cin >> n >> q;
-    ll a[n], x[q];
+    vector<ll> a(n), p(n);
+
     for (int i = 0; i < n; i++)
     {
         cin >> a[i];
     }
-    for (int i = 0; i < q; i++)
-    {
-        cin >> x[i];
-    }
-    sort(a, a + n, greater<int>());
-    ll p[n] = {0};
+    sort(a.rbegin(), a.rend());
     for (int i = 0; i < n; i++)
     {
-        if (i == 0)
+        if(i == 0)
         {
             p[i] = a[i];
         }
         else
         {
-            p[i] = p[i - 1] + a[i];
+            p[i] = a[i] + p[i - 1];
         }
     }
-    // for (int i = 0; i < n; ++i)
-    // {
-    //     p[i] = (i ? p[i - 1] : 0) + a[i];
-    // }
-    // parr(p, n);
-    // for (int i = 0; i < q; i++)
-    // {
-    //     int l = 0, r = n, flag = -1;
-
-    //     while (l <= r)
-    //     {
-    //         int mid = r + l / 2;
-    //         if (x[i] <= p[mid])
-    //         {
-    //             flag = mid;
-    //             r = mid - 1;
-    //         }
-    //         else
-    //         {
-    //             l = mid + 1;
-    //         }
-    //     }
-    //     cout << flag << endl;
-    // }
     while (q--)
     {
-        long long x;
+        ll x, r = 1, l = n, val = -1;
         cin >> x;
-        int l = 1, r = n, ans = -1;
-        while (l <= r)
+        while (r >= l)
         {
-            int mid = (l + r) / 2;
+            ll mid = (l + r) / 2;
             if (p[mid - 1] >= x)
             {
-                ans = mid;
+                val = mid;
                 r = mid - 1;
             }
             else
@@ -115,8 +86,10 @@ void solve()
                 l = mid + 1;
             }
         }
-        cout << ans << "\n";
+        // cout << val << endl;
     }
+    fo(i, n) cout << p[i] << " ";
+    cout << endl;
 }
 
 int main()
