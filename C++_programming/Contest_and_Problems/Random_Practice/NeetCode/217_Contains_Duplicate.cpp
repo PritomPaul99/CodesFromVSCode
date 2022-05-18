@@ -49,69 +49,18 @@ using namespace std;
 
 void solve()
 {
-    int n, q;
-    cin >> n >> q;
-    vector<long long> a(n), p(n);
-
-    for (int i = 0; i < n; i++)
-    {
-        cin >> a[i];
-    }
-    sort(a.rbegin(), a.rend());
-    for (int i = 0; i < n; i++)
-    {
-        if (i == 0)
-        {
-            p[i] = a[i];
-        }
-        else
-        {
-            p[i] = a[i] + p[i - 1];
-        }
-    }
-
-    while (q--)
-    {
-        long long x;
-        cin >> x;
-
-        int l = 0, r = n - 1, val = -1;
-
-        while (r >= l)
-        {
-            int mid = (r - l) + l / 2;
-
-            if (p[mid] >= x)
-            {
-                r = mid - 1;
-                val = mid;
-            }
-            else
-            {
-                l = mid + 1;
-            }
-        }
-        if (val+1 == 0)
-        {
-            cout << -1 << nl;
-        }
-        else
-            cout << val+1 << endl;
-    }
+    
 }
 
 int main()
 {
-    // FastIO;
+    FastIO;
 #ifndef ONLINE_JUDGE
     f_input;
     f_output;
 #endif
 
-    int ttt;
-    cin >> ttt;
-    while (ttt--)
-        solve();
+    solve();
 
     return 0;
 }
