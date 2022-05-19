@@ -49,10 +49,7 @@ using namespace std;
 
 void solve()
 {
-    int arr[] = {1, 2, 3, 4, 5};
-    int n = sizeof(arr) / sizeof(arr[0]);
-    ass_vel(arr, n, 5);
-    parr(arr, n);
+    vector<pair<char, int>> v;
 }
 
 int main()
