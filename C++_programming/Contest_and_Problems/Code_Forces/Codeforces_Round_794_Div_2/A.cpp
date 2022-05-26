@@ -49,17 +49,45 @@ using namespace std;
 
 void solve()
 {
-    if(2.00 == 2)
+    int n;
+    cin >> n;
+    int arr[n];
+    _ain(arr, n);
+
+    for (int i = 0; i < n; i++)
     {
-        cout << "sds";
+        int sum = 0;
+        float m;
+        for (int j = 0; j < n; j++)
+        {
+            if (i == j)
+                continue;
+
+            sum += arr[j];
+        }
+        m = (float)sum / (n-1);
+        if(arr[i] == m)
+        {
+            // cout << m << " " << sum << " ";
+            cout << "YES" << nl;
+            return;
+        }
     }
+    cout << "NO" << endl;
 }
 
 int main()
 {
+    FastIO;
+#ifndef ONLINE_JUDGE
+    f_input;
+    f_output;
+#endif
 
-
-    solve();
+    int ttt;
+    cin >> ttt;
+    while (ttt--)
+        solve();
 
     return 0;
 }

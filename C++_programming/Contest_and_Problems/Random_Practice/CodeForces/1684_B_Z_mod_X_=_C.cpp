@@ -7,7 +7,7 @@
 #define ld long double
 typedef unsigned long int uint32;
 typedef unsigned long long int uint64;
-// Constant Values
+// Constent Values
 #define pi acos(-1)
 const ll Mod = 1e9 + 7;
 // File handling
@@ -42,24 +42,31 @@ const ll Mod = 1e9 + 7;
 #define vs vector<string>
 #define pb push_back
 // debug
-#define cpoint cout << "_________________CHECK POINT_________________\n";
+#define ck_pnt cout << "_________________CHECK POINT_________________\n";
 #define _debug(x) cout << x << endl
 
 using namespace std;
 
 void solve()
 {
-    if(2.00 == 2)
-    {
-        cout << "sds";
-    }
+    int a, b, c;
+    cin >> a >> b >> c;
+
+    cout << a + b + c<< " " << b + c << " " << c << endl;
 }
 
 int main()
 {
+    FastIO;
+#ifndef ONLINE_JUDGE
+    f_input;
+    f_output;
+#endif
 
-
-    solve();
+    int ttt;
+    cin >> ttt;
+    while (ttt--)
+        solve();
 
     return 0;
 }
