@@ -1,35 +1,101 @@
-#include <iostream>
+//#include <iostream>
+#include <bits/stdc++.h>
+
+// Data Types
+#define ll long long
+#define lli long long int
+#define ld long double
+typedef unsigned long int uint32;
+typedef unsigned long long int uint64;
+// Constant Values
+#define pi acos(-1)
+const ll Mod = 1e9 + 7;
+// File handling
+#define f_input freopen("input.txt", "r", stdin)
+#define f_output freopen("output.txt", "w", stdout)
+#define nl '\n'
+#define FastIO ios_base::sync_with_stdio(false), cin.tie(NULL)
+// Loops
+#define fs(i, s, e) for (int i = s; i < e; i++)
+#define fo(i, e) for (int i = 0; i < e; i++)
+#define fr(i, s, e) for (int i = s; i >= e; i--)
+// Strings
+#define all(x) x.begin(), x.end()
+#define rev(v) reverse(v.begin(), v.end())
+#define srt(v) sort(v.begin(), v.end())
+// Array
+#define mems(a, x) memset(a, x, sizeof(a))        // Works only for 0 and -1
+#define ass_vel(ar, n, x) fo(i, n) ar[i] = x      // Set value in array
+#define parr(ar, n) fo(i, n) cout << ar[i] << " " // Print array
+#define eol cout << endl
+#define a_sort(ar, size) sort(ar, ar + size)
+#define d_sort(arr, size) sort(arr, arr + n, greater<int>())
+#define min_el(arr, size) *min_element(arr, arr + n)
+#define max_el(arr, size) *max_element(arr, arr + n)
+#define ain(arr, n) fo(i, n) cin >> arr[i]
+#define aout(arr, n)                \
+    fo(i, n) cout << arr[i] << " "; \
+    cout << nl
+// cout << fixed << setprecision(__n) << x << endl;
+#define FSP(x) fixed << setprecision(x)
+// Vector
+#define vi vector<int>
+#define vll vector<ll>
+#define vc vector<char>
+#define vs vector<string>
+#define pb push_back
+// debug
+#define cpoint cout << "_________________CHECK POINT_________________\n";
+#define _debug(x) cout << x << endl
+#define Yes cout << "YES\n";
+#define No cout << "NO\n";
+
 using namespace std;
+
+void solve()
+{
+    int arr[] = {1, 2, 3, 4, 5, 6, 7};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    aout(arr, n);
+}
+
 int main()
 {
-    int t;
-    cin >> t;
-    while (t--)
-    {
-        int n, i, flag;
-        cin >> n;
-        int a[n];
-        for (i = 0; i < n; i++)
-        {
-            cin >> a[i];
-        }
-        flag = 0;
-        for (i = 0; i < n - 1; i++)
-        {
-            if (a[i + 1] < a[i])
-            {                                                                                             
-                flag = 1;
-                break;
-                //added new line
-            }
-        }
-        if (flag == 0)
-        {
-            cout << "YES" << endl;
-        }
-        else
-        {
-            cout << "NO" << endl;
-        }
-    }
+    FastIO;
+#ifndef ONLINE_JUDGE
+    double start = clock();
+    f_input;
+    f_output;
+#endif
+
+    int ttt;
+    cin >> ttt;
+    while (ttt--)
+        solve();
+
+#ifndef ONLINE_JUDGE
+    double tim = (clock() - start) / CLOCKS_PER_SEC;
+    cerr << "Running Time : " << tim << "\n";
+#endif
+    return 0;
 }
+
+/***************************************************************************************************\
+*                                            Written by:                                            *
+*                                                                                                   *
+*     ██▓███   ██▀███   ██▓▄▄▄█████▓ ▒█████   ███▄ ▄███▓     ██▓███   ▄▄▄       █    ██  ██▓        *
+*    ▓██░  ██▒▓██ ▒ ██▒▓██▒▓  ██▒ ▓▒▒██▒  ██▒▓██▒▀█▀ ██▒    ▓██░  ██▒▒████▄     ██  ▓██▒▓██▒        *
+*    ▓██░ ██▓▒▓██ ░▄█ ▒▒██▒▒ ▓██░ ▒░▒██░  ██▒▓██    ▓██░    ▓██░ ██▓▒▒██  ▀█▄  ▓██  ▒██░▒██░        *
+*    ▒██▄█▓▒ ▒▒██▀▀█▄  ░██░░ ▓██▓ ░ ▒██   ██░▒██    ▒██     ▒██▄█▓▒ ▒░██▄▄▄▄██ ▓▓█  ░██░▒██░        *
+*    ▒██▒ ░  ░░██▓ ▒██▒░██░  ▒██▒ ░ ░ ████▓▒░▒██▒   ░██▒    ▒██▒ ░  ░ ▓█   ▓██▒▒▒█████▓ ░██████▒    *
+*    ▒▓▒░ ░  ░░ ▒▓ ░▒▓░░▓    ▒ ░░   ░ ▒░▒░▒░ ░ ▒░   ░  ░    ▒▓▒░ ░  ░ ▒▒   ▓▒█░░▒▓▒ ▒ ▒ ░ ▒░▓  ░    *
+*    ░▒ ░       ░▒ ░ ▒░ ▒ ░    ░      ░ ▒ ▒░ ░  ░      ░    ░▒ ░       ▒   ▒▒ ░░░▒░ ░ ░ ░ ░ ▒  ░    *
+*    ░░         ░░   ░  ▒ ░  ░      ░ ░ ░ ▒  ░      ░       ░░         ░   ▒    ░░░ ░ ░   ░ ░       *
+*                ░      ░               ░ ░         ░                      ░  ░   ░         ░  ░    *
+*                                           ╔╗╔╔═╗╦ ╦╔╗                                             *
+*                                        ───║║║║╣ ║ ║╠╩╗───                                         *
+*                                           ╝╚╝╚═╝╚═╝╚═╝                                            *
+*                                 ╔╦╗┌─┐┌─┐┌┬┐   ┌─┐┌─┐  ╔═╗╔═╗╔═╗                                  *
+*                              ─── ║║├┤ ├─┘ │    │ │├┤   ║  ╚═╗║╣ ───                               *
+*                                 ═╩╝└─┘┴   ┴ o  └─┘└    ╚═╝╚═╝╚═╝                                  *
+\***************************************************************************************************/

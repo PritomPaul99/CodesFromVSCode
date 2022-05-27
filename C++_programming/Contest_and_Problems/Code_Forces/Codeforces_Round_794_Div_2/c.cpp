@@ -32,7 +32,7 @@ const ll Mod = 1e9 + 7;
 #define d_sort(arr, size) sort(arr, arr + n, greater<int>())
 #define min_el(arr, size) *min_element(arr, arr + n)
 #define max_el(arr, size) *max_element(arr, arr + n)
-#define _ain(arr, n) fo(i, n) cin >> arr[i]
+#define ain(arr, n) fo(i, n) cin >> arr[i]
 // cout << fixed << setprecision(__n) << x << endl;
 #define FSP(x) fixed << setprecision(x)
 // Vector
@@ -44,44 +44,96 @@ const ll Mod = 1e9 + 7;
 // debug
 #define cpoint cout << "_________________CHECK POINT_________________\n";
 #define _debug(x) cout << x << endl
+#define Yes cout << "YES\n";
+#define No cout << "NO\n";
 
 using namespace std;
 
+bool check(int arr[], int n)
+{
+    for (int i = 1; i < n - 1; i++)
+    {
+        if ((arr[i] > arr[i + 1] && arr[i - 1] < arr[i]) || (arr[i] < arr[i + 1] && arr[i - 1] > arr[i]))
+        {
+            continue;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    return 1;
+}
 void solve()
 {
     int n;
     cin >> n;
-    int arr[n];
-    _ain(arr, n);
-    int sta = 0;
+    int arr[n], b[n];
+    ain(arr, n);
+
+    if (n % 2)
+    {
+        No;
+        return;
+    }
+    sort(arr, arr + n);
+    if (check(arr, n))
+    {
+        Yes;
+        fo(i, n) cout << arr[i] << " ";
+        cout << nl;
+        return;
+    }
+
+    int j = 0, k = n - 1;
     for (int i = 0; i < n; i++)
     {
-        int c1 = 0, c2 = 0;
-        for (int j = 0; j < n; j++)
+        if (i % 2 == 0)
         {
-            if (i == j)
-                continue;
-            if (arr[i] > arr[j])
-            {
-                c1++;
-            }
-            else if (arr[i] < arr[j])
-            {
-                c2++;
-            }
+            b[i] = arr[j++];
         }
-        if (!(c1 >= 2) || !(c2 >= 2))
+        else
         {
-            cout << "NO" << endl;
-            return;
+            b[i] = arr[k--];
         }
     }
+    if (check(b, n))
+    {
+        Yes;
+        fo(i, n) cout << b[i] << " ";
+        cout << "\n";
+        return;
+    }
+
+    int p = 0, q = n / 2, c[n];
+    for (int i = 0; i < n; i++)
+    {
+        if (i % 2 == 0)
+        {
+            c[i] = arr[p++];
+        }
+        else
+        {
+            c[i] = arr[q++];
+        }
+    }
+
+    if (check(c, n))
+    {
+        Yes;
+        fo(i, n) cout << c[i] << " ";
+        cout << "\n";
+        return;
+    }
+
+    No;
 }
 
 int main()
 {
     FastIO;
 #ifndef ONLINE_JUDGE
+    double start = clock();
     f_input;
     f_output;
 #endif
@@ -91,6 +143,10 @@ int main()
     while (ttt--)
         solve();
 
+#ifndef ONLINE_JUDGE
+    double time = ((clock() - start) / CLOCKS_PER_SEC);
+    cerr << "Running Time : " << time << "\n";
+#endif
     return 0;
 }
 
