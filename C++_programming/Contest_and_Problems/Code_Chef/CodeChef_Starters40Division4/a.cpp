@@ -49,29 +49,17 @@ using namespace std;
 
 void solve()
 {
-    int n;
-    cin >> n;
-    int sum = 0, arr[n];
+    int d;
+    cin >> d;
 
-    for (int i = 0; i < n; i++)
+    if (d <= 1600)
     {
-        cin >> arr[i];
-        sum += arr[i];
-    }
-
-    if (sum == 0)
         cout << "YES" << endl;
-
-    for (int i = 0; i < n; i++)
-    {
-        double d = (double)(sum - arr[i]) / (double)(n - 1);
-        cout << d << " ";
-        if (d == arr[i])
-        {
-            cout << "Yes" << endl;
-        }
     }
-    cout << "No" << endl;
+    else
+    {
+        cout << "No" << endl;
+    }
 }
 
 int main()
@@ -82,10 +70,7 @@ int main()
     f_output;
 #endif
 
-    int ttt;
-    cin >> ttt;
-    while (ttt--)
-        solve();
+    solve();
 
     return 0;
 }
