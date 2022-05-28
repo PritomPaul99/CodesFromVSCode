@@ -24,15 +24,15 @@ const ll Mod = 1e9 + 7;
 #define rev(v) reverse(v.begin(), v.end())
 #define srt(v) sort(v.begin(), v.end())
 // Array
-#define mems(a, x) memset(a, x, sizeof(a))          // Works only for 0 and -1
-#define ass_vel(ar, n, x) f(a, 0, n) ar[a] = x      // Set value in array
-#define parr(ar, n) f(a, 0, n) cout << ar[a] << " " // Print array
+#define mems(a, x) memset(a, x, sizeof(a))        // Works only for 0 and -1
+#define ass_vel(ar, n, x) fo(i, n) ar[i] = x      // Set value in array
+#define parr(ar, n) fo(i, n) cout << ar[i] << " " // Print array
 #define eol cout << endl
 #define a_sort(ar, size) sort(ar, ar + size)
 #define d_sort(arr, size) sort(arr, arr + n, greater<int>())
-#define min_el(arr, size) *min_element(arr1, arr1 + n)
-#define max_el(arr, size) *max_element(arr1, arr1 + n)
-#define _ain(arr, n) fo(i, n) cin >> arr[i]
+#define min_el(arr, size) *min_element(arr, arr + n)
+#define max_el(arr, size) *max_element(arr, arr + n)
+#define ain(arr, n) fo(i, n) cin >> arr[i]
 // cout << fixed << setprecision(__n) << x << endl;
 #define FSP(x) fixed << setprecision(x)
 // Vector
@@ -44,36 +44,44 @@ const ll Mod = 1e9 + 7;
 // debug
 #define cpoint cout << "_________________CHECK POINT_________________\n";
 #define _debug(x) cout << x << endl
+#define Yes cout << "YES\n";
+#define No cout << "NO\n";
 
 using namespace std;
 
+
 void solve()
 {
+    int m, n;
 
-    string s;
-    cin >> s;
+    cin >> n;
+    int a[n];
+    for (int i = 0; i < n; i++)
+        cin >> a[i];
+    cin >> m;
+    int b[m];
+    for (int i = 0; i < m; i++)
+        cin >> b[i];
 
-    if (s[0] == 'B' || s[s.length()-1] == 'A')
+    int ax = *max_element(a, a + n);
+    int bx = *max_element(b, b + m);
+
+    if(ax>=bx)
     {
-        cout << "No" << nl;
+        cout << "Alice" << nl;
     }
     else
     {
-        int n = s.size(), c = 0;
+        cout << "Bob" << nl;
+    }
 
-        for (int i = 0; i < n; i++)
-        {
-            if (s[i] == 'A')
-                c++;
-            else
-                c--;
-            if (c < 0)
-            {
-                cout << "No" << nl;
-                return;
-            }
-        }
-        cout << "Yes" << endl;
+    if(ax > bx)
+    {
+        cout << "Alice" << endl;
+    }
+    else
+    {
+        cout << "Bob" << endl;
     }
 }
 
@@ -81,20 +89,20 @@ int main()
 {
     FastIO;
 #ifndef ONLINE_JUDGE
+    double start = clock();
     f_input;
     f_output;
 #endif
 
     int ttt;
     cin >> ttt;
-    int t = 1;
     while (ttt--)
-    {
-        // cout << "Test:" << t << endl;
         solve();
-        // t++;
-    }
 
+#ifndef ONLINE_JUDGE
+    double time = (clock() - start) / CLOCKS_PER_SEC;
+    cerr << "Running Time : " << time << "\n";
+#endif
     return 0;
 }
 
