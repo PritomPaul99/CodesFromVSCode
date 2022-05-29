@@ -30,8 +30,8 @@ const ll Mod = 1e9 + 7;
 #define eol cout << endl
 #define a_sort(ar, size) sort(ar, ar + size)
 #define d_sort(arr, size) sort(arr, arr + n, greater<int>())
-#define min_el(arr, size) *min_element(arr, arr + n)
-#define max_el(arr, size) *max_element(arr, arr + n)
+#define min_el(arr, size) *min_element(arr, arr + size)
+#define max_el(arr, size) *max_element(arr, arr + size)
 #define ain(arr, n) fo(i, n) cin >> arr[i]
 // cout << fixed << setprecision(__n) << x << endl;
 #define FSP(x) fixed << setprecision(x)
