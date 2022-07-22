@@ -54,42 +54,17 @@ void solve()
 {
     int n;
     cin >> n;
-    vector<string> str(n);
-    unordered_set<string> st;
-
+    int arr[n][n];
     for (int i = 0; i < n; i++)
     {
-        cin >> str[i];
-        st.insert(str[i]);
-    }
-
-    for (int i = 0; i < n; i++)
-    {
-        if (str[i].size() == 1)
+        for (int j = 0; j < n; j++)
         {
-            cout << 0;
-            continue;
-        }
-
-        bool flag = true;
-        for (int j = 0; j < str[i].size(); j++)
-        {
-            string l = str[i].substr(0, j);
-            string r = str[i].substr(j, str[i].size());
-
-            if (st.count(l) && st.count(r))
-            {
-                cout << 1;
-                flag = false;
-                break;
-            }
-        }
-        if(flag ==  true)
-        {
-            cout << 0;
+            cin >> arr[i][j];
         }
     }
-    cout << nl;
+
+    
+
 }
 
 int main()
