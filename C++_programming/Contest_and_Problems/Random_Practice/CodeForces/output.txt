@@ -1,6 +1,3 @@
-Bob
-Alice
-Alice
-Alice
-Bob
-Bob
+10100
+011
+10100101
