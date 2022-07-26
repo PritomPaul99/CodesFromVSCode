@@ -1,10 +1,9 @@
-// #include <bits/stdc++.h>
-#include <iostream>
+// #include <iostream>
+#include <bits/stdc++.h>
+
 using namespace std;
+
 
 int main()
 {
-    cout << 0 % 2;
-    //from here
-    return 0;
 }

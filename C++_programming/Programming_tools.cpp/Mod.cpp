@@ -8,9 +8,11 @@ int main()
     {
         int a, b, c;
 
-        cout << "Enter 1st of (a % b): ";
+        cout << "Enter (a % b):- " << '\n'
+             << "a = ";
+             
         cin >> a;
-        cout << "Enter 2nd of (a % b): ";
+        cout << "b = ";
         cin >> b;
         c = a % b;
         cout << "Mod is: " << c << endl;

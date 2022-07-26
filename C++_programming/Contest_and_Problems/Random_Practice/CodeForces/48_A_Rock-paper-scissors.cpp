@@ -62,7 +62,7 @@ int main()
     f_input;
     f_output;
 #endif
-
+//unsolved
     for (int i = 0; i < 501; i++)
     {
         arr[i] = (i * (i + 1)) / 2;
