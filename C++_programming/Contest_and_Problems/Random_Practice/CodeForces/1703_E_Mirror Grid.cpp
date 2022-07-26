@@ -62,7 +62,12 @@ void solve()
             cin >> arr[i][j];
         }
     }
+    int a1 = 0, a2 = 0, b1 = 0, b2 = n - 1, c1 = n - 1, c2 = n - 1, d1 = n - 1, d2 = 0;
 
+    for (int i = 0; i < count; i++)
+    {
+        /* code */
+    }
     
 
 }
