@@ -25,7 +25,7 @@ const ll Mod = 1e9 + 7;
 #define rev(v) reverse(v.begin(), v.end())
 #define srt(v) sort(v.begin(), v.end())
 // Array
-#define mems(a, x) memset(a, x, sizeof(a))        // Works only for 0 and -1
+#define mems(a, x) memset(a, x, sizeof(a))          // Works only for 0 and -1
 #define ass_vel(ar, n, x) fo(i, n) ar[i] = x      // Set value in array
 #define parr(ar, n) fo(i, n) cout << ar[i] << " " // Print array
 #define eol cout << endl
@@ -52,39 +52,9 @@ using namespace std;
 
 void solve()
 {
-    int n, H, M;
-    cin >> n >> H >> M;
-    int h[n], m[n];
-
-    int mint[n], mint1 = H * 60 + M;
-
-    for (int i = 0; i < n; i++)
-    {
-        cin >> h[i] >> m[i];
-        mint[i] = h[i] * 60 + m[i];
-    }
-
-    int min = min_el(mint, n);
-
-    int wake = min - mint1;
-
-    int hx = wake / 60;
-    int mx = wake % 60;
-
-    if (hx < 0 || mx < 0)
-    {
-        // int k = 24 * 60;
-        // cout << min << "--";
-        int t = (24 * 60) - mint1;
-
-        int t1 = min + t;
-
-        cout << t1 / 60 << " " << t1 % 60 << nl;
-    }
-    else
-    {
-        cout << hx << " " << mx << nl;
-    }
+    int a = 0;
+    int b = 0;
+    cout << a % b;
 }
 
 int main()
@@ -98,12 +68,12 @@ int main()
 
     int ttt;
     cin >> ttt;
-    while(ttt--)
+    while (ttt--)
         solve();
 
 #ifndef ONLINE_JUDGE
     double time = (clock() - start) / CLOCKS_PER_SEC;
-    cerr << "Running Time : " << time << "\n";
+    cerr << "Running Time : "<< time << "\n";
 #endif
     return 0;
 }
