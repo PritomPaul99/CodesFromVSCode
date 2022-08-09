@@ -1,15 +1,14 @@
 // #include <iostream>
 #include <bits/stdc++.h>
 
+#define find_(a, n, x) find(a, a + n, x) - a
 using namespace std;
 
 
 int main()
 {
-    set<int> s = {1, 2, 3, 4, 5};
-
-    cout << s.count(2);
-
+    int x = 10;
+    int y = 2;
     return 0;
 }
 

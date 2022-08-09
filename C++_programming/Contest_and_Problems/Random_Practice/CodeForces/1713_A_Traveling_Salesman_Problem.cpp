@@ -52,26 +52,21 @@ using namespace std;
 
 void solve()
 {
-    int n, H, M;
-    cin >> n >> H >> M;
-    int HM = H * 60 + M;
-    int h[n], m[n], hm[n];
+    int n, cnt = 0;
+    int a = 0, b = 0, c = 0, d = 0;
+    cin >> n;
     for (int i = 0; i < n; i++)
     {
-        cin >> h[i] >> m[i];
-        hm[i] = h[i] * 60 + m[i];
+        int x, y;
+        cin >> x >> y;
+
+        if(x == 0)
+        {
+            //Unsolved
+        }
+
     }
-
-
-    
-
-
-    for (int i = 0; i <= 1440; i++)
-    {
-        /* code */
-    }
-    
-    
+    cout << 2 * (a + b + c + d) << nl;
 }
 
 int main()

@@ -25,7 +25,7 @@ const ll Mod = 1e9 + 7;
 #define rev(v) reverse(v.begin(), v.end())
 #define srt(v) sort(v.begin(), v.end())
 // Array
-#define mems(a, x) memset(a, x, sizeof(a))        // Works only for 0 and -1
+#define mems(a, x) memset(a, x, sizeof(a))          // Works only for 0 and -1
 #define ass_vel(ar, n, x) fo(i, n) ar[i] = x      // Set value in array
 #define parr(ar, n) fo(i, n) cout << ar[i] << " " // Print array
 #define eol cout << endl
@@ -34,6 +34,7 @@ const ll Mod = 1e9 + 7;
 #define min_el(arr, size) *min_element(arr, arr + size)
 #define max_el(arr, size) *max_element(arr, arr + size)
 #define ain(arr, n) fo(i, n) cin >> arr[i]
+#define find_(a, n, x) find(a, a + n, x) - a
 // cout << fixed << setprecision(__n) << x << endl;
 #define FSP(x) fixed << setprecision(x)
 // Vector
@@ -52,25 +53,6 @@ using namespace std;
 
 void solve()
 {
-    int n, H, M;
-    cin >> n >> H >> M;
-    int HM = H * 60 + M;
-    int h[n], m[n], hm[n];
-    for (int i = 0; i < n; i++)
-    {
-        cin >> h[i] >> m[i];
-        hm[i] = h[i] * 60 + m[i];
-    }
-
-
-    
-
-
-    for (int i = 0; i <= 1440; i++)
-    {
-        /* code */
-    }
-    
     
 }
 
@@ -90,7 +72,7 @@ int main()
 
 #ifndef ONLINE_JUDGE
     double time = (clock() - start) / CLOCKS_PER_SEC;
-    cerr << "Running Time : " << time << "\n";
+    cerr << "Running Time : "<< time << "\n";
 #endif
     return 0;
 }

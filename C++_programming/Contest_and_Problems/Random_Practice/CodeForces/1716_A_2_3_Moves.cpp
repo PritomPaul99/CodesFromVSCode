@@ -34,6 +34,7 @@ const ll Mod = 1e9 + 7;
 #define min_el(arr, size) *min_element(arr, arr + size)
 #define max_el(arr, size) *max_element(arr, arr + size)
 #define ain(arr, n) fo(i, n) cin >> arr[i]
+#define find_(a, n, x) find(a, a + n, x) - a
 // cout << fixed << setprecision(__n) << x << endl;
 #define FSP(x) fixed << setprecision(x)
 // Vector
@@ -52,26 +53,23 @@ using namespace std;
 
 void solve()
 {
-    int n, H, M;
-    cin >> n >> H >> M;
-    int HM = H * 60 + M;
-    int h[n], m[n], hm[n];
-    for (int i = 0; i < n; i++)
+    int n;
+    cin >> n;
+
+    if (n == 1)
     {
-        cin >> h[i] >> m[i];
-        hm[i] = h[i] * 60 + m[i];
+        cout << 2 << nl;
+        return;
     }
-
-
-    
-
-
-    for (int i = 0; i <= 1440; i++)
+    int x = ceil(n / (float)3), y = ceil(n / (float)3);
+    if (x == y)
+        cout << x << nl;
+    else if (x > y)
+        cout << y << nl;
+    else if (y > x)
     {
-        /* code */
+        cout << y << nl;
     }
-    
-    
 }
 
 int main()
