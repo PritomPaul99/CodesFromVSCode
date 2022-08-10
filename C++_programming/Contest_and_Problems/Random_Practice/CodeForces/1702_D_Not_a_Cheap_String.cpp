@@ -53,48 +53,27 @@ using namespace std;
 
 void solve()
 {
+    string w;
+    cin >> w;
     int n;
     cin >> n;
-    int arr[n];
-    map<int, int> mp;
-    for (int i = 0; i < n; i++)
+
+    int v[26] = {0}, sum = 0;
+    for (int i = 0; i < 26; i++)
     {
-        cin >> arr[i];
-        mp[arr[i]]++;
-    }
-    vi v;
-    for (auto it = mp.begin(); it != mp.end(); it++)
-    {
-        v.push_back(it->second);
+        v[w[i] - 'a']++;
+        sum += w[i] - 'a' + 1;
     }
 
-    sort(v.rbegin(), v.rend());
-    int mx = v[0];
-    int sum = mx;
-    // cout << mx;
-
-    for (int i = 1; i < v.size(); i++)
+    for (int i = 0; i < 26; i++)
     {
-        if (mx == 0)
+        if (n > sum)
         {
-            // cout << "xxxxxx1" << nl;
-            break;
-        }
-
-        if (v[i] < mx)
-        {
-            // cout << "1--" << sum << nl;
-            sum += v[i];
-            mx = v[i];
-        }
-        else
-        {
-            // cout << "2--" << sum << nl;
-            mx--;
-            sum += mx;
+            if (sum - n)
+            {
+            }
         }
     }
-    cout << sum << nl;
 }
 
 int main()

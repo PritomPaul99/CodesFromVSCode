@@ -1,5 +1,11 @@
-4
+5
+abca
+2
+abca
+6
+codeforces
 1
-3
-4
-12
+codeforces
+10
+codeforces
+100
