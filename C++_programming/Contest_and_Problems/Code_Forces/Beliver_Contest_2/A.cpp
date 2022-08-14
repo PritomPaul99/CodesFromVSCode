@@ -53,24 +53,30 @@ using namespace std;
 
 void solve()
 {
-    string w;
-    cin >> w;
-    int n;
-    cin >> n;
+    int a, b;
+    cin >> a >> b;
 
-    map<char, int> mp;
-
-    for (int i = 0; i < 26; i++)
+    if (b == a)
     {
-        mp[w[]++;
+        cout << 0 << nl;
     }
-
-    for (auto it = mp.begin(); it != mp.end(); it++)
+    else
     {
-        cout << it->first << " " << it->second << nl;
+        if (b > a && (b - a) % 2 != 0)
+        {
+            cout << 1 << nl;
+        }
+        else if (a > b && (a - b) % 2 == 0)
+        {
+            cout << 1 << nl;
+        }
+        else
+        {
+            cout << 2 << nl;
+        }
     }
-    
 }
+
 
 int main()
 {

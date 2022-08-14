@@ -53,23 +53,18 @@ using namespace std;
 
 void solve()
 {
-    string w;
-    cin >> w;
-    int n;
-    cin >> n;
+    string s;
+    cin >> s;
+    int n = s.size();
 
-    map<char, int> mp;
-
-    for (int i = 0; i < 26; i++)
+    if (n < 26)
     {
-        mp[w[]++;
+        cout << -1 << nl;
     }
-
-    for (auto it = mp.begin(); it != mp.end(); it++)
+    else
     {
-        cout << it->first << " " << it->second << nl;
+        cout << "abcdefghijklmnopqrstuvwxyz" << nl;
     }
-    
 }
 
 int main()
@@ -81,10 +76,7 @@ int main()
     f_output;
 #endif
 
-    int ttt;
-    cin >> ttt;
-    while (ttt--)
-        solve();
+    solve();
 
 #ifndef ONLINE_JUDGE
     double time = (clock() - start) / CLOCKS_PER_SEC;

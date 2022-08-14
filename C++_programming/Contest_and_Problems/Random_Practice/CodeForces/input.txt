@@ -1,11 +1,2 @@
-5
-abca
-2
-abca
 6
-codeforces
-1
-codeforces
-10
-codeforces
-100
+6 5 4 3 2 1

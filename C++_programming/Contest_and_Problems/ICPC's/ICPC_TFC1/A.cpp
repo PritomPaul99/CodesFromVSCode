@@ -37,6 +37,8 @@ const ll Mod = 1e9 + 7;
 #define find_(a, n, x) find(a, a + n, x) - a
 // cout << fixed << setprecision(__n) << x << endl;
 #define FSP(x) fixed << setprecision(x)
+#define pop_cnt(n) __builtin_popcount(n) // Assign it to a value to find the number of 1 in a binary number
+#define numBits(n) log2(n) + 1           // Assign it to a value to get the number of bits in an integer
 // Vector
 #define vi vector<int>
 #define vll vector<ll>
@@ -51,25 +53,42 @@ const ll Mod = 1e9 + 7;
 
 using namespace std;
 
+bool isLeapYear(int year)
+{
+    if (year % 400 == 0)
+        return true;
+    else if (year % 100 == 0)
+        return false;
+    else if (year % 4 == 0)
+        return true;
+    else
+        return false;
+}
+
 void solve()
 {
-    string w;
-    cin >> w;
-    int n;
-    cin >> n;
+    int d, m, y, qy;
+    cin >> d >> m >> y >> qy;
 
-    map<char, int> mp;
+    int yr = y;
 
-    for (int i = 0; i < 26; i++)
+    int cnt = 0;
+
+    if (d == 29 && m == 2)
     {
-        mp[w[]++;
+        for (int i = yr + 1; i < qy; i++)
+        {
+            if (isLeapYear(i) == 1)
+            {
+                cnt++;
+            }
+        }
+        cout << cnt << nl;
     }
-
-    for (auto it = mp.begin(); it != mp.end(); it++)
+    else
     {
-        cout << it->first << " " << it->second << nl;
+        cout << qy - y << nl;
     }
-    
 }
 
 int main()
@@ -83,8 +102,13 @@ int main()
 
     int ttt;
     cin >> ttt;
+    int i = 1;
     while (ttt--)
+    {
+        cout << "Case " << i << ": ";
         solve();
+        i++;
+    }
 
 #ifndef ONLINE_JUDGE
     double time = (clock() - start) / CLOCKS_PER_SEC;

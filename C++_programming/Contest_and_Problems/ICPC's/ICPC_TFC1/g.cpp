@@ -37,6 +37,8 @@ const ll Mod = 1e9 + 7;
 #define find_(a, n, x) find(a, a + n, x) - a
 // cout << fixed << setprecision(__n) << x << endl;
 #define FSP(x) fixed << setprecision(x)
+#define pop_cnt(n) __builtin_popcount(n) // Assign it to a value to find the number of 1 in a binary number
+#define numBits(n) log2(n) + 1           // Assign it to a value to get the number of bits in an integer
 // Vector
 #define vi vector<int>
 #define vll vector<ll>
@@ -53,23 +55,26 @@ using namespace std;
 
 void solve()
 {
-    string w;
-    cin >> w;
-    int n;
-    cin >> n;
+    ll a, b, c;
+    cin >> a >> b >> c;
 
-    map<char, int> mp;
+    double x = (double)c / (a + b);
 
-    for (int i = 0; i < 26; i++)
+
+    if(a+b == 0)
     {
-        mp[w[]++;
+        cout << "NO" << nl;
+        return;
     }
 
-    for (auto it = mp.begin(); it != mp.end(); it++)
+    if (x > 1)
     {
-        cout << it->first << " " << it->second << nl;
+        cout << FSP(0) << x << nl;
     }
-    
+    else
+    {
+        cout << "NO" << nl;
+    }
 }
 
 int main()
@@ -83,8 +88,13 @@ int main()
 
     int ttt;
     cin >> ttt;
+    int i = 1;
     while (ttt--)
+    {
+        cout << "Case " << i << ": ";
         solve();
+        i++;
+    }
 
 #ifndef ONLINE_JUDGE
     double time = (clock() - start) / CLOCKS_PER_SEC;

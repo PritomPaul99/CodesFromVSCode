@@ -25,7 +25,7 @@ const ll Mod = 1e9 + 7;
 #define rev(v) reverse(v.begin(), v.end())
 #define srt(v) sort(v.begin(), v.end())
 // Array
-#define mems(a, x) memset(a, x, sizeof(a))        // Works only for 0 and -1
+#define mems(a, x) memset(a, x, sizeof(a))          // Works only for 0 and -1
 #define ass_vel(ar, n, x) fo(i, n) ar[i] = x      // Set value in array
 #define parr(ar, n) fo(i, n) cout << ar[i] << " " // Print array
 #define eol cout << endl
@@ -53,21 +53,16 @@ using namespace std;
 
 void solve()
 {
-    string w;
-    cin >> w;
-    int n;
-    cin >> n;
+    int l, r, d;
+    cin >> l >> r >> d;
 
-    map<char, int> mp;
-
-    for (int i = 0; i < 26; i++)
+    if(d < l)
     {
-        mp[w[]++;
+        cout << d << nl;
     }
-
-    for (auto it = mp.begin(); it != mp.end(); it++)
+    else
     {
-        cout << it->first << " " << it->second << nl;
+        cout << d * (r / d + 1) << nl;
     }
     
 }
@@ -88,7 +83,7 @@ int main()
 
 #ifndef ONLINE_JUDGE
     double time = (clock() - start) / CLOCKS_PER_SEC;
-    cerr << "Running Time : " << time << "\n";
+    cerr << "Running Time : "<< time << "\n";
 #endif
     return 0;
 }

@@ -53,23 +53,12 @@ using namespace std;
 
 void solve()
 {
-    string w;
-    cin >> w;
-    int n;
-    cin >> n;
-
-    map<char, int> mp;
-
-    for (int i = 0; i < 26; i++)
-    {
-        mp[w[]++;
-    }
-
-    for (auto it = mp.begin(); it != mp.end(); it++)
-    {
-        cout << it->first << " " << it->second << nl;
-    }
-    
+    int l, r;
+    cin >> l >> r;
+    if (r - l <= 1)
+        cout << -1 << " " << -1 << nl;
+    else
+        cout << l + 1 << " " << r - 1 << nl;
 }
 
 int main()

@@ -25,7 +25,7 @@ const ll Mod = 1e9 + 7;
 #define rev(v) reverse(v.begin(), v.end())
 #define srt(v) sort(v.begin(), v.end())
 // Array
-#define mems(a, x) memset(a, x, sizeof(a))        // Works only for 0 and -1
+#define mems(a, x) memset(a, x, sizeof(a))          // Works only for 0 and -1
 #define ass_vel(ar, n, x) fo(i, n) ar[i] = x      // Set value in array
 #define parr(ar, n) fo(i, n) cout << ar[i] << " " // Print array
 #define eol cout << endl
@@ -37,6 +37,8 @@ const ll Mod = 1e9 + 7;
 #define find_(a, n, x) find(a, a + n, x) - a
 // cout << fixed << setprecision(__n) << x << endl;
 #define FSP(x) fixed << setprecision(x)
+#define pop_cnt(n) __builtin_popcount(n) //Assign it to a value to find the number of 1 in a binary number
+#define numBits(n) log2(n) + 1 //Assign it to a value to get the number of bits in an integer
 // Vector
 #define vi vector<int>
 #define vll vector<ll>
@@ -51,24 +53,15 @@ const ll Mod = 1e9 + 7;
 
 using namespace std;
 
+long long prim[10000000];
+
+void prims()
+{
+    
+}
+
 void solve()
 {
-    string w;
-    cin >> w;
-    int n;
-    cin >> n;
-
-    map<char, int> mp;
-
-    for (int i = 0; i < 26; i++)
-    {
-        mp[w[]++;
-    }
-
-    for (auto it = mp.begin(); it != mp.end(); it++)
-    {
-        cout << it->first << " " << it->second << nl;
-    }
     
 }
 
@@ -83,12 +76,17 @@ int main()
 
     int ttt;
     cin >> ttt;
+    int i = 1;
     while (ttt--)
+    {
+        cout << "Case " << i << ": ";
         solve();
+        i++;
+    }
 
 #ifndef ONLINE_JUDGE
     double time = (clock() - start) / CLOCKS_PER_SEC;
-    cerr << "Running Time : " << time << "\n";
+    cerr << "Running Time : "<< time << "\n";
 #endif
     return 0;
 }

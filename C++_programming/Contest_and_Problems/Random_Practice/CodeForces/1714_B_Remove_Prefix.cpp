@@ -37,12 +37,15 @@ const ll Mod = 1e9 + 7;
 #define find_(a, n, x) find(a, a + n, x) - a
 // cout << fixed << setprecision(__n) << x << endl;
 #define FSP(x) fixed << setprecision(x)
+#define pop_cnt(n) __builtin_popcount(n) // Assign it to a value to find the number of 1 in a binary number
+#define numBits(n) log2(n) + 1           // Assign it to a value to get the number of bits in an integer
 // Vector
 #define vi vector<int>
 #define vll vector<ll>
 #define vc vector<char>
 #define vs vector<string>
 #define pb push_back
+#define _Rotate_(v, rotN) rotate(v.begin(), v.begin() + rotN, v.end()) //Rotate a container
 // debug
 #define cpoint cout << "_________________CHECK POINT_________________\n";
 #define _debug(x) cout << x << endl
@@ -53,23 +56,16 @@ using namespace std;
 
 void solve()
 {
-    string w;
-    cin >> w;
     int n;
     cin >> n;
+    set<int> s;
+    int arr[n];
 
-    map<char, int> mp;
-
-    for (int i = 0; i < 26; i++)
+    for (int i = 0; i < n; i++)
     {
-        mp[w[]++;
+        cin >> arr[i];
+        s.insert(arr[i]);
     }
-
-    for (auto it = mp.begin(); it != mp.end(); it++)
-    {
-        cout << it->first << " " << it->second << nl;
-    }
-    
 }
 
 int main()

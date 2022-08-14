@@ -37,6 +37,8 @@ const ll Mod = 1e9 + 7;
 #define find_(a, n, x) find(a, a + n, x) - a
 // cout << fixed << setprecision(__n) << x << endl;
 #define FSP(x) fixed << setprecision(x)
+#define pop_cnt(n) __builtin_popcount(n) // Assign it to a value to find the number of 1 in a binary number
+#define numBits(n) log2(n) + 1           // Assign it to a value to get the number of bits in an integer
 // Vector
 #define vi vector<int>
 #define vll vector<ll>
@@ -53,23 +55,90 @@ using namespace std;
 
 void solve()
 {
-    string w;
-    cin >> w;
-    int n;
-    cin >> n;
+    int n, m;
+    cin >> n >> m;
 
-    map<char, int> mp;
+    deque<int> q;
 
-    for (int i = 0; i < 26; i++)
+    string s[m];
+    int arr[m] = {0};
+    for (int i = 0; i < m; i++)
     {
-        mp[w[]++;
+        cin >> s[i];
+        if (s[i] == "pushLeft" || s[i] == "pushRight")
+        {
+            cin >> arr[i];
+        }
     }
 
-    for (auto it = mp.begin(); it != mp.end(); it++)
+    for (int i = 0; i < m; i++)
     {
-        cout << it->first << " " << it->second << nl;
+
+        if (s[i] == "pushLeft")
+        {
+            // string x;
+            // x.assign(s[i].begin() + 8, s[i].end());
+            // int num = stoi(x);
+
+            if (q.size() == n)
+            {
+                cout << "The queue is full" << nl;
+            }
+            else
+            {
+                q.push_front(arr[i]);
+                cout << "Pushed in left: " << arr[i] << nl;
+            }
+        }
+        else if (s[i] == "pushRight")
+        {
+            // string x;
+            // x.assign(s[i].begin() + 9, s[i].end());
+            // int num = stoi(x);
+            if (q.size() == n)
+            {
+                cout << "The queue is full" << nl;
+            }
+            else
+            {
+                q.push_back(arr[i]);
+                cout << "Pushed in right: " << arr[i] << nl;
+            }
+        }
+        else if (s[i] == "popLeft")
+        {
+            if (q.size() == 0)
+            {
+                cout << "The queue is empty" << nl;
+            }
+            else
+            {
+                int lft = q[0];
+                q.pop_front();
+                cout << "Popped from left: " << lft << nl;
+            }
+        }
+        else if(s[i] == "popRight")
+        {
+            if (q.size() == 0)
+            {
+                cout << "The queue is empty" << nl;
+            } 
+            else
+            {
+                int rgt = q[q.size()-1];
+                q.pop_back();
+                cout << "Popped from right: " << rgt << nl;
+            }
+        }
     }
-    
+
+
+    // for (int i = 0; i < q.size(); i++)
+    // {
+    //     cout << q[i] << " ";
+    // }
+    // cout << qsize();
 }
 
 int main()
@@ -83,8 +152,13 @@ int main()
 
     int ttt;
     cin >> ttt;
+    int i = 1;
     while (ttt--)
+    {
+        cout << "Case " << i << ": \n";
         solve();
+        i++;
+    }
 
 #ifndef ONLINE_JUDGE
     double time = (clock() - start) / CLOCKS_PER_SEC;
