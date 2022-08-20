@@ -34,8 +34,11 @@ const ll Mod = 1e9 + 7;
 #define min_el(arr, size) *min_element(arr, arr + size)
 #define max_el(arr, size) *max_element(arr, arr + size)
 #define ain(arr, n) fo(i, n) cin >> arr[i]
+#define find_(a, n, x) find(a, a + n, x) - a
 // cout << fixed << setprecision(__n) << x << endl;
 #define FSP(x) fixed << setprecision(x)
+#define pop_cnt(n) __builtin_popcount(n) // Assign it to a value to find the number of 1 in a binary number
+#define numBits(n) log2(n) + 1           // Assign it to a value to get the number of bits in an integer
 // Vector
 #define vi vector<int>
 #define vll vector<ll>
@@ -45,46 +48,23 @@ const ll Mod = 1e9 + 7;
 // debug
 #define cpoint cout << "_________________CHECK POINT_________________\n";
 #define _debug(x) cout << x << endl
-#define Yes cout << "YES\n";
-#define No cout << "NO\n";
+#define Yes printf("Yes\n")
+#define No printf("No\n")
+#define YES printf("YES\n")
+#define NO printf("NO\n")
 
 using namespace std;
 
 void solve()
 {
-    ll n;
-    cin >> n;
-    ll arr[n];
-    for (int i = 0; i < n; i++)
-    {
-        arr[i] = i + 1;
-    }
+    ll d, x, y, z;
+    cin >> d >> x >> y >> z;
+    ll s1 = x * z, s2 = y * z;
+    // cout << s1 << " " << s2 << nl;
 
-    if (n == 1)
-    {
-        cout << 1 << nl;
-        return;
-    }
-    if (n % 2 == 0)
-    {
-        for (ll i = 0; i < n; i += 2)
-        {
-            swap(arr[i], arr[i + 1]);
-        }
-    }
-    else
-    {
-        for (ll i = 0; i < n - 1; i++)
-        {
-            swap(arr[i], arr[i + 1]);
-        }
-        // reverse(arr, arr + n);
-    }
-    for (ll i = 0; i < n; i++)
-    {
-        cout << arr[i] << " ";
-    }
-    cout << nl;
+    float dig = (float)cos(d * 3.1416 / 180);
+    float c = sqrt((s1 * s1) + (s2 * s2) - 2 * s1 * s2 * dig);
+    cout << FSP(2) << c << nl;
 }
 
 int main()
@@ -98,8 +78,13 @@ int main()
 
     int ttt;
     cin >> ttt;
+    int tst = 1;
     while (ttt--)
+    {
+        cout << "Case " << tst << ": ";
         solve();
+        tst++;
+    }
 
 #ifndef ONLINE_JUDGE
     double time = (clock() - start) / CLOCKS_PER_SEC;

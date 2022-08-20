@@ -68,7 +68,7 @@ void solve()
         for (int i = 1; i <= n; i += 2)
         {
             int a = i, b = i + 1;
-            if ((((a + k) * b) % 4 != 0) || ((b + k) * a) % 4 != 0)
+            if ((((a + k) * b) % 4 != 0) && ((b + k) * a) % 4 != 0)
             {
                 ck = 1;
                 break;
