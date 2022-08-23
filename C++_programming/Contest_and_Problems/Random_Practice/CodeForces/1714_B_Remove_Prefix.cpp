@@ -45,7 +45,7 @@ const ll Mod = 1e9 + 7;
 #define vc vector<char>
 #define vs vector<string>
 #define pb push_back
-#define _Rotate_(v, rotN) rotate(v.begin(), v.begin() + rotN, v.end()) //Rotate a container
+#define _Rotate_(v, rotN) rotate(v.begin(), v.begin() + rotN, v.end()) // Rotate a container
 // debug
 #define cpoint cout << "_________________CHECK POINT_________________\n";
 #define _debug(x) cout << x << endl
@@ -58,14 +58,28 @@ void solve()
 {
     int n;
     cin >> n;
-    set<int> s;
+    map<int, int> mp;
     int arr[n];
 
     for (int i = 0; i < n; i++)
     {
         cin >> arr[i];
-        s.insert(arr[i]);
+        // mp[arr[i]]++;
     }
+
+    for (int i = n - 1; i >= 0; i--)
+    {
+        if (mp[arr[i]] == 0)
+        {
+            mp[arr[i]]++;
+        }
+        else if (mp[arr[i]] >= 1)
+        {
+            cout << ++i << nl;
+            return;
+        }
+    }
+    cout << 0 << nl;
 }
 
 int main()
