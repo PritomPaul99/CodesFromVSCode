@@ -5,8 +5,8 @@ using namespace std;
 
 void solve()
 {
-    int a = 25;
-    int b = 100;
+    int a = 15;
+    int b = 7;
     cout << a % b;
 }
 

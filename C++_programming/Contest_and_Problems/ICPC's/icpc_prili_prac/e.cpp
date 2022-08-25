@@ -57,56 +57,33 @@ using namespace std;
 
 void solve()
 {
-    int n, m, k;
-    cin >> n >> m >> k;
-    string a, b, c;
-    cin >> a >> b;
-
-    sort(all(a)), sort(all(b));
-    // cout << a << " " << b << nl;
-
-    string ans;
-    int k1 = 0, k2 = 0;
-
-    while (a.size()&&b.size())
+    int n;
+    cin >> n;
+    vector<int> a;
+    for (int i = 0; i < n; i++)
     {
-        if (a[0] < b[0])
-        {
-            if (k > k1)
-            {
-                ans += a[0];
-                k1++;
-                k2 = 0;
-                a.erase(a.begin());
-            }
-            else
-            {
-                ans += b[0];
-                k2++;
-                k1 = 0;
-                b.erase(b.begin());
-            }
-        }
-        else if (b[0] < a[0])
-        {
-            if (k > k2)
-            {
-                ans += b[0];
-                k2++;
-                k1 = 0;
-                b.erase(b.begin());
-            }
-            else
-            {
-                ans += a[0];
-                k1++;
-                k2 = 0;
-                a.erase(a.begin());
-            }
-        }
+        int q;
+        cin >> q;
+        a.pb(q);
     }
-    // cout << i << " " << j << nl;
-    cout << ans << nl;
+    int x;
+    cin >> x;
+
+    for (int i = 0; i < n; i++)
+    {
+        int mx = 0, in = -1;
+        for (int j = 0; j < a.size(); j++)
+        {
+            if (mx < (x % a[j]))
+            {
+                in = j;
+                mx = (x % a[j]);
+            }
+        }
+        x %= a[in];
+        a.erase(a.begin() + in);
+    }
+    cout << x << nl;
 }
 
 int main()
@@ -118,11 +95,12 @@ int main()
     f_output;
 #endif
 
-    int ttt;
-    cin >> ttt;
+    int ttt = 1;
     while (ttt--)
     {
+        // cout << "Case " << ca << ": ";
         solve();
+        // ca++;
     }
 
 #ifndef ONLINE_JUDGE

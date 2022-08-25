@@ -57,56 +57,31 @@ using namespace std;
 
 void solve()
 {
-    int n, m, k;
-    cin >> n >> m >> k;
-    string a, b, c;
-    cin >> a >> b;
-
-    sort(all(a)), sort(all(b));
-    // cout << a << " " << b << nl;
-
-    string ans;
-    int k1 = 0, k2 = 0;
-
-    while (a.size()&&b.size())
+    int n, k;
+    cin >> n >> k;
+    
+    int a[n];
+    fo(i, n)
     {
-        if (a[0] < b[0])
-        {
-            if (k > k1)
-            {
-                ans += a[0];
-                k1++;
-                k2 = 0;
-                a.erase(a.begin());
-            }
-            else
-            {
-                ans += b[0];
-                k2++;
-                k1 = 0;
-                b.erase(b.begin());
-            }
-        }
-        else if (b[0] < a[0])
-        {
-            if (k > k2)
-            {
-                ans += b[0];
-                k2++;
-                k1 = 0;
-                b.erase(b.begin());
-            }
-            else
-            {
-                ans += a[0];
-                k1++;
-                k2 = 0;
-                a.erase(a.begin());
-            }
-        }
+        cin >> a[i];
     }
-    // cout << i << " " << j << nl;
-    cout << ans << nl;
+
+    int ans = a[0];
+    for (int i = 1; i < n; i++)
+    {
+        ans &= a[i];
+
+    }
+
+    if(ans < k)
+    {
+        cout << "YES" << nl;
+    }
+    else
+    {
+        cout << "NO" << nl;
+    }
+    
 }
 
 int main()
@@ -118,11 +93,13 @@ int main()
     f_output;
 #endif
 
-    int ttt;
+    int ttt, ca = 1;
     cin >> ttt;
     while (ttt--)
     {
+        // cout << "Case " << ca << ": ";
         solve();
+        // ca++;
     }
 
 #ifndef ONLINE_JUDGE

@@ -57,56 +57,18 @@ using namespace std;
 
 void solve()
 {
-    int n, m, k;
-    cin >> n >> m >> k;
-    string a, b, c;
-    cin >> a >> b;
-
-    sort(all(a)), sort(all(b));
-    // cout << a << " " << b << nl;
-
-    string ans;
-    int k1 = 0, k2 = 0;
-
-    while (a.size()&&b.size())
+    string s = "abcdee";
+    for (int i = 0; i < s.size(); i++)
     {
-        if (a[0] < b[0])
-        {
-            if (k > k1)
-            {
-                ans += a[0];
-                k1++;
-                k2 = 0;
-                a.erase(a.begin());
-            }
-            else
-            {
-                ans += b[0];
-                k2++;
-                k1 = 0;
-                b.erase(b.begin());
-            }
-        }
-        else if (b[0] < a[0])
-        {
-            if (k > k2)
-            {
-                ans += b[0];
-                k2++;
-                k1 = 0;
-                b.erase(b.begin());
-            }
-            else
-            {
-                ans += a[0];
-                k1++;
-                k2 = 0;
-                a.erase(a.begin());
-            }
-        }
+        cout << s[i] << " ";
     }
-    // cout << i << " " << j << nl;
-    cout << ans << nl;
+
+    // for (int i = 0; i < count; i++)
+    // {
+    //     /* code */
+    // }
+    
+    
 }
 
 int main()
@@ -118,12 +80,14 @@ int main()
     f_output;
 #endif
 
-    int ttt;
-    cin >> ttt;
-    while (ttt--)
-    {
-        solve();
-    }
+    // int ttt, ca = 1;
+    // cin >> ttt;
+    // while (ttt--)
+    // {
+    // cout << "Case " << ca << ": ";
+    solve();
+    // ca++;
+    // }
 
 #ifndef ONLINE_JUDGE
     double time = (clock() - start) / CLOCKS_PER_SEC;

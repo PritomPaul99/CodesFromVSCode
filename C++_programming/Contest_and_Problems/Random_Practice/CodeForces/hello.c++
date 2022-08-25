@@ -25,7 +25,7 @@ const ll Mod = 1e9 + 7;
 #define rev(v) reverse(v.begin(), v.end())
 #define srt(v) sort(v.begin(), v.end())
 // Array
-#define mems(a, x) memset(a, x, sizeof(a))        // Works only for 0 and -1
+#define mems(a, x) memset(a, x, sizeof(a))          // Works only for 0 and -1
 #define ass_vel(ar, n, x) fo(i, n) ar[i] = x      // Set value in array
 #define parr(ar, n) fo(i, n) cout << ar[i] << " " // Print array
 #define eol cout << endl
@@ -37,8 +37,8 @@ const ll Mod = 1e9 + 7;
 #define find_(a, n, x) find(a, a + n, x) - a
 // cout << fixed << setprecision(__n) << x << endl;
 #define FSP(x) fixed << setprecision(x)
-#define pop_cnt(n) __builtin_popcount(n) // Assign it to a value to find the number of 1 in a binary number
-#define numBits(n) log2(n) + 1           // Assign it to a value to get the number of bits in an integer
+#define pop_cnt(n) __builtin_popcount(n) //Assign it to a value to find the number of 1 in a binary number
+#define numBits(n) log2(n) + 1 //Assign it to a value to get the number of bits in an integer
 // Vector
 #define vi vector<int>
 #define vll vector<ll>
@@ -57,56 +57,7 @@ using namespace std;
 
 void solve()
 {
-    int n, m, k;
-    cin >> n >> m >> k;
-    string a, b, c;
-    cin >> a >> b;
-
-    sort(all(a)), sort(all(b));
-    // cout << a << " " << b << nl;
-
-    string ans;
-    int k1 = 0, k2 = 0;
-
-    while (a.size()&&b.size())
-    {
-        if (a[0] < b[0])
-        {
-            if (k > k1)
-            {
-                ans += a[0];
-                k1++;
-                k2 = 0;
-                a.erase(a.begin());
-            }
-            else
-            {
-                ans += b[0];
-                k2++;
-                k1 = 0;
-                b.erase(b.begin());
-            }
-        }
-        else if (b[0] < a[0])
-        {
-            if (k > k2)
-            {
-                ans += b[0];
-                k2++;
-                k1 = 0;
-                b.erase(b.begin());
-            }
-            else
-            {
-                ans += a[0];
-                k1++;
-                k2 = 0;
-                a.erase(a.begin());
-            }
-        }
-    }
-    // cout << i << " " << j << nl;
-    cout << ans << nl;
+    cout << "Hello world";
 }
 
 int main()
@@ -117,17 +68,18 @@ int main()
     f_input;
     f_output;
 #endif
-
-    int ttt;
-    cin >> ttt;
+    int ttt = 1, ca = 1;
+    // cin >> ttt;
     while (ttt--)
     {
+        //cout << "Case " << ca << ": ";
         solve();
+        //ca++;
     }
 
 #ifndef ONLINE_JUDGE
     double time = (clock() - start) / CLOCKS_PER_SEC;
-    cerr << "Running Time : " << time << "\n";
+    cerr << "Running Time : "<< time << "\n";
 #endif
     return 0;
 }

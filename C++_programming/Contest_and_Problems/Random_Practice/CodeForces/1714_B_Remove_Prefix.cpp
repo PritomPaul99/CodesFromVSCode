@@ -91,10 +91,14 @@ int main()
     f_output;
 #endif
 
-    int ttt;
+    int ttt, ca = 1;
     cin >> ttt;
     while (ttt--)
+    {
+        // cout << "Case " << ca << ": ";
         solve();
+        // ca++;
+    }
 
 #ifndef ONLINE_JUDGE
     double time = (clock() - start) / CLOCKS_PER_SEC;

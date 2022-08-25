@@ -57,56 +57,47 @@ using namespace std;
 
 void solve()
 {
-    int n, m, k;
-    cin >> n >> m >> k;
-    string a, b, c;
-    cin >> a >> b;
+    int n = 5;
+    ll a[n];
+    fo(i, n) cin >> a[i];
 
-    sort(all(a)), sort(all(b));
-    // cout << a << " " << b << nl;
+    int m;
+    cin >> m;
+    ll b[m];
 
-    string ans;
-    int k1 = 0, k2 = 0;
+    fo(i, m) cin >> b[i];
 
-    while (a.size()&&b.size())
+    ll ans = 0;
+    for (int i = 0; i < m; i++)
     {
-        if (a[0] < b[0])
+        if (b[i] >= 1 && b[i] <= 48)
         {
-            if (k > k1)
-            {
-                ans += a[0];
-                k1++;
-                k2 = 0;
-                a.erase(a.begin());
-            }
-            else
-            {
-                ans += b[0];
-                k2++;
-                k1 = 0;
-                b.erase(b.begin());
-            }
+            ans += a[0];
         }
-        else if (b[0] < a[0])
+
+        if (b[i] >= 49 && b[i] <= 56)
         {
-            if (k > k2)
-            {
-                ans += b[0];
-                k2++;
-                k1 = 0;
-                b.erase(b.begin());
-            }
-            else
-            {
-                ans += a[0];
-                k1++;
-                k2 = 0;
-                a.erase(a.begin());
-            }
+            ans += a[1];
+        }
+
+        if (b[i] >= 57 && b[i] <= 60)
+        {
+            ans += a[2];
+        }
+
+        if (b[i] >= 61 && b[i] <= 62)
+        {
+            ans += a[3];
+        }
+
+        if (b[i] == 63)
+        {
+            ans += a[4];
         }
     }
-    // cout << i << " " << j << nl;
-    cout << ans << nl;
+
+    ans *= 10000;
+    cout << ans << endl;
 }
 
 int main()
@@ -118,11 +109,13 @@ int main()
     f_output;
 #endif
 
-    int ttt;
+    int ttt, ca = 1;
     cin >> ttt;
     while (ttt--)
     {
+        cout << "Case #" << ca << ": ";
         solve();
+        ca++;
     }
 
 #ifndef ONLINE_JUDGE

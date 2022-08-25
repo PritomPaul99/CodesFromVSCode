@@ -57,56 +57,36 @@ using namespace std;
 
 void solve()
 {
-    int n, m, k;
-    cin >> n >> m >> k;
-    string a, b, c;
-    cin >> a >> b;
+    ll n, m;
+    cin >> n >> m;
+    ll a[n];
+    fo(i, n) cin >> a[i];
 
-    sort(all(a)), sort(all(b));
-    // cout << a << " " << b << nl;
-
-    string ans;
-    int k1 = 0, k2 = 0;
-
-    while (a.size()&&b.size())
+    for (int i = 0; i < m; i++)
     {
-        if (a[0] < b[0])
+        ll l, r;
+        cin >> l >> r;
+        ll largest = a[l];
+        for (int j = l; j <= r; j++)
         {
-            if (k > k1)
+            if (a[j] > largest)
             {
-                ans += a[0];
-                k1++;
-                k2 = 0;
-                a.erase(a.begin());
-            }
-            else
-            {
-                ans += b[0];
-                k2++;
-                k1 = 0;
-                b.erase(b.begin());
+                largest = a[j];
             }
         }
-        else if (b[0] < a[0])
+
+        ll ans = 0;
+
+        for (int j = l; j <= r; j++)
         {
-            if (k > k2)
+            if (a[j] == largest)
             {
-                ans += b[0];
-                k2++;
-                k1 = 0;
-                b.erase(b.begin());
-            }
-            else
-            {
-                ans += a[0];
-                k1++;
-                k2 = 0;
-                a.erase(a.begin());
+                ans++;
             }
         }
+
+        cout << (ll)ans << nl;
     }
-    // cout << i << " " << j << nl;
-    cout << ans << nl;
 }
 
 int main()
@@ -118,11 +98,13 @@ int main()
     f_output;
 #endif
 
-    int ttt;
+    int ttt, ca = 1;
     cin >> ttt;
     while (ttt--)
     {
+        cout << "Case " << ca << ": " << nl;
         solve();
+        ca++;
     }
 
 #ifndef ONLINE_JUDGE
