@@ -34,6 +34,7 @@ const ll Mod = 1e9 + 7;
 #define min_el(arr, size) *min_element(arr, arr + size)
 #define max_el(arr, size) *max_element(arr, arr + size)
 #define ain(arr, n) fo(i, n) cin >> arr[i]
+#define aout(arr, n) fo(i, n) cout << arr[i] << " "
 #define find_(a, n, x) find(a, a + n, x) - a
 // cout << fixed << setprecision(__n) << x << endl;
 #define FSP(x) fixed << setprecision(x)
@@ -54,34 +55,74 @@ const ll Mod = 1e9 + 7;
 #define NO printf("NO\n")
 
 using namespace std;
-
+int dis(int x, int y, int s1, int s2)
+{
+    return abs(x - s1) + abs(y - s2);
+}
 void solve()
 {
-    int n;
-    cin >> n;
+    int n, m, s1, s2, d;
+    cin >> n >> m >> s1 >> s2 >> d;
 
-    int a[n];
-    map<int, int> mp;
-    for (int i = 0; i < n; i++)
+    if (d == 0)
     {
-        cin >> a[i];
-        mp[a[i]]++;
+        cout << abs(1 - n) + abs(1 - m) << nl;
     }
-
-    int c = 0;
-
-    c += mp[4];
-
-    if(mp[3] == mp[1])
+    else if (dis(n, m, s1, s2) == d)
     {
-        c += mp[1];
+        cout << -1 << nl;
     }
-    else if(mp[1]>mp[3] && mp[3]!=0)
+    else
     {
-        
-    }
+        int l = 0, r = 0, b = 0, t = 0;
 
-    cout << c << nl;
+        for (int i = 0, j = 0; j < m; j++)
+        {
+            // cout << i << "," << j << " ";
+            if (dis(i, j, s1, s2) <= d)
+            {
+                t = 1;
+                break;
+            }
+        }
+        // cout << nl;
+        for (int i = 0, j = m; i < n; i++)
+        {
+            // cout << i << "," << j << nl;
+            if (dis(i, j, s1, s2) <= d)
+            {
+                r = 1;
+                break;
+            }
+        }
+
+        for (int i = 0, j = 0; i < n; i++)
+        {
+            if (dis(i, j, s1, s2) <= d)
+            {
+                l = 1;
+                break;
+            }
+        }
+
+        for (int i = n, j = 0; j < m; j++)
+        {
+            if (dis(i, j, s1, s2) <= d)
+            {
+                b = 1;
+                return;
+            }
+        }
+
+        if (((r && t) || (l && b)))
+        {
+            cout << -1 << nl;
+        }
+        else
+        {
+            cout << m + n - 2 << nl;
+        }
+    }
 }
 
 int main()
@@ -93,14 +134,14 @@ int main()
     f_output;
 #endif
 
-    // int ttt, ca = 1;
-    // cin >> ttt;
-    // while (ttt--)
-    // {
-    // cout << "Case " << ca << ": ";
-    solve();
-    // ca++;
-    // }
+    int ttt, ca = 1;
+    cin >> ttt;
+    while (ttt--)
+    {
+        // cout << "Case " << ca << ": ";
+        solve();
+        // ca++;
+    }
 
 #ifndef ONLINE_JUDGE
     double time = (clock() - start) / CLOCKS_PER_SEC;

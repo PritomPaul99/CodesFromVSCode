@@ -34,6 +34,7 @@ const ll Mod = 1e9 + 7;
 #define min_el(arr, size) *min_element(arr, arr + size)
 #define max_el(arr, size) *max_element(arr, arr + size)
 #define ain(arr, n) fo(i, n) cin >> arr[i]
+#define aout(arr, n) fo(i, n) cout << arr[i] << " "
 #define find_(a, n, x) find(a, a + n, x) - a
 // cout << fixed << setprecision(__n) << x << endl;
 #define FSP(x) fixed << setprecision(x)
@@ -57,31 +58,32 @@ using namespace std;
 
 void solve()
 {
-    int n;
-    cin >> n;
+    string s1, s2, s;
+    cin >> s1 >> s2;
+    s = s1 + s2;
 
-    int a[n];
-    map<int, int> mp;
-    for (int i = 0; i < n; i++)
+    set<char> st;
+    for (int i = 0; i < s.size(); i++)
     {
-        cin >> a[i];
-        mp[a[i]]++;
+        st.insert(s[i]);
     }
 
-    int c = 0;
-
-    c += mp[4];
-
-    if(mp[3] == mp[1])
+    if (st.size() == 1)
     {
-        c += mp[1];
+        cout << 0 << nl;
     }
-    else if(mp[1]>mp[3] && mp[3]!=0)
+    else if (st.size() == 2)
     {
-        
+        cout << 1 << nl;
     }
-
-    cout << c << nl;
+    else if (st.size() == 3)
+    {
+        cout << 2 << nl;
+    }
+    else if (st.size() == 4)
+    {
+        cout << 3 << nl;
+    }
 }
 
 int main()
@@ -93,14 +95,14 @@ int main()
     f_output;
 #endif
 
-    // int ttt, ca = 1;
-    // cin >> ttt;
-    // while (ttt--)
-    // {
-    // cout << "Case " << ca << ": ";
-    solve();
-    // ca++;
-    // }
+    int ttt, ca = 1;
+    cin >> ttt;
+    while (ttt--)
+    {
+        // cout << "Case " << ca << ": ";
+        solve();
+        // ca++;
+    }
 
 #ifndef ONLINE_JUDGE
     double time = (clock() - start) / CLOCKS_PER_SEC;

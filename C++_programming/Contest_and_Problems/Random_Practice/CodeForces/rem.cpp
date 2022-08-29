@@ -5,9 +5,7 @@ using namespace std;
 
 void solve()
 {
-    int a = 15;
-    int b = 7;
-    cout << a % b;
+    cout << (1 && 0);
 }
 
 int main()

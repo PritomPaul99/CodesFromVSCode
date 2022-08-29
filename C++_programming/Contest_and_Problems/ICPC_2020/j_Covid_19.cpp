@@ -34,6 +34,7 @@ const ll Mod = 1e9 + 7;
 #define min_el(arr, size) *min_element(arr, arr + size)
 #define max_el(arr, size) *max_element(arr, arr + size)
 #define ain(arr, n) fo(i, n) cin >> arr[i]
+#define aout(arr, n) fo(i, n) cout << arr[i] << " "
 #define find_(a, n, x) find(a, a + n, x) - a
 // cout << fixed << setprecision(__n) << x << endl;
 #define FSP(x) fixed << setprecision(x)
@@ -60,38 +61,12 @@ void solve()
     int n;
     cin >> n;
 
-    int a[n];
-    map<int, int> mp;
-    for (int i = 0; i < n; i++)
-    {
-        cin >> a[i];
-        mp[a[i]]++;
-    }
-
-    int c = 0;
-
-    c += mp[4];
-
-    if(mp[3] == mp[1])
-    {
-        c += mp[1];
-    }
-    else if(mp[1]>mp[3] && mp[3]!=0)
-    {
-        
-    }
-
-    cout << c << nl;
+    cout << floor((float)n / 6) + 1 << nl;
 }
 
 int main()
 {
     FastIO;
-#ifndef ONLINE_JUDGE
-    double start = clock();
-    f_input;
-    f_output;
-#endif
 
     // int ttt, ca = 1;
     // cin >> ttt;
@@ -102,12 +77,9 @@ int main()
     // ca++;
     // }
 
-#ifndef ONLINE_JUDGE
-    double time = (clock() - start) / CLOCKS_PER_SEC;
-    cerr << "Running Time : " << time << "\n";
-#endif
     return 0;
 }
+
 
 /***************************************************************************************************\
 *                                            Written by:                                            *

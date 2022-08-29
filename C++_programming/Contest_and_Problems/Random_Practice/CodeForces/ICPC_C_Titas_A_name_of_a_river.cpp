@@ -34,6 +34,7 @@ const ll Mod = 1e9 + 7;
 #define min_el(arr, size) *min_element(arr, arr + size)
 #define max_el(arr, size) *max_element(arr, arr + size)
 #define ain(arr, n) fo(i, n) cin >> arr[i]
+#define aout(arr, n) fo(i, n) cout << arr[i] << " "
 #define find_(a, n, x) find(a, a + n, x) - a
 // cout << fixed << setprecision(__n) << x << endl;
 #define FSP(x) fixed << setprecision(x)
@@ -55,57 +56,69 @@ const ll Mod = 1e9 + 7;
 
 using namespace std;
 
+struct comp
+{
+    template <typename T>
+
+    bool operator()(const T &l,
+                    const T &r) const
+    {
+        if (l.second != r.second)
+        {
+            return l.second > r.second;
+        }
+        return l.first > r.first;
+    }
+};
+
+void sort(map<string, int> &M)
+{
+    set<pair<string, int>, comp> S(M.begin(),
+                                   M.end());
+
+    // for (auto &it : S)
+    // {
+    //     cout << it.first << ' '
+    //          << it.second << endl;
+    // }
+}
+
 void solve()
 {
     int n;
     cin >> n;
 
-    int a[n];
-    map<int, int> mp;
+    string s[n];
+    map<string, int> mp;
     for (int i = 0; i < n; i++)
     {
-        cin >> a[i];
-        mp[a[i]]++;
+        cin >> s[i];
+        mp[s[i]]++;
     }
+    sort(mp);
 
-    int c = 0;
-
-    c += mp[4];
-
-    if(mp[3] == mp[1])
+    // reverse(mp.begin(), mp.end());
+    vector<string> v;
+    for (auto &&it : mp)
     {
-        c += mp[1];
+        v.pb(it.first);
     }
-    else if(mp[1]>mp[3] && mp[3]!=0)
-    {
-        
-    }
-
-    cout << c << nl;
+    cout << v[v.size()-1] << nl;
 }
 
 int main()
 {
     FastIO;
-#ifndef ONLINE_JUDGE
-    double start = clock();
-    f_input;
-    f_output;
-#endif
 
-    // int ttt, ca = 1;
-    // cin >> ttt;
-    // while (ttt--)
-    // {
-    // cout << "Case " << ca << ": ";
-    solve();
-    // ca++;
-    // }
+    int ttt, ca = 1;
+    cin >> ttt;
+    while (ttt--)
+    {
+        cout << "Case " << ca << ": ";
+        solve();
+        ca++;
+    }
 
-#ifndef ONLINE_JUDGE
-    double time = (clock() - start) / CLOCKS_PER_SEC;
-    cerr << "Running Time : " << time << "\n";
-#endif
     return 0;
 }
 
