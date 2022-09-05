@@ -10,7 +10,6 @@ typedef unsigned long long int uint64;
 // Constant Values
 #define pi acos(-1)
 const ll Mod = 1e9 + 7;
-const ll _N = 1e6 + 1;
 // File handling
 #define f_input freopen("input.txt", "r", stdin)
 #define f_output freopen("output.txt", "w", stdout)
@@ -26,7 +25,7 @@ const ll _N = 1e6 + 1;
 #define rev(v) reverse(v.begin(), v.end())
 #define srt(v) sort(v.begin(), v.end())
 // Array
-#define mems(a, x) memset(a, x, sizeof(a))        // Works only for 0 and -1
+#define mems(a, x) memset(a, x, sizeof(a))          // Works only for 0 and -1
 #define ass_vel(ar, n, x) fo(i, n) ar[i] = x      // Set value in array
 #define parr(ar, n) fo(i, n) cout << ar[i] << " " // Print array
 #define eol cout << endl
@@ -39,8 +38,8 @@ const ll _N = 1e6 + 1;
 #define find_(a, n, x) find(a, a + n, x) - a
 // cout << fixed << setprecision(__n) << x << endl;
 #define FSP(x) fixed << setprecision(x)
-#define pop_cnt(n) __builtin_popcount(n) // Assign it to a value to find the number of 1 in a binary number
-#define numBits(n) log2(n) + 1           // Assign it to a value to get the number of bits in an integer
+#define pop_cnt(n) __builtin_popcount(n) //Assign it to a value to find the number of 1 in a binary number
+#define numBits(n) log2(n) + 1 //Assign it to a value to get the number of bits in an integer
 // Vector
 #define vi vector<int>
 #define vll vector<ll>
@@ -57,7 +56,7 @@ const ll _N = 1e6 + 1;
 
 using namespace std;
 
-bool primeNum[_N];
+bool primeNum[1000000 + 1];
 void siv(int N)
 {
     int sq = sqrt(N);
@@ -74,8 +73,6 @@ void siv(int N)
         }
     }
     primeNum[1] = 1;
-    // if i == 0, the number is prime.
-    // if i == 1, the number is non-prime
 }
 
 void solve()
@@ -83,34 +80,40 @@ void solve()
     int a, b, c;
     cin >> a >> b >> c;
 
-    int arr[6];
+    int sum = a + b + c;
 
-    arr[0] = a + b * c;   // a+b*c
-    arr[1] = a * (b + c); // a*(b+c)
-    arr[2] = a * b * c;   // a*b*c
-    arr[3] = (a + b) * c; //(a+b)*c
-    arr[4] = a + b + c;   // a+b+c
-    arr[5] = a * b + c;   // a*b+c
-
-    // cout 
-    for (int i = 0; i < 6; i++)
+    if(sum%3 == 0)
     {
-        cout << arr[i] << nl;
+        cout << "Peaceful" << nl;
     }
-    cout << nl;
-
-    int mx = max_el(arr, 6);
-
-    cout << mx << nl;
+    else
+    {
+        cout << "Fight" << nl;
+    }
 }
 
 int main()
 {
     FastIO;
+// #ifndef ONLINE_JUDGE
+//     double start = clock();
+//     f_input;
+//     f_output;
+// #endif
 
-    solve();
-    // ca++;
+    int ttt, ca = 1;
+    cin >> ttt;
+    while (ttt--)
+    {
+        cout << "Case " << ca << ": ";
+        solve();
+        ca++;
+    }
 
+// #ifndef ONLINE_JUDGE
+//     double time = (clock() - start) / CLOCKS_PER_SEC;
+//     cerr << "Running Time : "<< time << "\n";
+// #endif
     return 0;
 }
 

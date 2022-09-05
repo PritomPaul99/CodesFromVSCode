@@ -7,7 +7,7 @@
 #define ld long double
 typedef unsigned long int uint32;
 typedef unsigned long long int uint64;
-// Constent Values
+// Constant Values
 #define pi acos(-1)
 const ll Mod = 1e9 + 7;
 // File handling
@@ -19,21 +19,27 @@ const ll Mod = 1e9 + 7;
 #define fs(i, s, e) for (int i = s; i < e; i++)
 #define fo(i, e) for (int i = 0; i < e; i++)
 #define fr(i, s, e) for (int i = s; i >= e; i--)
+#define fi(n) for (int i = 0; i < n; i++)
 // Strings
 #define all(x) x.begin(), x.end()
 #define rev(v) reverse(v.begin(), v.end())
 #define srt(v) sort(v.begin(), v.end())
 // Array
-#define mems(a, x) memset(a, x, sizeof(a))          // Works only for 0 and -1
-#define ass_vel(ar, n, x) f(a, 0, n) ar[a] = x      // Set value in array
-#define parr(ar, n) f(a, 0, n) cout << ar[a] << " " // Print array
+#define mems(a, x) memset(a, x, sizeof(a))        // Works only for 0 and -1
+#define ass_vel(ar, n, x) fo(i, n) ar[i] = x      // Set value in array
+#define parr(ar, n) fo(i, n) cout << ar[i] << " " // Print array
 #define eol cout << endl
 #define a_sort(ar, size) sort(ar, ar + size)
-#define d_sort(arr, size) sort(arr, arr + n, greater<int>())
-#define min_el(arr, size) *min_element(arr1, arr1 + n)
-#define max_el(arr, size) *max_element(arr1, arr1 + n)
+#define d_sort(arr, size) sort(arr, arr + size, greater<int>())
+#define min_el(arr, size) *min_element(arr, arr + size)
+#define max_el(arr, size) *max_element(arr, arr + size)
+#define ain(arr, n) fo(i, n) cin >> arr[i]
+#define aout(arr, n) fo(i, n) cout << arr[i] << " "
+#define find_(a, n, x) find(a, a + n, x) - a
 // cout << fixed << setprecision(__n) << x << endl;
 #define FSP(x) fixed << setprecision(x)
+#define pop_cnt(n) __builtin_popcount(n) // Assign it to a value to find the number of 1 in a binary number
+#define numBits(n) log2(n) + 1           // Assign it to a value to get the number of bits in an integer
 // Vector
 #define vi vector<int>
 #define vll vector<ll>
@@ -43,30 +49,60 @@ const ll Mod = 1e9 + 7;
 // debug
 #define cpoint cout << "_________________CHECK POINT_________________\n";
 #define _debug(x) cout << x << endl
+#define Yes printf("Yes\n")
+#define No printf("No\n")
+#define YES printf("YES\n")
+#define NO printf("NO\n")
+// Sieve of eratosthenes - Prime number
+const int N = 1e7 + 10;
+int prime[20000010];
+bool isprime[N];
+int nprime;
+template <typename T>
+void Sieve(T a)
+{
+    nprime = 0;
+    memset(isprime, true, sizeof(isprime));
+    isprime[1] = false;
+    for (int i = 2; i < N; i++)
+    {
+        if (isprime[i])
+        {
+            prime[nprime++] = i;
+            for (int j = 2; i * j < N; j++)
+                isprime[i * j] = false;
+        }
+    }
+}
 
 using namespace std;
 
 void solve()
 {
-    int n, m, x;
-    cin >> n >> m >> x;
-
-    //unsolved
 }
 
 int main()
 {
     FastIO;
 #ifndef ONLINE_JUDGE
+    double start = clock();
     f_input;
     f_output;
 #endif
 
-    int ttt;
+    int ttt, ca = 1;
     cin >> ttt;
     while (ttt--)
+    {
+        // cout << "Case " << ca << ": ";
         solve();
+        // ca++;
+    }
 
+#ifndef ONLINE_JUDGE
+    double time = (clock() - start) / CLOCKS_PER_SEC;
+    cerr << "Running Time : " << time << "\n";
+#endif
     return 0;
 }
 

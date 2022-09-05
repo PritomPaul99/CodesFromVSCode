@@ -10,7 +10,6 @@ typedef unsigned long long int uint64;
 // Constant Values
 #define pi acos(-1)
 const ll Mod = 1e9 + 7;
-const ll _N = 1e6 + 1;
 // File handling
 #define f_input freopen("input.txt", "r", stdin)
 #define f_output freopen("output.txt", "w", stdout)
@@ -57,7 +56,7 @@ const ll _N = 1e6 + 1;
 
 using namespace std;
 
-bool primeNum[_N];
+bool primeNum[1000000 + 1];
 void siv(int N)
 {
     int sq = sqrt(N);
@@ -74,8 +73,6 @@ void siv(int N)
         }
     }
     primeNum[1] = 1;
-    // if i == 0, the number is prime.
-    // if i == 1, the number is non-prime
 }
 
 void solve()
@@ -92,13 +89,6 @@ void solve()
     arr[4] = a + b + c;   // a+b+c
     arr[5] = a * b + c;   // a*b+c
 
-    // cout 
-    for (int i = 0; i < 6; i++)
-    {
-        cout << arr[i] << nl;
-    }
-    cout << nl;
-
     int mx = max_el(arr, 6);
 
     cout << mx << nl;
@@ -107,10 +97,25 @@ void solve()
 int main()
 {
     FastIO;
+    // #ifndef ONLINE_JUDGE
+    //     double start = clock();
+    //     f_input;
+    //     f_output;
+    // #endif
 
+    // int ttt, ca = 1;
+    // cin >> ttt;
+    // while (ttt--)
+    // {
+    // cout << "Case " << ca << ": ";
     solve();
-    // ca++;
+    //     //ca++;
+    // }
 
+    // #ifndef ONLINE_JUDGE
+    //     double time = (clock() - start) / CLOCKS_PER_SEC;
+    //     cerr << "Running Time : " << time << "\n";
+    // #endif
     return 0;
 }
 

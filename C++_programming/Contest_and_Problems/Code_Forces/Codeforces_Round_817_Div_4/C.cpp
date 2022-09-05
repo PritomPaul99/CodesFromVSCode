@@ -1,116 +1,126 @@
-//#include <iostream>
 #include <bits/stdc++.h>
 
-// Data Types
-#define ll long long
-#define lli long long int
-#define ld long double
-typedef unsigned long int uint32;
-typedef unsigned long long int uint64;
-// Constant Values
-#define pi acos(-1)
-const ll Mod = 1e9 + 7;
-const ll _N = 1e6 + 1;
-// File handling
+
 #define f_input freopen("input.txt", "r", stdin)
 #define f_output freopen("output.txt", "w", stdout)
 #define nl '\n'
 #define FastIO ios_base::sync_with_stdio(false), cin.tie(NULL)
-// Loops
-#define fs(i, s, e) for (int i = s; i < e; i++)
-#define fo(i, e) for (int i = 0; i < e; i++)
-#define fr(i, s, e) for (int i = s; i >= e; i--)
-#define fi(n) for (int i = 0; i < n; i++)
-// Strings
-#define all(x) x.begin(), x.end()
-#define rev(v) reverse(v.begin(), v.end())
-#define srt(v) sort(v.begin(), v.end())
-// Array
-#define mems(a, x) memset(a, x, sizeof(a))        // Works only for 0 and -1
-#define ass_vel(ar, n, x) fo(i, n) ar[i] = x      // Set value in array
-#define parr(ar, n) fo(i, n) cout << ar[i] << " " // Print array
-#define eol cout << endl
-#define a_sort(ar, size) sort(ar, ar + size)
-#define d_sort(arr, size) sort(arr, arr + size, greater<int>())
-#define min_el(arr, size) *min_element(arr, arr + size)
-#define max_el(arr, size) *max_element(arr, arr + size)
-#define ain(arr, n) fo(i, n) cin >> arr[i]
-#define aout(arr, n) fo(i, n) cout << arr[i] << " "
-#define find_(a, n, x) find(a, a + n, x) - a
-// cout << fixed << setprecision(__n) << x << endl;
-#define FSP(x) fixed << setprecision(x)
-#define pop_cnt(n) __builtin_popcount(n) // Assign it to a value to find the number of 1 in a binary number
-#define numBits(n) log2(n) + 1           // Assign it to a value to get the number of bits in an integer
-// Vector
-#define vi vector<int>
-#define vll vector<ll>
-#define vc vector<char>
-#define vs vector<string>
-#define pb push_back
-// debug
-#define cpoint cout << "_________________CHECK POINT_________________\n";
-#define _debug(x) cout << x << endl
-#define Yes printf("Yes\n")
-#define No printf("No\n")
-#define YES printf("YES\n")
-#define NO printf("NO\n")
+
 
 using namespace std;
 
-bool primeNum[_N];
-void siv(int N)
-{
-    int sq = sqrt(N);
-    for (int i = 4; i <= N; i += 2)
-    {
-        primeNum[i] = 1;
-    }
-    for (int i = 3; i <= sq; i += 2)
-    {
-        if (primeNum[i] == 0)
-        {
-            for (int j = i * i; j <= N; j += i)
-                primeNum[j] = 1;
-        }
-    }
-    primeNum[1] = 1;
-    // if i == 0, the number is prime.
-    // if i == 1, the number is non-prime
-}
-
 void solve()
 {
-    int a, b, c;
-    cin >> a >> b >> c;
+    int n;
+    cin >> n;
 
-    int arr[6];
+    vector<string> v1, v2, v3;
+    map<string, int> mp;
 
-    arr[0] = a + b * c;   // a+b*c
-    arr[1] = a * (b + c); // a*(b+c)
-    arr[2] = a * b * c;   // a*b*c
-    arr[3] = (a + b) * c; //(a+b)*c
-    arr[4] = a + b + c;   // a+b+c
-    arr[5] = a * b + c;   // a*b+c
-
-    // cout 
-    for (int i = 0; i < 6; i++)
+    for (int i = 0; i < n; i++)
     {
-        cout << arr[i] << nl;
+        string x;
+        cin >> x;
+        v1.push_back(x);
+        mp[x]++;
     }
-    cout << nl;
+    for (int i = 0; i < n; i++)
+    {
+        string x;
+        cin >> x;
+        v2.push_back(x);
+        mp[x]++;
+    }
+    for (int i = 0; i < n; i++)
+    {
+        string x;
+        cin >> x;
+        v3.push_back(x);
+        mp[x]++;
+    }
 
-    int mx = max_el(arr, 6);
 
-    cout << mx << nl;
+    // for (auto &&it : mp)
+    // {
+    //     cout << it.first << " " << it.second << nl;
+    // }
+    // cout << nl;
+
+    int c1 = 0, c2 = 0, c3 = 0;
+
+    for (int i = 0; i < n; i++)
+    {
+        if(mp[v1[i]] == 1)
+        {
+            c1 += 3;
+        }
+        else if (mp[v1[i]] == 2)
+        {
+            c1 += 1;
+        }
+        else
+        {
+            continue;
+        }
+    }
+
+    for (int i = 0; i < n; i++)
+    {
+        if(mp[v2[i]] == 1)
+        {
+            c2 += 3;
+        }
+        else if (mp[v2[i]] == 2)
+        {
+            c2 += 1;
+        }
+        else
+        {
+            continue;
+        }
+    }
+
+    for (int i = 0; i < n; i++)
+    {
+        if(mp[v3[i]] == 1)
+        {
+            c3 += 3;
+        }
+        else if (mp[v3[i]] == 2)
+        {
+            c3 += 1;
+        }
+        else
+        {
+            continue;
+        }
+    }
+
+    cout << c1 << " " << c2 << " " << c3 << nl;
 }
 
 int main()
 {
     FastIO;
+#ifndef ONLINE_JUDGE
+    double start = clock();
+    f_input;
+    f_output;
+#endif
 
-    solve();
-    // ca++;
+    int ttt, ca = 1;
+    cin >> ttt;
+    while (ttt--)
+    {
+        // cout << "Case " << ca << ": ";
+        solve();
+        // ca++;
+    }
 
+#ifndef ONLINE_JUDGE
+    double time = (clock() - start) / CLOCKS_PER_SEC;
+    cerr << "Running Time : " << time << "\n";
+#endif
     return 0;
 }
 

@@ -10,7 +10,6 @@ typedef unsigned long long int uint64;
 // Constant Values
 #define pi acos(-1)
 const ll Mod = 1e9 + 7;
-const ll _N = 1e6 + 1;
 // File handling
 #define f_input freopen("input.txt", "r", stdin)
 #define f_output freopen("output.txt", "w", stdout)
@@ -57,60 +56,119 @@ const ll _N = 1e6 + 1;
 
 using namespace std;
 
-bool primeNum[_N];
-void siv(int N)
+
+const int X = 1e5 + 7;
+vector<int> tree[X];
+bool vis[X];
+int weight[X];
+int level[X];
+int an[X];
+
+int bfs(int source)
 {
-    int sq = sqrt(N);
-    for (int i = 4; i <= N; i += 2)
-    {
-        primeNum[i] = 1;
+    for (int i = 0; i < X; i++){
+        level[i] = 0;
     }
-    for (int i = 3; i <= sq; i += 2)
+    
+    queue<int> q;
+    q.push(source);
+    vis[source] = 1;
+
+    int sum = 0;
+
+    while (!q.empty())
     {
-        if (primeNum[i] == 0)
+        int cur_v = q.front();
+        q.pop();
+        for (int child : tree[cur_v])
         {
-            for (int j = i * i; j <= N; j += i)
-                primeNum[j] = 1;
+            if (!vis[child])
+            {
+                q.push(child);
+                vis[child] = 1;
+                level[child] = level[cur_v] + 1;
+                int x = (weight[source] - weight[child]);
+
+                if (level[child] & 1)
+                    sum -= x;
+                else
+                    sum += x;
+
+                an[child] = max(level[child], ans[child]);
+            }
         }
     }
-    primeNum[1] = 1;
-    // if i == 0, the number is prime.
-    // if i == 1, the number is non-prime
+    return sum;
 }
 
 void solve()
 {
-    int a, b, c;
-    cin >> a >> b >> c;
+    int n;
+    cin >> n;
 
-    int arr[6];
-
-    arr[0] = a + b * c;   // a+b*c
-    arr[1] = a * (b + c); // a*(b+c)
-    arr[2] = a * b * c;   // a*b*c
-    arr[3] = (a + b) * c; //(a+b)*c
-    arr[4] = a + b + c;   // a+b+c
-    arr[5] = a * b + c;   // a*b+c
-
-    // cout 
-    for (int i = 0; i < 6; i++)
+    for (int i = 0; i < n; i++)
     {
-        cout << arr[i] << nl;
+        cin >> weight[i + 1];
     }
-    cout << nl;
 
-    int mx = max_el(arr, 6);
+    for (int i = 0; i < n - 1; i++)
+    {
+        int u, v;
+        cin >> u >> v;
 
-    cout << mx << nl;
+        tree[u].push_back(v);
+        tree[v].push_back(u);
+    }
+
+    int mx = 0, ans;
+    for (int i = 1; i <= n; i++)
+    {
+        int x = bfs(i);
+        if (x > mx)
+        {
+            mx = x;
+            ans = i;
+        }
+    }
+
+    int m=0;
+    for (int i = 1; i <= n; i++)
+    {
+        int x = bfs(i);
+        if(mx==x){
+            if (x > m)
+            {
+                m = x;
+                ans = i;
+            }
+        }
+    }
+
+    cout << ans << endl;
 }
 
 int main()
 {
     FastIO;
+#ifndef ONLINE_JUDGE
+    double start = clock();
+    f_input;
+    f_output;
+#endif
 
-    solve();
-    // ca++;
+    int ttt, ca = 1;
+    cin >> ttt;
+    while (ttt--)
+    {
+        // cout << "Case " << ca << ": ";
+        solve();
+        // ca++;
+    }
 
+#ifndef ONLINE_JUDGE
+    double time = (clock() - start) / CLOCKS_PER_SEC;
+    cerr << "Running Time : " << time << "\n";
+#endif
     return 0;
 }
 

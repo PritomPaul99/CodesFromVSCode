@@ -10,7 +10,6 @@ typedef unsigned long long int uint64;
 // Constant Values
 #define pi acos(-1)
 const ll Mod = 1e9 + 7;
-const ll _N = 1e6 + 1;
 // File handling
 #define f_input freopen("input.txt", "r", stdin)
 #define f_output freopen("output.txt", "w", stdout)
@@ -57,60 +56,86 @@ const ll _N = 1e6 + 1;
 
 using namespace std;
 
-bool primeNum[_N];
-void siv(int N)
-{
-    int sq = sqrt(N);
-    for (int i = 4; i <= N; i += 2)
-    {
-        primeNum[i] = 1;
-    }
-    for (int i = 3; i <= sq; i += 2)
-    {
-        if (primeNum[i] == 0)
-        {
-            for (int j = i * i; j <= N; j += i)
-                primeNum[j] = 1;
-        }
-    }
-    primeNum[1] = 1;
-    // if i == 0, the number is prime.
-    // if i == 1, the number is non-prime
-}
-
 void solve()
 {
-    int a, b, c;
-    cin >> a >> b >> c;
+    int n;
+    cin >> n;
+    string s;
+    cin >> s;
 
-    int arr[6];
+    vector<ll> v(n);
 
-    arr[0] = a + b * c;   // a+b*c
-    arr[1] = a * (b + c); // a*(b+c)
-    arr[2] = a * b * c;   // a*b*c
-    arr[3] = (a + b) * c; //(a+b)*c
-    arr[4] = a + b + c;   // a+b+c
-    arr[5] = a * b + c;   // a*b+c
-
-    // cout 
-    for (int i = 0; i < 6; i++)
+    for (int i = 0; i < n; i++)
     {
-        cout << arr[i] << nl;
+        if (s[i] == 'L')
+        {
+            if (i == 0)
+            {
+                v[i] = 0;
+            }
+            else
+            {
+                v[i] = i;
+            }
+        }
+
+        if (s[i] == 'R')
+        {
+            if (i == n - 1)
+            {
+                v[i] = 0;
+            }
+            else
+            {
+                v[i] = n - i - 1;
+            }
+        }
+    }
+
+
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < i; j++)
+        {
+            if(v[j] == 'L')
+            {
+                s[j] = 'R';
+                v[i] = n - i - 1;
+            }
+        }
+        
+    }
+    // Unsolved
+
+    for (int i = 0; i < n; i++)
+    {
+        cout << v[i] << " ";
     }
     cout << nl;
-
-    int mx = max_el(arr, 6);
-
-    cout << mx << nl;
 }
 
 int main()
 {
     FastIO;
+#ifndef ONLINE_JUDGE
+    double start = clock();
+    f_input;
+    f_output;
+#endif
 
-    solve();
-    // ca++;
+    int ttt, ca = 1;
+    cin >> ttt;
+    while (ttt--)
+    {
+        // cout << "Case " << ca << ": ";
+        solve();
+        // ca++;
+    }
 
+#ifndef ONLINE_JUDGE
+    double time = (clock() - start) / CLOCKS_PER_SEC;
+    cerr << "Running Time : " << time << "\n";
+#endif
     return 0;
 }
 

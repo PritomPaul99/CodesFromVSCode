@@ -10,7 +10,6 @@ typedef unsigned long long int uint64;
 // Constant Values
 #define pi acos(-1)
 const ll Mod = 1e9 + 7;
-const ll _N = 1e6 + 1;
 // File handling
 #define f_input freopen("input.txt", "r", stdin)
 #define f_output freopen("output.txt", "w", stdout)
@@ -57,61 +56,23 @@ const ll _N = 1e6 + 1;
 
 using namespace std;
 
-bool primeNum[_N];
-void siv(int N)
-{
-    int sq = sqrt(N);
-    for (int i = 4; i <= N; i += 2)
-    {
-        primeNum[i] = 1;
-    }
-    for (int i = 3; i <= sq; i += 2)
-    {
-        if (primeNum[i] == 0)
-        {
-            for (int j = i * i; j <= N; j += i)
-                primeNum[j] = 1;
-        }
-    }
-    primeNum[1] = 1;
-    // if i == 0, the number is prime.
-    // if i == 1, the number is non-prime
-}
-
-void solve()
-{
-    int a, b, c;
-    cin >> a >> b >> c;
-
-    int arr[6];
-
-    arr[0] = a + b * c;   // a+b*c
-    arr[1] = a * (b + c); // a*(b+c)
-    arr[2] = a * b * c;   // a*b*c
-    arr[3] = (a + b) * c; //(a+b)*c
-    arr[4] = a + b + c;   // a+b+c
-    arr[5] = a * b + c;   // a*b+c
-
-    // cout 
-    for (int i = 0; i < 6; i++)
-    {
-        cout << arr[i] << nl;
-    }
-    cout << nl;
-
-    int mx = max_el(arr, 6);
-
-    cout << mx << nl;
-}
+const int X = 1e5 + 7;
+vector<int> tree[X];  
+bool vis[X];
 
 int main()
 {
     FastIO;
+#ifndef ONLINE_JUDGE
+    double start = clock();
+    f_input;
+    f_output;
+#endif
 
-    solve();
-    // ca++;
+    while (1)
+    {
 
-    return 0;
+    }
 }
 
 /***************************************************************************************************\
