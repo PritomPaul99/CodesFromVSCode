@@ -5,14 +5,15 @@ using namespace std;
 
 void solve()
 {
-    cout << (1 && 0);
+    int a = 2;
+    int b = 3;
+
+    cout << a % b;
 }
 
 int main()
 {
-
     solve();
-
     return 0;
 }
 

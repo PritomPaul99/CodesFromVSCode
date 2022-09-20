@@ -40,6 +40,7 @@ const ll Mod = 1e9 + 7;
 #define FSP(x) fixed << setprecision(x)
 #define pop_cnt(n) __builtin_popcount(n) // Assign it to a value to find the number of 1 in a binary number
 #define numBits(n) log2(n) + 1           // Assign it to a value to get the number of bits in an integer
+#define DigitNum(n) log10(n) + 1         // Assign it to a value to get the number of digit in an integer
 // Vector
 #define vi vector<int>
 #define vll vector<ll>
@@ -50,23 +51,25 @@ const ll Mod = 1e9 + 7;
 #define cpoint cout << "_________________CHECK POINT_________________\n";
 #define _debug(x) cout << x << endl
 #define Yes printf("Yes\n")
-#define unNo printf("No\n")
+#define No printf("No\n")
 #define YES printf("YES\n")
 #define NO printf("NO\n")
 
 using namespace std;
-
 
 void solve()
 {
     int n;
     cin >> n;
 
-    for (int i = 0; i < n; i++)
+    if (n & 1)
     {
-        cout << i + 1 << nl;
+        cout << n * 2 + 1 << nl;
     }
-    
+    else
+    {
+        cout << n * 3 - 2 << nl;
+    }
 }
 
 int main()
@@ -77,6 +80,7 @@ int main()
     f_input;
     f_output;
 #endif
+
     int ttt, ca = 1;
     cin >> ttt;
     while (ttt--)

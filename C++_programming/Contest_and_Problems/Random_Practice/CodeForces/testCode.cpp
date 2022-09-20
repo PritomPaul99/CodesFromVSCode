@@ -5,11 +5,9 @@ using namespace std;
 
 int main()
 {
-    string a = "540513";
-    string b;
-    int i = 2;
-    b = a.substr(i+1, 2);
-    cout << b;
+    int n = 4;
+    long long b = (n/2)*(2*(2)+(n - 1)*2);
+    cout << b << endl;
 
     return 0;
 }

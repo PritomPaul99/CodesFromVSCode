@@ -40,6 +40,7 @@ const ll Mod = 1e9 + 7;
 #define FSP(x) fixed << setprecision(x)
 #define pop_cnt(n) __builtin_popcount(n) // Assign it to a value to find the number of 1 in a binary number
 #define numBits(n) log2(n) + 1           // Assign it to a value to get the number of bits in an integer
+#define DigitNum(n) log10(n) + 1         // Assign it to a value to get the number of digit in an integer
 // Vector
 #define vi vector<int>
 #define vll vector<ll>
@@ -50,23 +51,75 @@ const ll Mod = 1e9 + 7;
 #define cpoint cout << "_________________CHECK POINT_________________\n";
 #define _debug(x) cout << x << endl
 #define Yes printf("Yes\n")
-#define unNo printf("No\n")
+#define No printf("No\n")
 #define YES printf("YES\n")
 #define NO printf("NO\n")
 
 using namespace std;
 
+bool primeNum[1000000 + 1];
+void siv(int N)
+{
+    int sq = sqrt(N);
+    for (int i = 4; i <= N; i += 2)
+    {
+        primeNum[i] = 1;
+    }
+    for (int i = 3; i <= sq; i += 2)
+    {
+        if (primeNum[i] == 0)
+        {
+            for (int j = i * i; j <= N; j += i)
+                primeNum[j] = 1;
+        }
+    }
+    primeNum[1] = 1;
+}
 
 void solve()
 {
-    int n;
-    cin >> n;
-
-    for (int i = 0; i < n; i++)
+    int n, k;
+    ll sum = 0;
+    cin >> n >> k;
+    int arr[n];
+    fo(i, n)
     {
-        cout << i + 1 << nl;
+        cin >> arr[i];
+        if (i < k)
+            sum += arr[i];
     }
-    
+
+    if ((n == k))
+    {
+        cout << sum << nl;
+    }
+    else
+    {
+        ll sum2 = 0, cnt = 0;
+
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                if (i % k == j % k)
+                {
+                    if (cnt == k)
+                    {
+                        goto here;
+                    }
+                    swap(arr[i], arr[j]);
+                    cnt++;
+                }
+            }
+        }
+
+    here:
+        for (int i = 0; i < k; i++)
+        {
+            sum2 += arr[i];
+        }
+        cout << sum2 << nl;
+    }
 }
 
 int main()
@@ -77,6 +130,7 @@ int main()
     f_input;
     f_output;
 #endif
+
     int ttt, ca = 1;
     cin >> ttt;
     while (ttt--)
