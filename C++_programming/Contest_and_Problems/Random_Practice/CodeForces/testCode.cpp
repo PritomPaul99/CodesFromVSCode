@@ -5,9 +5,8 @@ using namespace std;
 
 int main()
 {
-    int n = 4;
-    long long b = (n/2)*(2*(2)+(n - 1)*2);
-    cout << b << endl;
-
+    int x = 0, a = 2, b = 3, c = 4;
+    x = a + b + c;
+    cout << x;
     return 0;
 }
