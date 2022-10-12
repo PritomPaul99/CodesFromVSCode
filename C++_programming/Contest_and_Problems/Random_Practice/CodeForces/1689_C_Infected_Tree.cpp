@@ -25,7 +25,7 @@ const ll Mod = 1e9 + 7;
 #define rev(v) reverse(v.begin(), v.end())
 #define srt(v) sort(v.begin(), v.end())
 // Array
-#define mems(a, x) memset(a, x, sizeof(a))          // Works only for 0 and -1
+#define mems(a, x) memset(a, x, sizeof(a))        // Works only for 0 and -1
 #define ass_vel(ar, n, x) fo(i, n) ar[i] = x      // Set value in array
 #define parr(ar, n) fo(i, n) cout << ar[i] << " " // Print array
 #define eol cout << endl
@@ -38,9 +38,9 @@ const ll Mod = 1e9 + 7;
 #define find_(a, n, x) find(a, a + n, x) - a
 // cout << fixed << setprecision(__n) << x << endl;
 #define FSP(x) fixed << setprecision(x)
-#define pop_cnt(n) __builtin_popcount(n) //Assign it to a value to find the number of 1 in a binary number
-#define numBits(n) log2(n) + 1 //Assign it to a value to get the number of bits in an integer
-#define DigitNum(n) log10(n) + 1 //Assign it to a value to get the number of digit in an integer
+#define pop_cnt(n) __builtin_popcount(n) // Assign it to a value to find the number of 1 in a binary number
+#define numBits(n) log2(n) + 1           // Assign it to a value to get the number of bits in an integer
+#define DigitNum(n) log10(n) + 1         // Assign it to a value to get the number of digit in an integer
 // Vector
 #define vi vector<int>
 #define vll vector<ll>
@@ -57,30 +57,56 @@ const ll Mod = 1e9 + 7;
 
 using namespace std;
 
-bool primeNum[1000000 + 1];
-void siv(int N)
+const int N = 3e5 + 7;
+vector<int> vis(N, 0);
+vector<int> g[N];
+vector<int> dp(N, 1);
+vector<int> ans(N, 0);
+int mn = 1e9 + 7;
+
+void dfs(int vertex)
 {
-    int sq = sqrt(N);
-    for (int i = 4; i <= N; i += 2)
+    vis[vertex] = 1;
+    for (auto child : g[vertex])
     {
-        primeNum[i] = 1;
+        if (vis[child])
+            continue;
+        dfs(child);
+        dp[vertex] += dp[child];
     }
-    for (int i = 3; i <= sq; i += 2)
+}
+
+void modfs(int vertex)
+{
+    vis[vertex] = 1;
+    for (auto child : g[vertex])
     {
-        if (primeNum[i] == 0)
+        if (vis[child])
+            continue;
+
+        // if (!(dp[child] - 1))
+        // mn = min(mn, ans[child]);
+
+        // if (g[vertex].size() == 3)
+        //{
+        // cout << "ok" << nl;
+        // ans[child] = ans[vertex] - (dp[vertex] - dp[child] - 2);
+        //}
+        if ((g[vertex].size() == 1 && vertex == 1) || (g[vertex].size() == 2 && vertex != 1))
         {
-            for (int j = i * i; j <= N; j += i)
-                primeNum[j] = 1;
+            ans[child] = ans[vertex];
+            mn = min(mn, ans[vertex] - dp[child] + 1);
         }
+        else if (g[vertex].size() == 3 || (vertex == 1 && g[vertex].size() == 2))
+        {
+            ans[child] = ans[vertex] - (dp[vertex] - dp[child] - 2);
+        }
+
+        mn = min(mn, ans[child]);
+
+        modfs(child);
     }
-    primeNum[1] = 1;
 }
-
-void solve()
-{
-    
-}
-
 int main()
 {
     FastIO;
@@ -89,20 +115,47 @@ int main()
     f_input;
     f_output;
 #endif
-
-    int ttt, ca = 1;
+    int ttt;
     cin >> ttt;
+
     while (ttt--)
     {
-        //cout << "Case " << ca << ": ";
-        solve();
-        //ca++;
-    }
+        int n, m;
+        cin >> n;
+        m = n - 1;
+        mn = 1e9 + 7;
 
-#ifndef ONLINE_JUDGE
-    double time = (clock() - start) / CLOCKS_PER_SEC;
-    cerr << "Running Time : "<< time << "\n";
-#endif
+        for (int i = 1; i <= n; i++)
+        {
+            g[i].clear();
+        }
+        for (int i = 0; i < m; i++)
+        {
+            int v1, v2;
+            cin >> v1 >> v2;
+
+            g[v1].push_back(v2);
+            g[v2].push_back(v1);
+        }
+
+        // vis.clear();
+        for (int i = 1; i <= n; i++)
+            vis[i] = 0, dp[i] = 1, ans[i] = 0;
+
+        dfs(1);
+        ans[1] = n - 1;
+        for (int i = 1; i <= n; i++)
+            vis[i] = 0;
+        modfs(1);
+
+        // cout << "DP" << nl;
+        // for (int i = 1; i <= n; i++)
+        // {
+        //     cout << dp[i] << " " << i << endl;
+        // }
+
+        cout << n - 1 - mn << endl;
+    }
     return 0;
 }
 

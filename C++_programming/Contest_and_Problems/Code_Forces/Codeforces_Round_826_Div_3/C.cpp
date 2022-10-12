@@ -25,7 +25,7 @@ const ll Mod = 1e9 + 7;
 #define rev(v) reverse(v.begin(), v.end())
 #define srt(v) sort(v.begin(), v.end())
 // Array
-#define mems(a, x) memset(a, x, sizeof(a))          // Works only for 0 and -1
+#define mems(a, x) memset(a, x, sizeof(a))        // Works only for 0 and -1
 #define ass_vel(ar, n, x) fo(i, n) ar[i] = x      // Set value in array
 #define parr(ar, n) fo(i, n) cout << ar[i] << " " // Print array
 #define eol cout << endl
@@ -34,13 +34,15 @@ const ll Mod = 1e9 + 7;
 #define min_el(arr, size) *min_element(arr, arr + size)
 #define max_el(arr, size) *max_element(arr, arr + size)
 #define ain(arr, n) fo(i, n) cin >> arr[i]
-#define aout(arr, n) fo(i, n) cout << arr[i] << " "
+#define aout(arr, n)                \
+    fo(i, n) cout << arr[i] << " "; \
+    cout << nl;
 #define find_(a, n, x) find(a, a + n, x) - a
 // cout << fixed << setprecision(__n) << x << endl;
 #define FSP(x) fixed << setprecision(x)
-#define pop_cnt(n) __builtin_popcount(n) //Assign it to a value to find the number of 1 in a binary number
-#define numBits(n) log2(n) + 1 //Assign it to a value to get the number of bits in an integer
-#define DigitNum(n) log10(n) + 1 //Assign it to a value to get the number of digit in an integer
+#define pop_cnt(n) __builtin_popcount(n) // Assign it to a value to find the number of 1 in a binary number
+#define numBits(n) log2(n) + 1           // Assign it to a value to get the number of bits in an integer
+#define DigitNum(n) log10(n) + 1         // Assign it to a value to get the number of digit in an integer
 // Vector
 #define vi vector<int>
 #define vll vector<ll>
@@ -78,7 +80,37 @@ void siv(int N)
 
 void solve()
 {
-    
+    int n;
+    cin >> n;
+    vi v(n), ANS;
+    ain(v, n);
+
+    sort(v.rbegin(), v.rend());
+
+    int x = 0, cnt = 0, ans = 0;
+
+    for (int i = 0; i < n; i++)
+    {
+        ans += v[i];
+
+        for (int j = 1; j < n; j++)
+        {
+            x += v[i];
+            if (x == ans)
+            {
+                cnt++;
+                x = 0;
+            }
+            else if (x > ans)
+            {
+                ANS.push_back(INTMAX);
+                continue;
+            }
+        }
+        ANS.push_back(cnt);
+    }
+
+    aout(v, n);
 }
 
 int main()
@@ -94,14 +126,14 @@ int main()
     cin >> ttt;
     while (ttt--)
     {
-        //cout << "Case " << ca << ": ";
+        // cout << "Case " << ca << ": ";
         solve();
-        //ca++;
+        // ca++;
     }
 
 #ifndef ONLINE_JUDGE
     double time = (clock() - start) / CLOCKS_PER_SEC;
-    cerr << "Running Time : "<< time << "\n";
+    cerr << "Running Time : " << time << "\n";
 #endif
     return 0;
 }

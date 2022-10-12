@@ -25,7 +25,7 @@ const ll Mod = 1e9 + 7;
 #define rev(v) reverse(v.begin(), v.end())
 #define srt(v) sort(v.begin(), v.end())
 // Array
-#define mems(a, x) memset(a, x, sizeof(a))          // Works only for 0 and -1
+#define mems(a, x) memset(a, x, sizeof(a))        // Works only for 0 and -1
 #define ass_vel(ar, n, x) fo(i, n) ar[i] = x      // Set value in array
 #define parr(ar, n) fo(i, n) cout << ar[i] << " " // Print array
 #define eol cout << endl
@@ -38,9 +38,9 @@ const ll Mod = 1e9 + 7;
 #define find_(a, n, x) find(a, a + n, x) - a
 // cout << fixed << setprecision(__n) << x << endl;
 #define FSP(x) fixed << setprecision(x)
-#define pop_cnt(n) __builtin_popcount(n) //Assign it to a value to find the number of 1 in a binary number
-#define numBits(n) log2(n) + 1 //Assign it to a value to get the number of bits in an integer
-#define DigitNum(n) log10(n) + 1 //Assign it to a value to get the number of digit in an integer
+#define pop_cnt(n) __builtin_popcount(n) // Assign it to a value to find the number of 1 in a binary number
+#define numBits(n) log2(n) + 1           // Assign it to a value to get the number of bits in an integer
+#define DigitNum(n) log10(n) + 1         // Assign it to a value to get the number of digit in an integer
 // Vector
 #define vi vector<int>
 #define vll vector<ll>
@@ -57,28 +57,74 @@ const ll Mod = 1e9 + 7;
 
 using namespace std;
 
-bool primeNum[1000000 + 1];
-void siv(int N)
-{
-    int sq = sqrt(N);
-    for (int i = 4; i <= N; i += 2)
-    {
-        primeNum[i] = 1;
-    }
-    for (int i = 3; i <= sq; i += 2)
-    {
-        if (primeNum[i] == 0)
-        {
-            for (int j = i * i; j <= N; j += i)
-                primeNum[j] = 1;
-        }
-    }
-    primeNum[1] = 1;
-}
-
 void solve()
 {
-    
+    string s1, s2;
+    cin >> s1 >> s2;
+
+    if (s1 == s2)
+    {
+        cout << "=" << nl;
+    }
+    else
+    {
+        int x1 = 0, x2 = 0;
+
+        for (int i = 0; i < s1.size(); i++)
+        {
+            if (s1[i] == 'X')
+                x1++;
+        }
+        for (int i = 0; i < s2.size(); i++)
+        {
+            if (s2[i] == 'X')
+                x2++;
+        }
+        if (s1[s1.size() - 1] == s2[s2.size() - 1])
+        {
+            if (s1[s1.size() - 1] == 'S')
+            {
+                if (x1 > x2)
+                    cout << '<' << nl;
+                else
+                    cout << '>' << nl;
+            }
+            else
+            {
+                if (x1 > x2)
+                    cout << '>' << nl;
+                else
+                    cout << '<' << nl;
+            }
+        }
+        else
+        {
+            if ((s1[s1.size() - 1] == 'L'))
+            {
+                cout << '>' << nl;
+                return;
+            }
+
+            if (s1[s1.size() - 1] == 'M')
+            {
+                if (s2[s2.size() - 1] == 'L')
+                {
+                    cout << '<' << nl;
+                    return;
+                }
+                else
+                {
+                    cout << '>' << nl;
+                    return;
+                }
+            }
+
+            if (s1[s1.size() - 1] == 'S')
+            {
+                cout << '<' << nl;
+            }
+        }
+    }
 }
 
 int main()
@@ -94,14 +140,14 @@ int main()
     cin >> ttt;
     while (ttt--)
     {
-        //cout << "Case " << ca << ": ";
+        // cout << "Case " << ca << ": ";
         solve();
-        //ca++;
+        // ca++;
     }
 
 #ifndef ONLINE_JUDGE
     double time = (clock() - start) / CLOCKS_PER_SEC;
-    cerr << "Running Time : "<< time << "\n";
+    cerr << "Running Time : " << time << "\n";
 #endif
     return 0;
 }

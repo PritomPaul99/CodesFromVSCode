@@ -57,29 +57,6 @@ const ll Mod = 1e9 + 7;
 
 using namespace std;
 
-bool primeNum[1000000 + 1];
-void siv(int N)
-{
-    int sq = sqrt(N);
-    for (int i = 4; i <= N; i += 2)
-    {
-        primeNum[i] = 1;
-    }
-    for (int i = 3; i <= sq; i += 2)
-    {
-        if (primeNum[i] == 0)
-        {
-            for (int j = i * i; j <= N; j += i)
-                primeNum[j] = 1;
-        }
-    }
-    primeNum[1] = 1;
-}
-
-void solve()
-{
-    
-}
 
 int main()
 {
@@ -90,13 +67,37 @@ int main()
     f_output;
 #endif
 
-    int ttt, ca = 1;
+    int ttt;
     cin >> ttt;
+
     while (ttt--)
     {
-        //cout << "Case " << ca << ": ";
-        solve();
-        //ca++;
+        int n, m;
+        cin >> n;
+        m = n - 1;
+
+        for (int i = 0; i < m; i++)
+        {
+            int v1, v2;
+            cin >> v1 >> v2;
+
+            g[v1].push_back(v2);
+            g[v2].push_back(v1);
+        }
+
+        dfs(1);
+        ans[1] = n - 1;
+        // vis.clear();
+        for (int i = 1; i <= n; i++)
+            vis[i] = 0;
+        modfs(1);
+
+        /*for (int i = 1; i <= n; i++)
+        {
+            cout << ans[i] << " " << i << endl;
+        }*/
+
+        cout << n - 1 - mn << endl;
     }
 
 #ifndef ONLINE_JUDGE
