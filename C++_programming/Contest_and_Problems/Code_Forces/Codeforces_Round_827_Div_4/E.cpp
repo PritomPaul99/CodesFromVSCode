@@ -36,7 +36,7 @@ const ll Mod = 1e9 + 7;
 #define ain(arr, n) fo(i, n) cin >> arr[i]
 #define aout(arr, n)                \
     fo(i, n) cout << arr[i] << " "; \
-    cout << nl;
+    cout << nl
 #define find_(a, n, x) find(a, a + n, x) - a
 // cout << fixed << setprecision(__n) << x << endl;
 #define FSP(x) fixed << setprecision(x)
@@ -59,26 +59,50 @@ const ll Mod = 1e9 + 7;
 
 using namespace std;
 
+bool primeNum[1000000 + 1];
+void siv(int N)
+{
+    int sq = sqrt(N);
+    for (int i = 4; i <= N; i += 2)
+    {
+        primeNum[i] = 1;
+    }
+    for (int i = 3; i <= sq; i += 2)
+    {
+        if (primeNum[i] == 0)
+        {
+            for (int j = i * i; j <= N; j += i)
+                primeNum[j] = 1;
+        }
+    }
+    primeNum[1] = 1;
+}
+
 void solve()
 {
-    int n;
-    cin >> n;
-    vi d(n), a(n);
-    fo(i, n) cin >> d[i];
+    int n, q;
+    cin >> n >> q;
+    vi arr(n), k(q);
+    ain(arr, n);
+    ain(k, q);
 
-    a[0] = d[0];
-    for (int i = 1; i < n; i++)
+    for (int j = 0; j < q; j++)
     {
-        if (a[i - 1] >= a[i] && a[i] != 0)
+        ll sum = 0;
+        for (int i = 0; i < n; i++)
         {
-            // cout << d[i] << " " << d[i + 1] << nl;
-            cout << -1 << nl;
-            return;
+            if (k[j] >= arr[i])
+            {
+                sum += arr[i];
+            }
+            else
+            {
+                break;
+            }
         }
-        a[i] = d[i] + d[i - 1];
-        d[i] = a[i];
+        cout << sum << " ";
     }
-    aout(a, n);
+    cout << nl;
 }
 
 int main()

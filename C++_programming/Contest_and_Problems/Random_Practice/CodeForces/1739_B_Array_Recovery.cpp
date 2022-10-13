@@ -63,22 +63,21 @@ void solve()
 {
     int n;
     cin >> n;
-    vi d(n), a(n);
-    fo(i, n) cin >> d[i];
+    vi arr(n), arr2(n);
+    ain(arr, n);
 
-    a[0] = d[0];
+    arr2[0] = arr[0];
+
     for (int i = 1; i < n; i++)
     {
-        if (a[i - 1] >= a[i] && a[i] != 0)
+        if (arr2[i - 1] >= arr[i] && arr[i] != 0)
         {
-            // cout << d[i] << " " << d[i + 1] << nl;
             cout << -1 << nl;
             return;
         }
-        a[i] = d[i] + d[i - 1];
-        d[i] = a[i];
+        arr2[i] = arr2[i - 1] + arr[i];
     }
-    aout(a, n);
+    aout(arr2, n);
 }
 
 int main()

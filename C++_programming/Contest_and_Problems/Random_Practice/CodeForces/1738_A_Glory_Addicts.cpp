@@ -34,9 +34,7 @@ const ll Mod = 1e9 + 7;
 #define min_el(arr, size) *min_element(arr, arr + size)
 #define max_el(arr, size) *max_element(arr, arr + size)
 #define ain(arr, n) fo(i, n) cin >> arr[i]
-#define aout(arr, n)                \
-    fo(i, n) cout << arr[i] << " "; \
-    cout << nl;
+#define aout(arr, n) fo(i, n) cout << arr[i] << " "
 #define find_(a, n, x) find(a, a + n, x) - a
 // cout << fixed << setprecision(__n) << x << endl;
 #define FSP(x) fixed << setprecision(x)
@@ -61,24 +59,30 @@ using namespace std;
 
 void solve()
 {
-    int n;
+    int n, n0 = 0, n1 = 0;
     cin >> n;
-    vi d(n), a(n);
-    fo(i, n) cin >> d[i];
 
-    a[0] = d[0];
-    for (int i = 1; i < n; i++)
+    vector<int> s(n), d(n), a, b;
+
+    for (int i = 0; i < n; i++)
     {
-        if (a[i - 1] >= a[i] && a[i] != 0)
-        {
-            // cout << d[i] << " " << d[i + 1] << nl;
-            cout << -1 << nl;
-            return;
-        }
-        a[i] = d[i] + d[i - 1];
-        d[i] = a[i];
+        cin >> s[i];
     }
-    aout(a, n);
+    for (int i = 0; i < n; i++)
+    {
+        cin >> d[i];
+
+        if (s[i] == 0)
+        {
+            a.push_back(d[i]);
+        }
+        else
+        {
+            b.push_back(d[i]);
+        }
+    }
+    
+
 }
 
 int main()

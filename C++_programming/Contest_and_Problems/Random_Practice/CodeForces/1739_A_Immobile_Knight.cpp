@@ -25,7 +25,7 @@ const ll Mod = 1e9 + 7;
 #define rev(v) reverse(v.begin(), v.end())
 #define srt(v) sort(v.begin(), v.end())
 // Array
-#define mems(a, x) memset(a, x, sizeof(a))          // Works only for 0 and -1
+#define mems(a, x) memset(a, x, sizeof(a))        // Works only for 0 and -1
 #define ass_vel(ar, n, x) fo(i, n) ar[i] = x      // Set value in array
 #define parr(ar, n) fo(i, n) cout << ar[i] << " " // Print array
 #define eol cout << endl
@@ -38,9 +38,9 @@ const ll Mod = 1e9 + 7;
 #define find_(a, n, x) find(a, a + n, x) - a
 // cout << fixed << setprecision(__n) << x << endl;
 #define FSP(x) fixed << setprecision(x)
-#define pop_cnt(n) __builtin_popcount(n) //Assign it to a value to find the number of 1 in a binary number
-#define numBits(n) log2(n) + 1 //Assign it to a value to get the number of bits in an integer
-#define DigitNum(n) log10(n) + 1 //Assign it to a value to get the number of digit in an integer
+#define pop_cnt(n) __builtin_popcount(n) // Assign it to a value to find the number of 1 in a binary number
+#define numBits(n) log2(n) + 1           // Assign it to a value to get the number of bits in an integer
+#define DigitNum(n) log10(n) + 1         // Assign it to a value to get the number of digit in an integer
 // Vector
 #define vi vector<int>
 #define vll vector<ll>
@@ -81,16 +81,17 @@ void solve()
     int n, m;
     cin >> n >> m;
     int p = 0, q = 0, r = 0, s = 0;
-    
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < m; j++)
-        {
-            
-        }
-        
-    }
-    
+
+    // for (int i = 0; i < n; i++)
+    // {
+    //     for (int j = 0; j < m; j++)
+    //     {
+    //         if()
+    //     }
+
+    // }
+
+    cout << n / 2 + 1 << " " << m / 2 + 1 << nl;
 }
 
 int main()
@@ -106,14 +107,14 @@ int main()
     cin >> ttt;
     while (ttt--)
     {
-        //cout << "Case " << ca << ": ";
+        // cout << "Case " << ca << ": ";
         solve();
-        //ca++;
+        // ca++;
     }
 
 #ifndef ONLINE_JUDGE
     double time = (clock() - start) / CLOCKS_PER_SEC;
-    cerr << "Running Time : "<< time << "\n";
+    cerr << "Running Time : " << time << "\n";
 #endif
     return 0;
 }
