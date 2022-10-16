@@ -43,13 +43,12 @@ const ll Mod = 1e9 + 7;
 #define pop_cnt(n) __builtin_popcount(n) // Assign it to a value to find the number of 1 in a binary number
 #define numBits(n) log2(n) + 1           // Assign it to a value to get the number of bits in an integer
 #define DigitNum(n) log10(n) + 1         // Assign it to a value to get the number of digit in an integer
-// STL
+// Vector
 #define vi vector<int>
 #define vll vector<ll>
 #define vc vector<char>
 #define vs vector<string>
 #define pb push_back
-#define mii map<int, int>
 // debug
 #define cpoint cout << "_________________CHECK POINT_________________\n";
 #define _debug(x) cout << x << endl
@@ -60,48 +59,81 @@ const ll Mod = 1e9 + 7;
 
 using namespace std;
 
-int gcd(int a, int b)
+bool primeNum[1000000 + 1];
+void siv(int N)
 {
-    if (b == 0)
-        return a;
-    a %= b;
-    return gcd(b, a);
-}
-void solve()
-{
-    int n;
-    cin >> n;
-    mii mp;
-    set<int> st;
-
-    for (int i = 0; i < n; i++)
+    int sq = sqrt(N);
+    for (int i = 4; i <= N; i += 2)
     {
-        int x;
-        cin >> x;
-        mp[x] = i + 1;
-        st.insert(x);
+        primeNum[i] = 1;
     }
-
-    int val = 0;
-
-    for (auto &&i : st)
+    for (int i = 3; i <= sq; i += 2)
     {
-        for (auto &&j : st)
+        if (primeNum[i] == 0)
         {
-            if (gcd(i, j) == 1)
-            {
-                val = max(val, mp[j] + mp[i]);
-            }
+            for (int j = i * i; j <= N; j += i)
+                primeNum[j] = 1;
         }
     }
+    primeNum[1] = 1;
+}
 
-    if (val == 0)
+void solve()
+{
+    int n, q;
+    cin >> n >> q;
+
+    vll arr(n), ty(q), xi(q);
+
+    ll odd = 0, even = 0, sum = 0;
+    for (int i = 0; i < n; i++)
     {
-        cout << -1 << nl;
+        cin >> arr[i];
+        sum += arr[i];
+        if (arr[i] & 1)
+        {
+            odd++;
+        }
+        else
+        {
+            even++;
+        }
     }
-    else
+    for (int i = 0; i < q; i++)
     {
-        cout << val << nl;
+        cin >> ty[i] >> xi[i];
+    }
+
+    for (int i = 0; i < q; i++)
+    {
+        if (ty[i] == 0)
+        {
+            sum += (even * xi[i]);
+            if (xi[i] % 2 != 0)
+            {
+                odd += even;
+                even = 0;
+            }
+            cout << sum << nl;
+        }
+        else
+        {
+            sum += (odd * xi[i]);
+            if (xi[i] % 2 != 0)
+            {
+                if ((n % 2 != 0) && (sum % 2 != 0))
+                {
+                    odd += even;
+                    even = 0;
+                }
+                else
+                {
+                    even += odd;
+                    odd = 0;
+                }
+            }
+            cout << sum << nl;
+        }
     }
 }
 

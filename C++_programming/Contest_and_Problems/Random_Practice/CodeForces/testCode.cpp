@@ -5,9 +5,8 @@ using namespace std;
 
 int main()
 {
-    cout << __gcd(3,1) << endl;
+    int even = 2, odd = 3;
+    swap(even, odd);
+    cout << even << " " << odd << '\n';
     return 0;
 }
-
-
-

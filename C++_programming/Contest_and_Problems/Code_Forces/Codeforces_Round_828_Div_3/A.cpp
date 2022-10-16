@@ -43,13 +43,12 @@ const ll Mod = 1e9 + 7;
 #define pop_cnt(n) __builtin_popcount(n) // Assign it to a value to find the number of 1 in a binary number
 #define numBits(n) log2(n) + 1           // Assign it to a value to get the number of bits in an integer
 #define DigitNum(n) log10(n) + 1         // Assign it to a value to get the number of digit in an integer
-// STL
+// Vector
 #define vi vector<int>
 #define vll vector<ll>
 #define vc vector<char>
 #define vs vector<string>
 #define pb push_back
-#define mii map<int, int>
 // debug
 #define cpoint cout << "_________________CHECK POINT_________________\n";
 #define _debug(x) cout << x << endl
@@ -60,49 +59,51 @@ const ll Mod = 1e9 + 7;
 
 using namespace std;
 
-int gcd(int a, int b)
+bool primeNum[1000000 + 1];
+void siv(int N)
 {
-    if (b == 0)
-        return a;
-    a %= b;
-    return gcd(b, a);
+    int sq = sqrt(N);
+    for (int i = 4; i <= N; i += 2)
+    {
+        primeNum[i] = 1;
+    }
+    for (int i = 3; i <= sq; i += 2)
+    {
+        if (primeNum[i] == 0)
+        {
+            for (int j = i * i; j <= N; j += i)
+                primeNum[j] = 1;
+        }
+    }
+    primeNum[1] = 1;
 }
+
 void solve()
 {
     int n;
     cin >> n;
-    mii mp;
-    set<int> st;
+
+    vi arr(n);
+    ain(arr, n);
+
+    string s;
+    cin >> s;
 
     for (int i = 0; i < n; i++)
     {
-        int x;
-        cin >> x;
-        mp[x] = i + 1;
-        st.insert(x);
-    }
-
-    int val = 0;
-
-    for (auto &&i : st)
-    {
-        for (auto &&j : st)
+        for (int j = 0; j < n; j++)
         {
-            if (gcd(i, j) == 1)
+            if (arr[i] == arr[j])
             {
-                val = max(val, mp[j] + mp[i]);
+                if (s[i] != s[j])
+                {
+                    cout << "NO" << nl;
+                    return;
+                }
             }
         }
     }
-
-    if (val == 0)
-    {
-        cout << -1 << nl;
-    }
-    else
-    {
-        cout << val << nl;
-    }
+    cout << "YES" << nl;
 }
 
 int main()

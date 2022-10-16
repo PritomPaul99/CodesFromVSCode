@@ -43,13 +43,12 @@ const ll Mod = 1e9 + 7;
 #define pop_cnt(n) __builtin_popcount(n) // Assign it to a value to find the number of 1 in a binary number
 #define numBits(n) log2(n) + 1           // Assign it to a value to get the number of bits in an integer
 #define DigitNum(n) log10(n) + 1         // Assign it to a value to get the number of digit in an integer
-// STL
+// Vector
 #define vi vector<int>
 #define vll vector<ll>
 #define vc vector<char>
 #define vs vector<string>
 #define pb push_back
-#define mii map<int, int>
 // debug
 #define cpoint cout << "_________________CHECK POINT_________________\n";
 #define _debug(x) cout << x << endl
@@ -60,49 +59,29 @@ const ll Mod = 1e9 + 7;
 
 using namespace std;
 
-int gcd(int a, int b)
-{
-    if (b == 0)
-        return a;
-    a %= b;
-    return gcd(b, a);
-}
 void solve()
 {
     int n;
     cin >> n;
-    mii mp;
-    set<int> st;
 
-    for (int i = 0; i < n; i++)
-    {
-        int x;
-        cin >> x;
-        mp[x] = i + 1;
-        st.insert(x);
-    }
+    vi v(n);
+    ain(v, n);
 
-    int val = 0;
+    int mx = *max_element(v.begin(), v.end());
+    int mn = *min_element(v.begin(), v.end());
 
-    for (auto &&i : st)
-    {
-        for (auto &&j : st)
-        {
-            if (gcd(i, j) == 1)
-            {
-                val = max(val, mp[j] + mp[i]);
-            }
-        }
-    }
+    int res = INT_MIN;
 
-    if (val == 0)
+    for (int i = 0; i < n-1; i++)
     {
-        cout << -1 << nl;
+        res = max(v[i] - v[i + 1], res);
     }
-    else
-    {
-        cout << val << nl;
-    }
+    
+    res = max(v[n - 1] - v[0], res);
+    res = max(res, v[n - 1] - mn);
+    res = max(res, mx - v[0]);
+
+    cout << res << nl;
 }
 
 int main()

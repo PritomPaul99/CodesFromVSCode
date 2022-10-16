@@ -25,7 +25,7 @@ const ll Mod = 1e9 + 7;
 #define rev(v) reverse(v.begin(), v.end())
 #define srt(v) sort(v.begin(), v.end())
 // Array
-#define mems(a, x) memset(a, x, sizeof(a))        // Works only for 0 and -1
+#define mems(a, x) memset(a, x, sizeof(a))          // Works only for 0 and -1
 #define ass_vel(ar, n, x) fo(i, n) ar[i] = x      // Set value in array
 #define parr(ar, n) fo(i, n) cout << ar[i] << " " // Print array
 #define eol cout << endl
@@ -34,22 +34,19 @@ const ll Mod = 1e9 + 7;
 #define min_el(arr, size) *min_element(arr, arr + size)
 #define max_el(arr, size) *max_element(arr, arr + size)
 #define ain(arr, n) fo(i, n) cin >> arr[i]
-#define aout(arr, n)                \
-    fo(i, n) cout << arr[i] << " "; \
-    cout << nl
+#define aout(arr, n) fo(i, n) cout << arr[i] << " "; cout << nl
 #define find_(a, n, x) find(a, a + n, x) - a
 // cout << fixed << setprecision(__n) << x << endl;
 #define FSP(x) fixed << setprecision(x)
-#define pop_cnt(n) __builtin_popcount(n) // Assign it to a value to find the number of 1 in a binary number
-#define numBits(n) log2(n) + 1           // Assign it to a value to get the number of bits in an integer
-#define DigitNum(n) log10(n) + 1         // Assign it to a value to get the number of digit in an integer
-// STL
+#define pop_cnt(n) __builtin_popcount(n) //Assign it to a value to find the number of 1 in a binary number
+#define numBits(n) log2(n) + 1 //Assign it to a value to get the number of bits in an integer
+#define DigitNum(n) log10(n) + 1 //Assign it to a value to get the number of digit in an integer
+// Vector
 #define vi vector<int>
 #define vll vector<ll>
 #define vc vector<char>
 #define vs vector<string>
 #define pb push_back
-#define mii map<int, int>
 // debug
 #define cpoint cout << "_________________CHECK POINT_________________\n";
 #define _debug(x) cout << x << endl
@@ -60,49 +57,28 @@ const ll Mod = 1e9 + 7;
 
 using namespace std;
 
-int gcd(int a, int b)
+bool primeNum[1000000 + 1];
+void siv(int N)
 {
-    if (b == 0)
-        return a;
-    a %= b;
-    return gcd(b, a);
-}
-void solve()
-{
-    int n;
-    cin >> n;
-    mii mp;
-    set<int> st;
-
-    for (int i = 0; i < n; i++)
+    int sq = sqrt(N);
+    for (int i = 4; i <= N; i += 2)
     {
-        int x;
-        cin >> x;
-        mp[x] = i + 1;
-        st.insert(x);
+        primeNum[i] = 1;
     }
-
-    int val = 0;
-
-    for (auto &&i : st)
+    for (int i = 3; i <= sq; i += 2)
     {
-        for (auto &&j : st)
+        if (primeNum[i] == 0)
         {
-            if (gcd(i, j) == 1)
-            {
-                val = max(val, mp[j] + mp[i]);
-            }
+            for (int j = i * i; j <= N; j += i)
+                primeNum[j] = 1;
         }
     }
+    primeNum[1] = 1;
+}
 
-    if (val == 0)
-    {
-        cout << -1 << nl;
-    }
-    else
-    {
-        cout << val << nl;
-    }
+void solve()
+{
+    
 }
 
 int main()
@@ -118,14 +94,14 @@ int main()
     cin >> ttt;
     while (ttt--)
     {
-        // cout << "Case " << ca << ": ";
+        //cout << "Case " << ca << ": ";
         solve();
-        // ca++;
+        //ca++;
     }
 
 #ifndef ONLINE_JUDGE
     double time = (clock() - start) / CLOCKS_PER_SEC;
-    cerr << "Running Time : " << time << "\n";
+    cerr << "Running Time : "<< time << "\n";
 #endif
     return 0;
 }
