@@ -80,61 +80,45 @@ void siv(int N)
 
 void solve()
 {
-    int n, q;
-    cin >> n >> q;
+    int n;
+    char c;
+    cin >> n >> c;
+    string s, s1;
+    cin >> s;
+    s1 = s + s;
 
-    vll arr(n), ty(q), xi(q);
-
-    ll odd = 0, even = 0, sum = 0;
-    for (int i = 0; i < n; i++)
+    int p1 = -1, p2 = -1;
+    if (c == 'g' && s[0] == 'g')
     {
-        cin >> arr[i];
-        sum += arr[i];
-        if (arr[i] & 1)
+        cout << 0 << nl;
+        return;
+    }
+    int val = 0;
+    int flag0 = 0, flag1 = 0;
+
+
+    for (int i = 0; i < n * 2; i++)
+    {
+        if (s[i] == c)
         {
-            odd++;
+            p1 = i;
+            flag0 = 1;
         }
-        else
+        if (s[i] == 'g' && flag0 == 1)
         {
-            even++;
+            p2 = i;
+            flag1 = 1;
+        }
+        cout << p1 << " " << p2 << nl;
+        if (flag0 == 1 && flag1 == 1)
+        {
+            // cout << "X" << nl;
+            val = max(val, p2 - p1);
+            p1 = -1, p2 = -1;
+            flag0 = 0, flag1 = 0;
         }
     }
-    for (int i = 0; i < q; i++)
-    {
-        cin >> ty[i] >> xi[i];
-    }
-
-    for (int i = 0; i < q; i++)
-    {
-        if (ty[i] == 0)
-        {
-            sum += (even * xi[i]);
-            if (xi[i] % 2 != 0)
-            {
-                odd += even;
-                even = 0;
-            }
-            cout << sum << nl;
-        }
-        else
-        {
-            sum += (odd * xi[i]);
-            if (xi[i] % 2 != 0)
-            {
-                if ((n % 2 != 0) && (sum % 2 != 0))
-                {
-                    odd += even;
-                    even = 0;
-                }
-                else
-                {
-                    even += odd;
-                    odd = 0;
-                }
-            }
-            cout << sum << nl;
-        }
-    }
+    cout << val << nl;
 }
 
 int main()
