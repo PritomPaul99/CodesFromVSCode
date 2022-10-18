@@ -25,7 +25,7 @@ const ll Mod = 1e9 + 7;
 #define rev(v) reverse(v.begin(), v.end())
 #define srt(v) sort(v.begin(), v.end())
 // Array
-#define mems(a, x) memset(a, x, sizeof(a))        // Works only for 0 and -1
+#define mems(a, x) memset(a, x, sizeof(a))          // Works only for 0 and -1
 #define ass_vel(ar, n, x) fo(i, n) ar[i] = x      // Set value in array
 #define parr(ar, n) fo(i, n) cout << ar[i] << " " // Print array
 #define eol cout << endl
@@ -34,15 +34,13 @@ const ll Mod = 1e9 + 7;
 #define min_el(arr, size) *min_element(arr, arr + size)
 #define max_el(arr, size) *max_element(arr, arr + size)
 #define ain(arr, n) fo(i, n) cin >> arr[i]
-#define aout(arr, n)                \
-    fo(i, n) cout << arr[i] << " "; \
-    cout << nl
+#define aout(arr, n) fo(i, n) cout << arr[i] << " "; cout << nl
 #define find_(a, n, x) find(a, a + n, x) - a
 // cout << fixed << setprecision(__n) << x << endl;
 #define FSP(x) fixed << setprecision(x)
-#define pop_cnt(n) __builtin_popcount(n) // Assign it to a value to find the number of 1 in a binary number
-#define numBits(n) log2(n) + 1           // Assign it to a value to get the number of bits in an integer
-#define DigitNum(n) log10(n) + 1         // Assign it to a value to get the number of digit in an integer
+#define pop_cnt(n) __builtin_popcount(n) //Assign it to a value to find the number of 1 in a binary number
+#define numBits(n) log2(n) + 1 //Assign it to a value to get the number of bits in an integer
+#define DigitNum(n) log10(n) + 1 //Assign it to a value to get the number of digit in an integer
 // Vector
 #define vi vector<int>
 #define vll vector<ll>
@@ -81,45 +79,9 @@ void siv(int N)
 void solve()
 {
     int n;
-    char c;
-    cin >> n >> c;
-    string s, s1;
-    cin >> s;
-    s1 = s + s;
+    cin >> n;
 
-    int p1 = -1, p2 = -1;
-    if (c == 'g')
-    {
-        cout << 0 << nl;
-        return;
-    }
-    int val = 0;
-    int flag0 = 0, flag1 = 0;
-
-
-    for (int i = 0; i < n * 2; i++)
-    {
-        if (s[i] == c && flag0 == 0)
-        {
-            p1 = i;
-            flag0 = 1;
-        }
-        // cout << s1[i] << " " << flag0 << nl;
-        if (s1[i] == 'g' && flag0 == 1)
-        {
-            p2 = i;
-            flag1 = 1;
-        }
-        // cout << p1 << " " << p2 << nl;
-        if (flag0 == 1 && flag1 == 1)
-        {
-            // cout << "X" << nl;
-            val = max(val, p2 - p1);
-            p1 = -1, p2 = -1;
-            flag0 = 0, flag1 = 0;
-        }
-    }
-    cout << val << nl;
+    cout << ((n - 3) / 3) - 1 << nl;
 }
 
 int main()
@@ -135,14 +97,14 @@ int main()
     cin >> ttt;
     while (ttt--)
     {
-        // cout << "Case " << ca << ": ";
+        //cout << "Case " << ca << ": ";
         solve();
-        // ca++;
+        //ca++;
     }
 
 #ifndef ONLINE_JUDGE
     double time = (clock() - start) / CLOCKS_PER_SEC;
-    cerr << "Running Time : " << time << "\n";
+    cerr << "Running Time : "<< time << "\n";
 #endif
     return 0;
 }

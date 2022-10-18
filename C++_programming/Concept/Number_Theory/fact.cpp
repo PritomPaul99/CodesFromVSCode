@@ -16,7 +16,7 @@ int main()
         fact = fact * i ;
     }
 
-    cout << fact * 1ll << endl;
+    cout << fact<< endl;
 
     return 0;
 }

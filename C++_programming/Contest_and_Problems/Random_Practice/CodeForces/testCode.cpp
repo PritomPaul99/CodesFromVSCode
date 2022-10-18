@@ -5,8 +5,9 @@ using namespace std;
 
 int main()
 {
-    int even = 2, odd = 3;
-    swap(even, odd);
-    cout << even << " " << odd << '\n';
-    return 0;
+    vector<int> v = {3, 2, 1 ,4, 9};
+
+    auto x = *lower_bound(v.begin(), v.end(), 3);
+
+    cout << x << endl;
 }
