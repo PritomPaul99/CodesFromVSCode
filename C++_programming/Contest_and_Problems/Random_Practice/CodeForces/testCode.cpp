@@ -2,12 +2,8 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-
+int n = 1e9 + 7;
 int main()
 {
-    vector<int> v = {3, 2, 1 ,4, 9};
-
-    auto x = *lower_bound(v.begin(), v.end(), 3);
-
-    cout << x << endl;
+    cout << (10000000000000000000 % (n));
 }

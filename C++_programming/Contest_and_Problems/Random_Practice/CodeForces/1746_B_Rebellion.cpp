@@ -57,31 +57,43 @@ const ll Mod = 1e9 + 7;
 
 using namespace std;
 
-bool primeNum[1000000 + 1];
-void siv(int N)
-{
-    int sq = sqrt(N);
-    for (int i = 4; i <= N; i += 2)
-    {
-        primeNum[i] = 1;
-    }
-    for (int i = 3; i <= sq; i += 2)
-    {
-        if (primeNum[i] == 0)
-        {
-            for (int j = i * i; j <= N; j += i)
-                primeNum[j] = 1;
-        }
-    }
-    primeNum[1] = 1;
-}
-
 void solve()
 {
     int n;
     cin >> n;
-// unsolved
-    cout << ((n - 3) / 3) - 1 << nl;
+    vi v(n);
+    
+    for (int i = 0; i < n; i++)
+    {
+        cin >> v[i];
+    }
+
+    if(is_sorted(v.begin(), v.end()))
+    {
+        cout << 0 << nl;
+        return;
+    }
+
+    int cnt = 0;
+    for (int i = 0; i < v.size(); )
+    {
+        cout << 'x';
+        if(v[i] == 1)
+        {
+            for (int j = v.size() - 1; j > i; j--)
+            {
+                if(v[j] == 0)
+                {
+                    v[j] = v[j] + v[i];
+                    v.erase(v.begin());
+                    cnt++;
+                    break;
+                }
+            }
+            
+        }
+    }
+    cout << cnt << nl;
 }
 
 int main()

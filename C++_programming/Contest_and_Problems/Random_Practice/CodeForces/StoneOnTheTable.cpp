@@ -12,7 +12,7 @@
 *  |_|              |_|      \_____| |_____|       |_|        |______________| |_|          |_|  *
 *                                                                                                *
 *                                             -NEUB-                                             *
-*                         Depertment of Computer Science and Engineering                         *
+*                         Department of Computer Science and Engineering                         *
 *************************************************************************************************/
 
 
