@@ -83,43 +83,32 @@ void solve()
     int n;
     char c;
     cin >> n >> c;
-    string s, s1;
+    string s;
     cin >> s;
-    s1 = s + s;
 
-    int p1 = -1, p2 = -1;
-    if (c == 'g')
+    vector<int> v;
+
+    for (int i = 0; i < n; i++)
     {
-        cout << 0 << nl;
-        return;
-    }
-    int val = 0;
-    int flag0 = 0, flag1 = 0;
-
-
-    for (int i = 0; i < n * 2; i++)
-    {
-        if (s[i] == c && flag0 == 0)
+        if (s[i] == 'g')
         {
-            p1 = i;
-            flag0 = 1;
-        }
-        // cout << s1[i] << " " << flag0 << nl;
-        if (s1[i] == 'g' && flag0 == 1)
-        {
-            p2 = i;
-            flag1 = 1;
-        }
-        // cout << p1 << " " << p2 << nl;
-        if (flag0 == 1 && flag1 == 1)
-        {
-            // cout << "X" << nl;
-            val = max(val, p2 - p1);
-            p1 = -1, p2 = -1;
-            flag0 = 0, flag1 = 0;
+            v.pb(i);
         }
     }
-    cout << val << nl;
+    v.pb(v[0] + n);
+
+    // aout(v, v.size());
+    int ans = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (s[i] == c)
+        {
+            int x = *lower_bound(v.begin(), v.end(), i);
+            ans = max(ans, x - i);
+            // cout << x << nl;
+        }
+    }
+    cout << ans << nl;
 }
 
 int main()
