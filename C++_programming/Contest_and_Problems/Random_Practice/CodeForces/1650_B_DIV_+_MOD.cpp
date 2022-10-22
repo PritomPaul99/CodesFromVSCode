@@ -61,41 +61,26 @@ using namespace std;
 
 void solve()
 {
-    int n;
-    cin >> n;
-    vi v(n);
+    ll l, r, a;
+    cin >> l >> r >> a;
+    ll ans = INT_MIN;
 
-    for (int i = 0; i < n; i++)
+    if (l < a)
     {
-        cin >> v[i];
+        cout << FSP(0) << (round((a - 1) / a) + ((a - 1) % a)) << endl;
+        cout << "x" << nl;
     }
-
-    if (is_sorted(v.begin(), v.end()))
+    else
     {
-        cout << 0 << nl;
-        return;
+        for (ll i = l; i <= r; i++)
+        {
+            ll x = floor(i / a) + (i % a) ;
+            ans = max(ans, x);
+        }
+        cout << ans << nl;
+        cout << "y" << nl;
+
     }
-
-    int cnt = 0;
-
-    for (int i = 0, j = n-1; i < j; i++, j--)
-    {
-        if(v[i] == 1 && v[j] == 0)
-        {
-            cnt++;
-        }
-        else if(v[i] == 0)
-        {
-            j++;
-        }
-        else if(v[j] == 1)
-        {
-            i--;
-        }
-    }
-    
-
-    cout << cnt << nl;
 }
 
 int main()

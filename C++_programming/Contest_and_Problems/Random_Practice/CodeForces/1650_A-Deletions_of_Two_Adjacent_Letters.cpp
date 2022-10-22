@@ -61,41 +61,26 @@ using namespace std;
 
 void solve()
 {
-    int n;
-    cin >> n;
-    vi v(n);
+    string s;
+    cin >> s;
+    char c;
+    cin >> c;
 
-    for (int i = 0; i < n; i++)
+    int n = s.size();
+    for (int i = 0; i < s.size(); i++)
     {
-        cin >> v[i];
-    }
-
-    if (is_sorted(v.begin(), v.end()))
-    {
-        cout << 0 << nl;
-        return;
-    }
-
-    int cnt = 0;
-
-    for (int i = 0, j = n-1; i < j; i++, j--)
-    {
-        if(v[i] == 1 && v[j] == 0)
+        if (s[i] == c)
         {
-            cnt++;
-        }
-        else if(v[i] == 0)
-        {
-            j++;
-        }
-        else if(v[j] == 1)
-        {
-            i--;
+            if ((i % 2 == 0) && ((n - 1 - i) % 2 == 0))
+            {
+                // cout << "YES" << nl;
+                YES;
+                return;
+            }
         }
     }
-    
-
-    cout << cnt << nl;
+    // cout << "NO" << nl;
+    NO;
 }
 
 int main()

@@ -63,39 +63,25 @@ void solve()
 {
     int n;
     cin >> n;
-    vi v(n);
+
+    vi a(n), b(n);
 
     for (int i = 0; i < n; i++)
     {
-        cin >> v[i];
+        cin >> a[i];
     }
-
-    if (is_sorted(v.begin(), v.end()))
+    for (int i = 0; i < n; i++)
     {
-        cout << 0 << nl;
-        return;
+        cin >> b[i];
     }
-
-    int cnt = 0;
-
-    for (int i = 0, j = n-1; i < j; i++, j--)
+    sort(all(b));
+    ll sum = 0;
+    for (int i = 0; i < n; i++)
     {
-        if(v[i] == 1 && v[j] == 0)
-        {
-            cnt++;
-        }
-        else if(v[i] == 0)
-        {
-            j++;
-        }
-        else if(v[j] == 1)
-        {
-            i--;
-        }
+        sum += (a[i] + b[i]);
     }
-    
-
-    cout << cnt << nl;
+    ll ans = sum - b[n - 1];
+    cout << ans << nl;
 }
 
 int main()

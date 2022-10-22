@@ -25,7 +25,7 @@ const ll Mod = 1e9 + 7;
 #define rev(v) reverse(v.begin(), v.end())
 #define srt(v) sort(v.begin(), v.end())
 // Array
-#define mems(a, x) memset(a, x, sizeof(a))        // Works only for 0 and -1
+#define mems(a, x) memset(a, x, sizeof(a))          // Works only for 0 and -1
 #define ass_vel(ar, n, x) fo(i, n) ar[i] = x      // Set value in array
 #define parr(ar, n) fo(i, n) cout << ar[i] << " " // Print array
 #define eol cout << endl
@@ -34,15 +34,13 @@ const ll Mod = 1e9 + 7;
 #define min_el(arr, size) *min_element(arr, arr + size)
 #define max_el(arr, size) *max_element(arr, arr + size)
 #define ain(arr, n) fo(i, n) cin >> arr[i]
-#define aout(arr, n)                \
-    fo(i, n) cout << arr[i] << " "; \
-    cout << nl
+#define aout(arr, n) fo(i, n) cout << arr[i] << " "; cout << nl
 #define find_(a, n, x) find(a, a + n, x) - a
 // cout << fixed << setprecision(__n) << x << endl;
 #define FSP(x) fixed << setprecision(x)
-#define pop_cnt(n) __builtin_popcount(n) // Assign it to a value to find the number of 1 in a binary number
-#define numBits(n) log2(n) + 1           // Assign it to a value to get the number of bits in an integer
-#define DigitNum(n) log10(n) + 1         // Assign it to a value to get the number of digit in an integer
+#define pop_cnt(n) __builtin_popcount(n) //Assign it to a value to find the number of 1 in a binary number
+#define numBits(n) log2(n) + 1 //Assign it to a value to get the number of bits in an integer
+#define DigitNum(n) log10(n) + 1 //Assign it to a value to get the number of digit in an integer
 // Vector
 #define vi vector<int>
 #define vll vector<ll>
@@ -59,43 +57,36 @@ const ll Mod = 1e9 + 7;
 
 using namespace std;
 
+bool primeNum[1000000 + 1];
+void siv(int N)
+{
+    int sq = sqrt(N);
+    for (int i = 4; i <= N; i += 2)
+    {
+        primeNum[i] = 1;
+    }
+    for (int i = 3; i <= sq; i += 2)
+    {
+        if (primeNum[i] == 0)
+        {
+            for (int j = i * i; j <= N; j += i)
+                primeNum[j] = 1;
+        }
+    }
+    primeNum[1] = 1;
+}
+
 void solve()
 {
     int n;
     cin >> n;
-    vi v(n);
-
-    for (int i = 0; i < n; i++)
+    cout << 1 << " " << n << " ";
+    for (int i = 2; i < n; i++)
     {
-        cin >> v[i];
-    }
-
-    if (is_sorted(v.begin(), v.end()))
-    {
-        cout << 0 << nl;
-        return;
-    }
-
-    int cnt = 0;
-
-    for (int i = 0, j = n-1; i < j; i++, j--)
-    {
-        if(v[i] == 1 && v[j] == 0)
-        {
-            cnt++;
-        }
-        else if(v[i] == 0)
-        {
-            j++;
-        }
-        else if(v[j] == 1)
-        {
-            i--;
-        }
+        cout << i << " ";
     }
     
-
-    cout << cnt << nl;
+    cout << nl;
 }
 
 int main()
@@ -111,17 +102,26 @@ int main()
     cin >> ttt;
     while (ttt--)
     {
-        // cout << "Case " << ca << ": ";
+        //cout << "Case " << ca << ": ";
         solve();
-        // ca++;
+        //ca++;
     }
 
 #ifndef ONLINE_JUDGE
     double time = (clock() - start) / CLOCKS_PER_SEC;
-    cerr << "Running Time : " << time << "\n";
+    cerr << "Running Time : "<< time << "\n";
 #endif
     return 0;
 }
+
+
+
+/**
+ #Some Caution
+ * 1) Want to add character in the end of a string? Use push_back().
+ * 2) Max size of locally declared array is 1e5 and globally declared array is 1e7.
+ * 3) To find sum of array/vector, use accumulate(start_, end_, x), x = starting values to add other values to.
+ */
 
 /***************************************************************************************************\
 *                                            Written by:                                            *
