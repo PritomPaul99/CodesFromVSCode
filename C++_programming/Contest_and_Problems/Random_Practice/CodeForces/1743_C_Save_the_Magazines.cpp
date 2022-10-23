@@ -34,8 +34,6 @@ const ll Mod = 1e9 + 7;
 #define d_sort(arr, size) sort(arr, arr + size, greater<int>())
 #define min_el(arr, size) *min_element(arr, arr + size)
 #define max_el(arr, size) *max_element(arr, arr + size)
-#define min_el(x) *min_element(x.begin(), x.end())
-#define max_el(x) *max_element(x.begin(), x.end())
 #define ain(arr, n) fo(i, n) cin >> arr[i]
 #define aout(arr, n)                \
     fo(i, n) cout << arr[i] << " "; \
@@ -59,7 +57,6 @@ const ll Mod = 1e9 + 7;
 #define No printf("No\n")
 #define YES printf("YES\n")
 #define NO printf("NO\n")
-#define out(x) cout << x << '\n'
 
 using namespace std;
 
@@ -84,12 +81,6 @@ void siv(int N)
 
 void solve()
 {
-    int n;
-    cin >> n;
-
-    int ans = 0;
-    ans = n + 2 * (n / 2) + 2 * (n / 3);
-    out(ans);
 }
 
 int main()
@@ -123,6 +114,8 @@ int main()
 * 2) Max size of locally declared array is 1e5 and globally declared array is 1e7.
 * 3) To find sum of array/vector, use accumulate(start_, end_, x), x = starting values to add other values to.
 * 4) 1 << n == 2 ^ n.
+* 5) x & (1 << i) == 0, ith bit of x is not 0.
+* 6) x & (1 << i) != 0, ith bit of x is 1.
 */
 
 /***************************************************************************************************\

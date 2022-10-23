@@ -7,9 +7,7 @@ using namespace std;
 int n = 1e9 + 7;
 int main()
 {
-    vector<int> v = {1, 2, 3, 4, 5};
-
-    int x = accumulate(v.begin(), v.end(), 0);
-
-    cout << x << nl;
+    vector<int> v = {2,4,7};
+    int n = 1 << 3;
+    
 }
