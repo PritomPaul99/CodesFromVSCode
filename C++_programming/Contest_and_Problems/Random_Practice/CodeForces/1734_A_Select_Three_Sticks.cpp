@@ -63,6 +63,10 @@ const ll Mod = 1e9 + 7;
 
 using namespace std;
 
+bool cmp(pair<int, int> &a, pair<int, int> &b)
+{
+    return a.second > b.second;
+}
 bool primeNum[1000000 + 1];
 void siv(int N)
 {
@@ -86,30 +90,11 @@ void solve()
 {
     int n;
     cin >> n;
-    string s;
-    cin >> s;
-
-    int q = 0, a = 0;
-
+    vi v(n);
     for (int i = 0; i < n; i++)
-    {
-        if (s[i] == 'Q')
-        {
-            for (int j = i + 1; j < n; j++)
-            {
-                if (s[j] == 'A')
-                {
-                    s[i] = 'X', s[j] = 'X';
-                    break;
-                }
-            }
-        }
-    }
-    int x = count(s.begin(), s.end(), 'Q');
-    if (x > 0)
-        NO;
-    else
-        YES;
+        cin >> v[i];
+
+    
 }
 
 int main()

@@ -84,32 +84,16 @@ void siv(int N)
 
 void solve()
 {
-    int n;
-    cin >> n;
+    int n, k;
+    cin >> n >> k;
     string s;
     cin >> s;
 
-    int q = 0, a = 0;
-
     for (int i = 0; i < n; i++)
     {
-        if (s[i] == 'Q')
-        {
-            for (int j = i + 1; j < n; j++)
-            {
-                if (s[j] == 'A')
-                {
-                    s[i] = 'X', s[j] = 'X';
-                    break;
-                }
-            }
-        }
+        
     }
-    int x = count(s.begin(), s.end(), 'Q');
-    if (x > 0)
-        NO;
-    else
-        YES;
+   
 }
 
 int main()

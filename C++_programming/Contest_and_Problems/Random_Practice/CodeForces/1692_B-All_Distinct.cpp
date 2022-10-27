@@ -23,6 +23,7 @@ const ll Mod = 1e9 + 7;
 #define fi(n) for (int i = 0; i < n; i++)
 // Strings
 #define all(x) x.begin(), x.end()
+#define rall(x) x.rbegin(), x.rend()
 #define rev(v) reverse(v.begin(), v.end())
 #define srt(v) sort(v.begin(), v.end())
 // Array
@@ -63,6 +64,10 @@ const ll Mod = 1e9 + 7;
 
 using namespace std;
 
+bool cmp(pair<string, int> &a, pair<string, int> &b)
+{
+    return a.second < b.second;
+}
 bool primeNum[1000000 + 1];
 void siv(int N)
 {
@@ -86,30 +91,23 @@ void solve()
 {
     int n;
     cin >> n;
-    string s;
-    cin >> s;
-
-    int q = 0, a = 0;
-
+    vi v(n);
+    set<int> st;
     for (int i = 0; i < n; i++)
     {
-        if (s[i] == 'Q')
-        {
-            for (int j = i + 1; j < n; j++)
-            {
-                if (s[j] == 'A')
-                {
-                    s[i] = 'X', s[j] = 'X';
-                    break;
-                }
-            }
-        }
+        cin >> v[i];
+        st.insert(v[i]);
     }
-    int x = count(s.begin(), s.end(), 'Q');
-    if (x > 0)
-        NO;
+
+    if ((n - st.size()) % 2 == 0)
+    {
+        cout << st.size() << nl;
+    }
     else
-        YES;
+    {
+
+        cout << st.size() - 1 << nl;
+    }
 }
 
 int main()

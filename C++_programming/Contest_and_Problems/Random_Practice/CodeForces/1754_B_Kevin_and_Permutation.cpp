@@ -86,30 +86,25 @@ void solve()
 {
     int n;
     cin >> n;
-    string s;
-    cin >> s;
 
-    int q = 0, a = 0;
+    vi a;
+    int j = n / 2 + 1, k = 1;
 
     for (int i = 0; i < n; i++)
     {
-        if (s[i] == 'Q')
+        if (i % 2 == 0)
         {
-            for (int j = i + 1; j < n; j++)
-            {
-                if (s[j] == 'A')
-                {
-                    s[i] = 'X', s[j] = 'X';
-                    break;
-                }
-            }
+            a.pb(j);
+            j++;
+        }
+        else
+        {
+            a.pb(k);
+            k++;
         }
     }
-    int x = count(s.begin(), s.end(), 'Q');
-    if (x > 0)
-        NO;
-    else
-        YES;
+
+    aout(a, n);
 }
 
 int main()

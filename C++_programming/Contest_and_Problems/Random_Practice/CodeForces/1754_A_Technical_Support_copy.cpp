@@ -94,22 +94,12 @@ void solve()
     for (int i = 0; i < n; i++)
     {
         if (s[i] == 'Q')
-        {
-            for (int j = i + 1; j < n; j++)
-            {
-                if (s[j] == 'A')
-                {
-                    s[i] = 'X', s[j] = 'X';
-                    break;
-                }
-            }
-        }
+            q++;
+        else if (q > 0 && s[i] == 'A')
+            q--;
     }
-    int x = count(s.begin(), s.end(), 'Q');
-    if (x > 0)
-        NO;
-    else
-        YES;
+
+    q ? NO : YES;
 }
 
 int main()
