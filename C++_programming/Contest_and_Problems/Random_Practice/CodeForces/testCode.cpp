@@ -8,6 +8,12 @@ int n = 1e9 + 7;
 int main()
 {
     vector<int> v = {2,4,7};
-    int n = 1 << 3;
+
+    v.insert(v.begin() + 2, 10);
+
+    for (auto &&it : v)
+    {
+        cout << it << " ";
+    }
     
 }
