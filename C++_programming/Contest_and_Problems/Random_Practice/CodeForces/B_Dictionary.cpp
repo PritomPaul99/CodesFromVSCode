@@ -1,4 +1,4 @@
-//#include <iostream>
+// #include <iostream>
 #include <bits/stdc++.h>
 
 // Data Types
@@ -64,63 +64,34 @@ const ll Mod = 1e9 + 7;
 
 using namespace std;
 
-bool cmp(pair<string, int> &a, pair<string, int> &b)
+map<string, int> mp;
+int _c = 0;
+void add_val()
 {
-    return a.second < b.second;
-}
-bool primeNum[1000000 + 1];
-void siv(int N)
-{
-    int sq = sqrt(N);
-    for (int i = 4; i <= N; i += 2)
+    for (int i = 0; i < 26; i++)
     {
-        primeNum[i] = 1;
-    }
-    for (int i = 3; i <= sq; i += 2)
-    {
-        if (primeNum[i] == 0)
+        for (int j = 0; j < 26; j++)
         {
-            for (int j = i * i; j <= N; j += i)
-                primeNum[j] = 1;
+            string s;
+            char a = 'a' + i, b = 'a' + j;
+            if (a != b)
+            {
+                s = s + a, s = s + b;
+                mp[s] = _c;
+                _c++;
+                // cout << s << " -> " << _c << nl;
+                s.clear();
+            }
         }
     }
-    primeNum[1] = 1;
 }
 
 void solve()
 {
-    int n;
-    cin >> n;
     string s;
     cin >> s;
 
-    int cnt = 0;
-    for (int i = 1; i < n - 1; i++)
-    {
-        if (i == n - 1)
-        {
-            cout << "dfd" << nl;
-
-            if (s[i] != s[i - 1])
-            {
-                // cout << "dfd" << nl;
-                s[i] = s[i - 1];
-                cnt++;
-            }
-        }
-        else
-        {
-            if (s[i] == '0')
-            {
-                if (s[i - 1] == '1' && s[i + 1] == 0)
-                {
-                    s[i] = '1';
-                    cnt++;
-                }
-            }
-        }
-    }
-    cout << cnt << endl;
+    cout << mp[s]+1 << nl;
 }
 
 int main()
@@ -134,6 +105,7 @@ int main()
 
     int ttt = 1, ca = 1;
     cin >> ttt;
+    add_val();
     while (ttt--)
     {
         // cout << "Case " << ca << ": ";

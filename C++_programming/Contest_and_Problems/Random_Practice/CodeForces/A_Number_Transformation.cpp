@@ -89,38 +89,17 @@ void siv(int N)
 
 void solve()
 {
-    int n;
-    cin >> n;
-    string s;
-    cin >> s;
+    int x, y;
+    cin >> x >> y;
 
-    int cnt = 0;
-    for (int i = 1; i < n - 1; i++)
+    if (x > y)
+        cout << 0 << " " << 0 << nl;
+    else if (y % x != 0)
+        cout << 0 << " " << 0 << nl;
+    else
     {
-        if (i == n - 1)
-        {
-            cout << "dfd" << nl;
-
-            if (s[i] != s[i - 1])
-            {
-                // cout << "dfd" << nl;
-                s[i] = s[i - 1];
-                cnt++;
-            }
-        }
-        else
-        {
-            if (s[i] == '0')
-            {
-                if (s[i - 1] == '1' && s[i + 1] == 0)
-                {
-                    s[i] = '1';
-                    cnt++;
-                }
-            }
-        }
+            cout << 1 << " " << y/x << nl;
     }
-    cout << cnt << endl;
 }
 
 int main()

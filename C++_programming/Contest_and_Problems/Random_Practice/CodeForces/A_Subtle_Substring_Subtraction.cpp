@@ -87,40 +87,51 @@ void siv(int N)
     primeNum[1] = 1;
 }
 
+map<char, int> alp;
+void set_val()
+{
+    for (int i = 0; i < 26; i++)
+    {
+        alp['a' + i] = i + 1;
+    }
+}
+
 void solve()
 {
-    int n;
-    cin >> n;
     string s;
     cin >> s;
+    int n = s.size();
 
-    int cnt = 0;
-    for (int i = 1; i < n - 1; i++)
+    if (n == 1)
     {
-        if (i == n - 1)
-        {
-            cout << "dfd" << nl;
-
-            if (s[i] != s[i - 1])
-            {
-                // cout << "dfd" << nl;
-                s[i] = s[i - 1];
-                cnt++;
-            }
-        }
-        else
-        {
-            if (s[i] == '0')
-            {
-                if (s[i - 1] == '1' && s[i + 1] == 0)
-                {
-                    s[i] = '1';
-                    cnt++;
-                }
-            }
-        }
+        cout << "Bob " << alp[s[0]] << nl;
+        return;
     }
-    cout << cnt << endl;
+    if (n % 2 == 0)
+    {
+        int sm = 0;
+        for (int i = 0; i < n; i++)
+        {
+            sm += alp[s[i]];
+        }
+        cout << "Alice " << sm << nl;
+        return;
+    }
+
+    int s2 = 0, s1 = 0;
+
+    for (int i = 0; i < n - 1; i++)
+    {
+        s1 += alp[s[i]];
+    }
+    for (int i = n - 1; i >= 1; i--)
+    {
+        s2 += alp[s[i]];
+    }
+    
+    int ans = max((s1 - alp[s[n - 1]]), (s2 - alp[s[0]]));
+
+    cout << "Alice " << ans << nl;
 }
 
 int main()
@@ -134,6 +145,7 @@ int main()
 
     int ttt = 1, ca = 1;
     cin >> ttt;
+    set_val();
     while (ttt--)
     {
         // cout << "Case " << ca << ": ";

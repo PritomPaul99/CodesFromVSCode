@@ -91,36 +91,9 @@ void solve()
 {
     int n;
     cin >> n;
-    string s;
-    cin >> s;
-
-    int cnt = 0;
-    for (int i = 1; i < n - 1; i++)
-    {
-        if (i == n - 1)
-        {
-            cout << "dfd" << nl;
-
-            if (s[i] != s[i - 1])
-            {
-                // cout << "dfd" << nl;
-                s[i] = s[i - 1];
-                cnt++;
-            }
-        }
-        else
-        {
-            if (s[i] == '0')
-            {
-                if (s[i - 1] == '1' && s[i + 1] == 0)
-                {
-                    s[i] = '1';
-                    cnt++;
-                }
-            }
-        }
-    }
-    cout << cnt << endl;
+    vi a(n), b;
+    int z = 0;
+    
 }
 
 int main()
