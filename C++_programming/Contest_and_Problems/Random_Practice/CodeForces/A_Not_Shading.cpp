@@ -64,34 +64,80 @@ const ll Mod = 1e9 + 7;
 
 using namespace std;
 
-map<string, int> mp;
-int _c = 0;
-void add_val()
+bool cmp(pair<string, int> &a, pair<string, int> &b)
 {
-    for (int i = 0; i < 26; i++)
+    return a.second < b.second;
+}
+bool primeNum[1000000 + 1];
+void siv(int N)
+{
+    int sq = sqrt(N);
+    for (int i = 4; i <= N; i += 2)
     {
-        for (int j = 0; j < 26; j++)
+        primeNum[i] = 1;
+    }
+    for (int i = 3; i <= sq; i += 2)
+    {
+        if (primeNum[i] == 0)
         {
-            string s;
-            char a = 'a' + i, b = 'a' + j;
-            if (a != b)
-            {
-                s = s + a, s = s + b;
-                mp[s] = _c;
-                _c++;
-                // cout << s << " -> " << _c << nl;
-                s.clear();
-            }
+            for (int j = i * i; j <= N; j += i)
+                primeNum[j] = 1;
         }
     }
+    primeNum[1] = 1;
 }
 
 void solve()
 {
-    string s;
-    cin >> s;
+    int n, m, r, c;
+    int x = 0;
+    cin >> n >> m >> r >> c;
+    string s[n];
+    for (int i = 0; i < n; i++)
+    {
+        cin >> s[i];
+        int q = count(s[i].begin(), s[i].end(), 'B');
+        x = max(x, q);
+    }
+    // cout << s[r-1][c-1] << nl;
+    if (x == 0)
+    {
+        cout << -1 << nl;
+        return;
+    }
 
-    cout << mp[s] + 1 << nl;
+    if (s[r - 1][c - 1] == 'B')
+    {
+        cout << 0 << nl;
+        return;
+    }
+
+    int cnt = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (s[i][c - 1] == 'B')
+            cnt++;
+    }
+    int cnt2 = (count(s[r - 1].begin(), s[r - 1].end(), 'B'));
+    cnt = max(cnt, cnt2);
+    if (cnt > 0 || cnt2 > 0)
+    {
+        cout << 1 << nl;
+    }
+    else
+    {
+        cout << 2 << nl;
+    }
+
+    // for (int i = 0; i < n; i++)
+    // {
+    //     for (int j = 0; j < m; j++)
+    //     {
+    //         cout << s[i][j] << " ";
+    //     }
+    //     cout << nl;
+    // }
+    // cout << nl;
 }
 
 int main()
@@ -105,7 +151,6 @@ int main()
 
     int ttt = 1, ca = 1;
     cin >> ttt;
-    add_val();
     while (ttt--)
     {
         // cout << "Case " << ca << ": ";

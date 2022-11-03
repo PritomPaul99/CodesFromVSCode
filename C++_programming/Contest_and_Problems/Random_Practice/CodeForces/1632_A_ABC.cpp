@@ -64,34 +64,40 @@ const ll Mod = 1e9 + 7;
 
 using namespace std;
 
-map<string, int> mp;
-int _c = 0;
-void add_val()
+bool cmp(pair<string, int> &a, pair<string, int> &b)
 {
-    for (int i = 0; i < 26; i++)
+    return a.second < b.second;
+}
+bool primeNum[1000000 + 1];
+void siv(int N)
+{
+    int sq = sqrt(N);
+    for (int i = 4; i <= N; i += 2)
     {
-        for (int j = 0; j < 26; j++)
+        primeNum[i] = 1;
+    }
+    for (int i = 3; i <= sq; i += 2)
+    {
+        if (primeNum[i] == 0)
         {
-            string s;
-            char a = 'a' + i, b = 'a' + j;
-            if (a != b)
-            {
-                s = s + a, s = s + b;
-                mp[s] = _c;
-                _c++;
-                // cout << s << " -> " << _c << nl;
-                s.clear();
-            }
+            for (int j = i * i; j <= N; j += i)
+                primeNum[j] = 1;
         }
     }
+    primeNum[1] = 1;
 }
 
 void solve()
 {
+    int n;
+    cin >> n;
     string s;
     cin >> s;
 
-    cout << mp[s] + 1 << nl;
+    if (n > 2 || ((s == "00") || (s == "11")))
+        NO;
+    else
+        YES;
 }
 
 int main()
@@ -105,7 +111,6 @@ int main()
 
     int ttt = 1, ca = 1;
     cin >> ttt;
-    add_val();
     while (ttt--)
     {
         // cout << "Case " << ca << ": ";

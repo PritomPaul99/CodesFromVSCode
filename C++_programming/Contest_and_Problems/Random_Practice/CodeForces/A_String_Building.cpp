@@ -64,34 +64,69 @@ const ll Mod = 1e9 + 7;
 
 using namespace std;
 
-map<string, int> mp;
-int _c = 0;
-void add_val()
-{
-    for (int i = 0; i < 26; i++)
-    {
-        for (int j = 0; j < 26; j++)
-        {
-            string s;
-            char a = 'a' + i, b = 'a' + j;
-            if (a != b)
-            {
-                s = s + a, s = s + b;
-                mp[s] = _c;
-                _c++;
-                // cout << s << " -> " << _c << nl;
-                s.clear();
-            }
-        }
-    }
-}
-
 void solve()
 {
     string s;
     cin >> s;
 
-    cout << mp[s] + 1 << nl;
+    int n = s.size();
+
+    bool x;
+    if (s[0] == 'a')
+    {
+        x = 1;
+    }
+    else
+    {
+        x = 0;
+    }
+
+    int sum = 0, cnt = 0;
+    vi a;
+
+    for (int i = 0; i < n; i++)
+    {
+        if (s[i] == 'a')
+        {
+            if (x == 1)
+            {
+                cnt++;
+            }
+            else if (x == 0)
+            {
+                a.pb(cnt);
+                x = 1;
+                cnt = 0;
+                cnt++;
+            }
+        }
+        if (s[i] == 'b')
+        {
+            if (x == 0)
+            {
+                cnt++;
+            }
+            else if (x == 1)
+            {
+                a.pb(cnt);
+                x = 0;
+                cnt = 0;
+                cnt++;
+            }
+        }
+    }
+    // cout << cnt << nl;
+    a.push_back(cnt);
+
+    for (int i = 0; i < a.size(); i++)
+    {
+        if (a[i] == 1)
+        {
+            NO;
+            return;
+        }
+    }
+    YES;
 }
 
 int main()
@@ -105,7 +140,6 @@ int main()
 
     int ttt = 1, ca = 1;
     cin >> ttt;
-    add_val();
     while (ttt--)
     {
         // cout << "Case " << ca << ": ";
