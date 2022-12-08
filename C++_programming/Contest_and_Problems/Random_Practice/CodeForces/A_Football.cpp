@@ -62,31 +62,9 @@ const ll Mod = 1e9 + 7;
 
 using namespace std;
 
-bool cmp(pair<string, int> &a, pair<string, int> &b)
-{
-    return a.second < b.second;
-}
-bool primeNum[1000000 + 1];
-void siv(int N)
-{
-    int sq = sqrt(N);
-    for (int i = 4; i <= N; i += 2)
-    {
-        primeNum[i] = 1;
-    }
-    for (int i = 3; i <= sq; i += 2)
-    {
-        if (primeNum[i] == 0)
-        {
-            for (int j = i * i; j <= N; j += i)
-                primeNum[j] = 1;
-        }
-    }
-    primeNum[1] = 1;
-}
-
 void solve()
 {
+    
 }
 
 int main()

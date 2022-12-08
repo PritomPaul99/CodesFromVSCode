@@ -87,6 +87,16 @@ void siv(int N)
 
 void solve()
 {
+    int n;
+    cin >> n;
+    string s;
+    cin >> s;
+
+    for (int i = 0; i < s.size(); i++)
+    {
+        
+    }
+    
 }
 
 int main()

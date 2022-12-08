@@ -87,6 +87,13 @@ void siv(int N)
 
 void solve()
 {
+    vi v(3);
+    for (int i = 0; i < 3; i++)
+    {
+        cin >> v[i];
+    }
+    sort(all(v));
+    cout << v[1] << nl;
 }
 
 int main()
