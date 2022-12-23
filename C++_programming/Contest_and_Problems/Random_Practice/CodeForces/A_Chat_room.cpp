@@ -66,24 +66,38 @@ using namespace std;
 
 void solve()
 {
-    string s;
+    string s, x = "hello", c;
     cin >> s;
-
-    string z = "0000000", o = "1111111";
-
-    int flg1 = -1, flg2 = -1;
-
-    flg1 = s.find(z);
-    flg2 = s.find(o);
-
-    if (flg1 >= 0 || flg2 >= 0)
+    int h = 0, e = 0, l = 0, o = 0;
+    for (int i = 0; i < s.size(); i++)
     {
-        YES;
+        if (s[i] == 'h' && h == 0)
+        {
+            c += 'h';
+            h++;
+        }
+        else if (s[i] == 'e' && e == 0 && h == 1)
+        {
+            c += 'e';
+            e++;
+        }
+        else if (s[i] == 'l' && l < 2 && e == 1)
+        {
+            c += 'l';
+            l++;
+        }
+        else if (s[i] == 'o' && o == 0 && l == 2)
+        {
+            c += 'o';
+            o++;
+        }
     }
-    else
-    {
-        NO;
-    }
+
+    int flg = -1;
+
+    flg = c.find("hello");
+
+    flg >= 0 ? YES : NO;
 }
 
 int main()
