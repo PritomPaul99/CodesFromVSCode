@@ -1,9 +1,9 @@
 /**
- * @file A_Hall_of_Fame.cpp
+ * @file A_Make_it_Beautiful.cpp
  * @author Pritom Paul (pritompaul1920@gmail.com)
  * @brief Joker
  * @version 0.1
- * @date 2023-01-04
+ * @date 2023-01-19
  *
  *
  */
@@ -61,6 +61,7 @@ const ll Mod = 1e9 + 7;
 #define vll vector<ll>
 #define vc vector<char>
 #define vs vector<string>
+#define mi map<int, int>
 #define pb push_back
 // debug
 #define cpoint cout << "_________________CHECK POINT_________________\n";
@@ -100,34 +101,48 @@ void solve()
 {
     int n;
     cin >> n;
+    vi a(n), b, c;
+    mi mp;
 
-    string s;
-    cin >> s;
-
-    int flg = 0, ind;
-    for (int i = 0; i < n-1; i++)
+    for (int i = 0; i < n; i++)
     {
-        if(s[i] == 'R' && s[i+1] == 'L')
+        cin >> a[i];
+        mp[a[i]]++;
+    }
+
+    int m = mp.size();
+
+    if (m == 1)
+    {
+        cout << "NO" << nl;
+        return;
+    }
+
+    for (auto &&it : mp)
+    {
+        b.pb(it.second);
+    }
+    int mx = *max_element(b.begin(), b.end());
+
+    cout << "YES" << nl;
+    while (mx--)
+    {
+        for (auto &&it : mp)
         {
-            cout << 0 << nl;
-            return;
+            if (it.second != 0)
+            {
+                c.pb(it.first);
+                // cout << it.first << " ";
+                a[it.first]--;
+            }
         }
-        if(s[i] == 'L' && s[i+1] == 'R')
-        {
-            flg = 1;
-            ind = i+1;
-        }
     }
-
-    if(flg == 0)
+    reverse(all(c));
+    for (int i = 0; i < n; i++)
     {
-        cout << -1 << nl;
+        cout << c[i] << " ";
     }
-    else
-    {
-        cout << ind << nl;
-    }
-    
+    cout << nl;
 }
 
 int main()
