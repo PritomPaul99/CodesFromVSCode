@@ -101,46 +101,23 @@ void solve()
 {
     int n;
     cin >> n;
-    vi a(n), b, c;
-    mi mp;
-
-    for (int i = 0; i < n; i++)
+    vi a(n);
+    set<int> st;
+    fo(i, n)
     {
         cin >> a[i];
-        mp[a[i]]++;
+        st.insert(a[i]);
     }
-
-    int m = mp.size();
-
-    if (m == 1)
+    if (st.size() == 1)
     {
         cout << "NO" << nl;
         return;
     }
-
-    for (auto &&it : mp)
-    {
-        b.pb(it.second);
-    }
-    int mx = *max_element(b.begin(), b.end());
-
     cout << "YES" << nl;
-    while (mx--)
+    cout << a[n - 1] << ' ' << a[0] << ' ';
+    for (int i = 1; i < n - 1; i++)
     {
-        for (auto &&it : mp)
-        {
-            if (it.second != 0)
-            {
-                c.pb(it.first);
-                // cout << it.first << " ";
-                a[it.first]--;
-            }
-        }
-    }
-    reverse(all(c));
-    for (int i = 0; i < n; i++)
-    {
-        cout << c[i] << " ";
+        cout << a[i] << " ";
     }
     cout << nl;
 }
