@@ -7,12 +7,13 @@ using namespace std;
 int n = 1e9 + 7;
 int main()
 {
-    map<int, int> mp = {{1, 2}, {3, 4}, {5, 6}};
-
-    for (auto &&it : mp)
-    {
-        cout << it.first << " " << it.second << nl;
-    }
-
-    // cout << *max_element(mp.begin(), mp.end());
+    // Take any string
+    string s1 = "Geeks";
+ 
+    // Copy two characters of s1 (starting
+    // from position 3)
+    string r = s1.substr(2, 2);
+ 
+    // prints the result
+    cout << "String is: " << r;
 }
