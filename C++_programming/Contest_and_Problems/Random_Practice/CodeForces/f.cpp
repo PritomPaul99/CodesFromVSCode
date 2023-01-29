@@ -66,30 +66,37 @@ bool cmp(pair<string, int> &a, pair<string, int> &b)
 {
     return a.second < b.second;
 }
-vector<bool> PrimeNum_0(100000007);
+bool primeNum[1000000 + 1];
 void siv(int N)
 {
     int sq = sqrt(N);
     for (int i = 4; i <= N; i += 2)
     {
-        PrimeNum_0[i] = 1;
+        primeNum[i] = 1;
     }
     for (int i = 3; i <= sq; i += 2)
     {
-        if (PrimeNum_0[i] == 0)
+        if (primeNum[i] == 0)
         {
             for (int j = i * i; j <= N; j += i)
-                PrimeNum_0[j] = 1;
+                primeNum[j] = 1;
         }
     }
-    PrimeNum_0[1] = 1;
+    primeNum[1] = 1;
 }
 
 void solve()
 {
-    for (int i = 0; i < 100; i++)
+    int a, b, c;
+    cin >> a >> b >> c;
+
+    if(a == b && c != 1)
     {
-        cout << i << " " << PrimeNum_0[i] << nl;
+        cout << "No" << nl;
+    }
+    else
+    {
+        cout << "Yes" << nl;
     }
 }
 
@@ -106,9 +113,9 @@ int main()
     cin >> ttt;
     while (ttt--)
     {
-        //cout << "Case " << ca << ": ";
+        cout << "Case " << ca << ": ";
         solve();
-        //ca++;
+        ca++;
     }
 
 #ifndef ONLINE_JUDGE
@@ -126,7 +133,6 @@ int main()
 * 4) 1 << n == 2 ^ n.
 * 5) x & (1 << i) == 0, ith bit of x is not 0.
 * 6) x & (1 << i) != 0, ith bit of x is 1.
-* 7) If using Siv of Eratosthenes, remember to update the size of the PrimeNum_0 vector.
 */
 
 /***************************************************************************************************\

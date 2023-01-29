@@ -87,10 +87,14 @@ void siv(int N)
 
 void solve()
 {
-    for (int i = 0; i < 100; i++)
+    int n;
+    cin >> n;
+
+    for (int i = 0; i < n; i++)
     {
-        cout << i << " " << PrimeNum_0[i] << nl;
+        cout << i << nl;
     }
+    
 }
 
 int main()

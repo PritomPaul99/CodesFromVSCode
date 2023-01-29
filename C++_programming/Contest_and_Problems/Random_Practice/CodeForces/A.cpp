@@ -1,12 +1,3 @@
-/**
- * @file A_1_Gardener_and_the_Capybaras_easy_version.cpp
- * @author Pritom Paul (pritompaul1920@gmail.com)
- * @brief Joker
- * @version 0.1
- * @date 2023-01-20
- *
- *
- */
 // #include <iostream>
 #include <bits/stdc++.h>
 
@@ -98,20 +89,57 @@ void siv(int N)
 
 void solve()
 {
-    string s, a, b, c;
-    cin >> s;
-
-    a = s[0], c = s[s.size() - 1], b = s;
-
-    if(s[0] == 'b' && s[1] == 'a')
+    int x = 1;
+    int pos = 1;
+    
+    while (cin >> x)
     {
-        cout << s[0] << " ";
-        for (int i = 0; i < (s.size()-2); i++)
+        // cin >> x;
+        pos = pos + x;
+
+        if (pos == 54)
         {
-            cout << s[i] << " ";
+            pos = 19;
         }
-        cout << s[s.size() - 1];
+        else if (pos == 90)
+        {
+            pos = 48;
+        }
+        else if (pos == 99)
+        {
+            pos = 77;
+        }
+        else if (pos == 9)
+        {
+            pos = 34;
+        }else if (pos == 40)
+        {
+            pos = 64;
+        }
+        else if (pos == 67)
+        {
+            pos = 86;
+        }
+        
+        if(pos > 100)
+        {
+            pos = pos - x;
+        }
+        
+
+
+
+        cout << "You are now on square " << pos << nl;
+
+        if (pos == 100)
+        {
+            cout << "You Win!" << nl;
+            return;
+        }
+        // x = 0;
     }
+
+    cout << "You Quit!" << nl;
 }
 
 int main()
@@ -124,7 +152,7 @@ int main()
 #endif
 
     int ttt = 1, ca = 1;
-    cin >> ttt;
+    // cin >> ttt;
     while (ttt--)
     {
         // cout << "Case " << ca << ": ";
@@ -140,7 +168,7 @@ int main()
 }
 
 /**
-#Some Caution:
+#Some Caution
 * 1) Want to add character in the end of a string? Use push_back().
 * 2) Max size of locally declared array is 1e5 and globally declared array is 1e7.
 * 3) To find sum of array/vector, use accumulate(start_, end_, x), x = starting values to add other values to.
@@ -148,23 +176,3 @@ int main()
 * 5) x & (1 << i) == 0, ith bit of x is not 0.
 * 6) x & (1 << i) != 0, ith bit of x is 1.
 */
-
-/***************************************************************************************************\
-*                                            Written by:                                            *
-*                                                                                                   *
-*     ██▓███   ██▀███   ██▓▄▄▄█████▓ ▒█████   ███▄ ▄███▓     ██▓███   ▄▄▄       █    ██  ██▓        *
-*    ▓██░  ██▒▓██ ▒ ██▒▓██▒▓  ██▒ ▓▒▒██▒  ██▒▓██▒▀█▀ ██▒    ▓██░  ██▒▒████▄     ██  ▓██▒▓██▒        *
-*    ▓██░ ██▓▒▓██ ░▄█ ▒▒██▒▒ ▓██░ ▒░▒██░  ██▒▓██    ▓██░    ▓██░ ██▓▒▒██  ▀█▄  ▓██  ▒██░▒██░        *
-*    ▒██▄█▓▒ ▒▒██▀▀█▄  ░██░░ ▓██▓ ░ ▒██   ██░▒██    ▒██     ▒██▄█▓▒ ▒░██▄▄▄▄██ ▓▓█  ░██░▒██░        *
-*    ▒██▒ ░  ░░██▓ ▒██▒░██░  ▒██▒ ░ ░ ████▓▒░▒██▒   ░██▒    ▒██▒ ░  ░ ▓█   ▓██▒▒▒█████▓ ░██████▒    *
-*    ▒▓▒░ ░  ░░ ▒▓ ░▒▓░░▓    ▒ ░░   ░ ▒░▒░▒░ ░ ▒░   ░  ░    ▒▓▒░ ░  ░ ▒▒   ▓▒█░░▒▓▒ ▒ ▒ ░ ▒░▓  ░    *
-*    ░▒ ░       ░▒ ░ ▒░ ▒ ░    ░      ░ ▒ ▒░ ░  ░      ░    ░▒ ░       ▒   ▒▒ ░░░▒░ ░ ░ ░ ░ ▒  ░    *
-*    ░░         ░░   ░  ▒ ░  ░      ░ ░ ░ ▒  ░      ░       ░░         ░   ▒    ░░░ ░ ░   ░ ░       *
-*                ░      ░               ░ ░         ░                      ░  ░   ░         ░  ░    *
-*                                           ╔╗╔╔═╗╦ ╦╔╗                                             *
-*                                        ───║║║║╣ ║ ║╠╩╗───                                         *
-*                                           ╝╚╝╚═╝╚═╝╚═╝                                            *
-*                                 ╔╦╗┌─┐┌─┐┌┬┐   ┌─┐┌─┐  ╔═╗╔═╗╔═╗                                  *
-*                              ─── ║║├┤ ├─┘ │    │ │├┤   ║  ╚═╗║╣ ───                               *
-*                                 ═╩╝└─┘┴   ┴ o  └─┘└    ╚═╝╚═╝╚═╝                                  *
-\***************************************************************************************************/
