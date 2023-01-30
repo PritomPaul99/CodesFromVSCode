@@ -1,4 +1,4 @@
-//#include <iostream>
+// #include <iostream>
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -13,12 +13,15 @@ void bfs(int source)
     queue<int> q;
     q.push(source);
     vis[source] = 1;
-    while (!q.empty()) {
+    while (!q.empty())
+    {
         int cur_v = q.front();
         q.pop();
         cout << cur_v << " "; // print order
-        for (auto &&child : g[cur_v]) {
-            if (!vis[child]) {
+        for (auto &&child : g[cur_v])
+        {
+            if (!vis[child])
+            {
                 q.push(child);
                 vis[child] = 1;
                 level[child] = level[cur_v] + 1;
