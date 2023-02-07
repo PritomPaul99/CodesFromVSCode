@@ -1,47 +1,22 @@
-#include <iostream>
-#include <queue>
-
+#include <bits/stdc++.h>
 using namespace std;
-
-const int N = 1005;
-int n, m, a, dist[N];
-bool st[N];
-int g[N][N];
-
-void bfs(int s)
-{
-    queue<int> q;
-    q.push(s);
-    for (int i = 0; i < n; i++)
-        dist[i] = -1;
-    dist[s] = 0;
-    while (q.size())
-    {
-        int u = q.front();
-        q.pop();
-        for (int v = 0; v < n; v++)
-        {
-            if (g[u][v] && dist[v] == -1)
-            {
-                dist[v] = dist[u] + 1;
-                q.push(v);
-            }
-        }
-    }
-}
 
 int main()
 {
-    cin >> n >> a;
-    for (int i = 0; i < n; i++)
+    int n, m;
+    cin >> n >> m; // n is the number of vertices, m is the number of edges
+
+    vector<vector<int>> graph(n); // initialize the graph with n vertices
+
+    for (int i = 0; i < m; i++)
     {
-        for (int j = 0; j < n; j++)
-        {
-            cin >> g[i][j];
-        }
+        int v1, v2;
+        cin >> v1 >> v2; // read the vertices that are connected by the edge
+
+        graph[v1].push_back(v2); // add v2 to the list of vertices connected to v1
+        graph[v2].push_back(v1); // add v1 to the list of vertices connected to v2 (for undirected graph)
     }
-    bfs(a);
-    for (int i = 0; i < n; i++)
-        cout << dist[i] << " ";
+
+    // now the graph is created and stored in vector<vector<int>> graph
     return 0;
 }
