@@ -88,8 +88,56 @@ void siv(int N)
     PrimeNum_0[1] = 1;
 }
 
+const int N = 1e5 + 10;
+vector<vector<int>> graph(N);
+vector<bool> vis(N);
+int x = 0;
+void dfs(int vertex, int t)
+{
+    if(vertex == t)
+    {
+        x = 1;
+        return;
+    }
+    vis[vertex] = true;
+
+    for (auto &&child : graph[vertex])
+    {
+        if (!vis[child])
+        {
+            dfs(child, t);
+        }
+    }
+}
+
 void solve()
 {
+    int n, t;
+    cin >> n >> t;
+
+    vi a(n);
+    for (int i = 1; i <= n-1; i++)
+    {
+        cin >> a[i];
+
+        graph[i].push_back(a[i] + i);
+    }
+
+    // for (int i = 1; i <= n; i++)
+    // {
+    //     cout << i << ": ";
+    //     for (auto &&it : graph[i])
+    //     {
+    //         cout << it << ", ";
+    //     }
+    //     cout << nl;
+    // }
+    dfs(1, t);
+
+    if(x)
+        cout << "YES" << nl;
+    else
+        cout << "NO" << nl;
 }
 
 int main()
@@ -102,7 +150,7 @@ int main()
 #endif
 
     int ttt = 1, ca = 1;
-    cin >> ttt;
+    // cin >> ttt;
     while (ttt--)
     {
         // cout << "Case " << ca << ": ";
@@ -126,7 +174,7 @@ int main()
 * 5) x & (1 << i) == 0, ith bit of x is not 0.
 * 6) x & (1 << i) != 0, ith bit of x is 1.
 * 7) If using Siv of Eratosthenes, remember to update the size of the PrimeNum_0 vector.
-* 8) sort(data.begin(), data.end(), [](const auto &a, const auto &b){ return a[1] < b[1]; }); -> sort a 2d array
+* 8) sort(data.begin(), data.end(), [](const auto &a, const auto &b){ return a[1] < b[1]; });
 */
 
 /***************************************************************************************************\

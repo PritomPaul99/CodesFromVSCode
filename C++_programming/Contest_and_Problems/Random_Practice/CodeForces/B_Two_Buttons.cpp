@@ -90,6 +90,22 @@ void siv(int N)
 
 void solve()
 {
+    ll n, m, cnt = 0;
+    cin >> n >> m;
+
+    if (n < m)
+    {
+        while (n < m)
+        {
+            n *= 2;
+            cnt++;
+        }
+        cout << (n - m) + cnt << nl;
+    }
+    else // Unsolved
+    {
+        cout << n - m << nl;
+    }
 }
 
 int main()
@@ -102,7 +118,7 @@ int main()
 #endif
 
     int ttt = 1, ca = 1;
-    cin >> ttt;
+    // cin >> ttt;
     while (ttt--)
     {
         // cout << "Case " << ca << ": ";
@@ -126,7 +142,7 @@ int main()
 * 5) x & (1 << i) == 0, ith bit of x is not 0.
 * 6) x & (1 << i) != 0, ith bit of x is 1.
 * 7) If using Siv of Eratosthenes, remember to update the size of the PrimeNum_0 vector.
-* 8) sort(data.begin(), data.end(), [](const auto &a, const auto &b){ return a[1] < b[1]; }); -> sort a 2d array
+* 8) sort(data.begin(), data.end(), [](const auto &a, const auto &b){ return a[1] < b[1]; });
 */
 
 /***************************************************************************************************\
