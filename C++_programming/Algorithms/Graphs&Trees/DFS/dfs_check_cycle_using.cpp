@@ -14,7 +14,7 @@ const int N = 1e3;
 vector<vector<int>> graph(N);
 vector<bool> vis(N);
 
-void dfs(int vertex)
+bool dfs(int vertex, int par)
 {
     cout << vertex << endl;
     //* take action on vertex after entering the vertex.
@@ -26,7 +26,11 @@ void dfs(int vertex)
         cout << "Parent: " << vertex << " Child: " << child << endl;
         if (!vis[child])
         {
-            dfs(child);
+            dfs(child, vertex);
+        }
+        else if ((vis[child]) && (child == par))
+        {
+            return true;
         }
         //* Take action on child after exiting the child.
     }

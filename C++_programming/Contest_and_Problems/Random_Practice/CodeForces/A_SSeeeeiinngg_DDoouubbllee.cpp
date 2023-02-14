@@ -1,4 +1,4 @@
-// #include <iostream>
+//#include <iostream>
 #include <bits/stdc++.h>
 
 // Data Types
@@ -11,6 +11,8 @@ typedef unsigned long long int uint64;
 #define pi acos(-1)
 const ll Mod = 1e9 + 7;
 #define POW(_x, _y) _x << _y
+#define MOD(a, b) (a & (b - 1))
+#define Paw2(n) (ceil(log2(n)) == floor(log2(n)))
 // File handling
 #define f_input freopen("input.txt", "r", stdin)
 #define f_output freopen("output.txt", "w", stdout)
@@ -26,8 +28,9 @@ const ll Mod = 1e9 + 7;
 #define rall(v) v.rbegin(), v.rend())
 #define rev(v) reverse(v.begin(), v.end())
 #define srt(v) sort(v.begin(), v.end())
+#define D_sort(v) sort(v.begin(), v.end(), greater<int>())
 // Array
-#define mems(a, x) memset(a, x, sizeof(a))        // Works only for 0 and -1
+#define mems(a, x) memset(a, x, sizeof(a))          // Works only for 0 and -1
 #define ass_vel(ar, n, x) fo(i, n) ar[i] = x      // Set value in array
 #define parr(ar, n) fo(i, n) cout << ar[i] << " " // Print array
 #define eol cout << endl
@@ -38,15 +41,14 @@ const ll Mod = 1e9 + 7;
 #define _min_el(x) *min_element(x.begin(), x.end())
 #define _max_el(x) *max_element(x.begin(), x.end())
 #define ain(arr, n) fo(i, n) cin >> arr[i]
-#define aout(arr, n)                \
-    fo(i, n) cout << arr[i] << " "; \
-    cout << nl
+#define aout(arr, n) fo(i, n) cout << arr[i] << " "; cout << nl
 #define find_(a, n, x) find(a, a + n, x) - a
 // cout << fixed << setprecision(__n) << x << endl;
 #define FSP(x) fixed << setprecision(x)
-#define pop_cnt(n) __builtin_popcount(n) // Assign it to a value to find the number of 1 in a binary number
-#define numBits(n) log2(n) + 1           // Assign it to a value to get the number of bits in an integer
-#define DigitNum(n) log10(n) + 1         // Assign it to a value to get the number of digit in an integer
+#define pop_cnt(n) __builtin_popcount(n) //Assign it to a value to find the number of 1 in a binary number
+#define numBits(n) log2(n) + 1 //Assign it to a value to get the number of bits in an integer
+#define DigitNum(n) log10(n) + 1 //Assign it to a value to get the number of digit in an integer
+#define BITS(num) bitset<32>(num).to_string().substr(32 - log2(num)) // Binary representation of a decimal number
 // Vector
 #define vi vector<int>
 #define vll vector<ll>
@@ -68,32 +70,32 @@ bool cmp(pair<string, int> &a, pair<string, int> &b)
 {
     return a.second < b.second;
 }
-bool primeNum[1000000 + 1];
+vector<bool> PrimeNum_0(100000007);
 void siv(int N)
 {
     int sq = sqrt(N);
     for (int i = 4; i <= N; i += 2)
     {
-        primeNum[i] = 1;
+        PrimeNum_0[i] = 1;
     }
     for (int i = 3; i <= sq; i += 2)
     {
-        if (primeNum[i] == 0)
+        if (PrimeNum_0[i] == 0)
         {
             for (int j = i * i; j <= N; j += i)
-                primeNum[j] = 1;
+                PrimeNum_0[j] = 1;
         }
     }
-    primeNum[1] = 1;
+    PrimeNum_0[1] = 1;
 }
 
 void solve()
 {
-    string s, t;
+    string s, x;
     cin >> s;
-    t = s;
-    reverse(all(t));
-    cout << s + t << nl;
+    x = s;
+    reverse(all(x));
+    cout << s + x << nl;
 }
 
 int main()
@@ -109,14 +111,14 @@ int main()
     cin >> ttt;
     while (ttt--)
     {
-        // cout << "Case " << ca << ": ";
+        //cout << "Case " << ca << ": ";
         solve();
-        // ca++;
+        //ca++;
     }
 
 #ifndef ONLINE_JUDGE
     double time = (clock() - start) / CLOCKS_PER_SEC;
-    cerr << "Running Time : " << time << "\n";
+    cerr << "Running Time : "<< time << "\n";
 #endif
     return 0;
 }
@@ -129,6 +131,8 @@ int main()
 * 4) 1 << n == 2 ^ n.
 * 5) x & (1 << i) == 0, ith bit of x is not 0.
 * 6) x & (1 << i) != 0, ith bit of x is 1.
+* 7) If using Siv of Eratosthenes, remember to update the size of the PrimeNum_0 vector.
+* 8) sort(data.begin(), data.end(), [](const auto &a, const auto &b){ return a[1] < b[1]; });
 */
 
 /***************************************************************************************************\

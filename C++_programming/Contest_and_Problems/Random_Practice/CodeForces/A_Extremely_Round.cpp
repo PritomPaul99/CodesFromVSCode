@@ -11,6 +11,8 @@ typedef unsigned long long int uint64;
 #define pi acos(-1)
 const ll Mod = 1e9 + 7;
 #define POW(_x, _y) _x << _y
+#define MOD(a, b) (a & (b - 1))
+#define Paw2(n) (ceil(log2(n)) == floor(log2(n)))
 // File handling
 #define f_input freopen("input.txt", "r", stdin)
 #define f_output freopen("output.txt", "w", stdout)
@@ -45,9 +47,9 @@ const ll Mod = 1e9 + 7;
 #define find_(a, n, x) find(a, a + n, x) - a
 // cout << fixed << setprecision(__n) << x << endl;
 #define FSP(x) fixed << setprecision(x)
-#define pop_cnt(n) __builtin_popcount(n) // Assign it to a value to find the number of 1 in a binary number
-#define numBits(n) log2(n) + 1           // Assign it to a value to get the number of bits in an integer
-#define DigitNum(n) log10(n) + 1         // Assign it to a value to get the number of digit in an integer
+#define pop_cnt(n) __builtin_popcount(n)                             // Assign it to a value to find the number of 1 in a binary number
+#define numBits(n) log2(n) + 1                                       // Assign it to a value to get the number of bits in an integer
+#define DigitNum(n) log10(n) + 1                                     // Assign it to a value to get the number of digit in an integer
 #define BITS(num) bitset<32>(num).to_string().substr(32 - log2(num)) // Binary representation of a decimal number
 // Vector
 #define vi vector<int>
@@ -89,56 +91,41 @@ void siv(int N)
     PrimeNum_0[1] = 1;
 }
 
-const int N = 1e5 + 10;
-vector<vector<int>> graph(N);
-vector<bool> vis(N);
-int c = 0;
+vector<int> PZ;
 
-// How to get every visited path in dfs
-void dfs(int vertex)
+void isPzero()
 {
-    vis[vertex] = true;
-    bool isleaf = true;
-
-    for (auto &&child : graph[vertex])
+    for (int i = 1; i < (999999+1); i++)
     {
-        // cout << "Parent: " << vertex << " Child: " << child << nl;
-        if (!vis[child])
-        {
-            isleaf = false;
-            dfs(child);
-        }
+        string x = to_string(i);
+        if()
     }
-    cout << vertex << nl;
+    
 }
 
 void solve()
 {
-    int n, m;
-    cin >> n >> m;
+    int n;
+    cin >> n;
 
-    vi cat(n);
-    ain(cat, n);
-
-    for (int i = 1; i < n; i++)
+    if (n <= 9)
     {
-        int v1, v2;
-        cin >> v1 >> v2;
-        graph[v1].pb(v2);
+        cout << n << nl;
     }
-
-    // for (int i = 1; i <= n; i++)
-    // {
-    //     cout << i << ": ";
-    //     for (auto &&it : graph[i])
-    //     {
-    //         cout << it << ", ";
-    //     }
-    //     cout << nl;
-    // }
-
-    dfs(1);
-    cout << c << nl;
+    else
+    {
+        int cnt = 9;
+        for (int i = 10; i <= n; i++)
+        {
+            string x = to_string(i);
+            int z = count(all(x), '0');
+            if ((z + 1) == x.size())
+            {
+                cnt++;
+            }
+        }
+        cout << cnt << nl;
+    }
 }
 
 int main()
@@ -151,7 +138,7 @@ int main()
 #endif
 
     int ttt = 1, ca = 1;
-    // cin >> ttt;
+    cin >> ttt;
     while (ttt--)
     {
         // cout << "Case " << ca << ": ";

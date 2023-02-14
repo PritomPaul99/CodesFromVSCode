@@ -48,7 +48,6 @@ const ll Mod = 1e9 + 7;
 #define pop_cnt(n) __builtin_popcount(n) // Assign it to a value to find the number of 1 in a binary number
 #define numBits(n) log2(n) + 1           // Assign it to a value to get the number of bits in an integer
 #define DigitNum(n) log10(n) + 1         // Assign it to a value to get the number of digit in an integer
-#define BITS(num) bitset<32>(num).to_string().substr(32 - log2(num)) // Binary representation of a decimal number
 // Vector
 #define vi vector<int>
 #define vll vector<ll>
@@ -89,56 +88,67 @@ void siv(int N)
     PrimeNum_0[1] = 1;
 }
 
-const int N = 1e5 + 10;
-vector<vector<int>> graph(N);
-vector<bool> vis(N);
-int c = 0;
-
-// How to get every visited path in dfs
-void dfs(int vertex)
-{
-    vis[vertex] = true;
-    bool isleaf = true;
-
-    for (auto &&child : graph[vertex])
-    {
-        // cout << "Parent: " << vertex << " Child: " << child << nl;
-        if (!vis[child])
-        {
-            isleaf = false;
-            dfs(child);
-        }
-    }
-    cout << vertex << nl;
-}
-
 void solve()
 {
-    int n, m;
-    cin >> n >> m;
+    int n;
+    cin >> n;
+    vi a(n);
+    ain(a, n);
 
-    vi cat(n);
-    ain(cat, n);
+    vector<int> pen(n, 1);
 
-    for (int i = 1; i < n; i++)
+    int q;
+    cin >> q;
+
+    while (q--)
     {
-        int v1, v2;
-        cin >> v1 >> v2;
-        graph[v1].pb(v2);
+        int type;
+        cin >> type;
+
+        if (type == 1)
+        {
+            int x, y;
+            cin >> x >> y;
+            x--, y--;
+
+            if (a[x] > a[y])
+            {
+                pen[x] += pen[y];
+                pen[y] = 0;
+                a[x] += a[y];
+                a[y] = 0;
+            }
+            else if (a[x] < a[y])
+            {
+                pen[y] += pen[x];
+                pen[x] = 0;
+                a[y] += a[x];
+                a[x] = 0;
+            }
+        }
+        else if (type == 2)
+        {
+            int x;
+            cin >> x;
+            x--;
+            cout << pen[x] << nl;
+        }
+        else if (type == 3)
+        {
+            int x;
+            cin >> x;
+
+            for (int i = 0; i < n; i++)
+            {
+                if(a[i] == x)
+                {
+                    cout << i + 1 << nl;
+                    break;
+                }
+            }
+            
+        }
     }
-
-    // for (int i = 1; i <= n; i++)
-    // {
-    //     cout << i << ": ";
-    //     for (auto &&it : graph[i])
-    //     {
-    //         cout << it << ", ";
-    //     }
-    //     cout << nl;
-    // }
-
-    dfs(1);
-    cout << c << nl;
 }
 
 int main()
@@ -151,7 +161,7 @@ int main()
 #endif
 
     int ttt = 1, ca = 1;
-    // cin >> ttt;
+    cin >> ttt;
     while (ttt--)
     {
         // cout << "Case " << ca << ": ";

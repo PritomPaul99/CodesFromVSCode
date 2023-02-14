@@ -48,7 +48,6 @@ const ll Mod = 1e9 + 7;
 #define pop_cnt(n) __builtin_popcount(n) // Assign it to a value to find the number of 1 in a binary number
 #define numBits(n) log2(n) + 1           // Assign it to a value to get the number of bits in an integer
 #define DigitNum(n) log10(n) + 1         // Assign it to a value to get the number of digit in an integer
-#define BITS(num) bitset<32>(num).to_string().substr(32 - log2(num)) // Binary representation of a decimal number
 // Vector
 #define vi vector<int>
 #define vll vector<ll>
@@ -92,53 +91,55 @@ void siv(int N)
 const int N = 1e5 + 10;
 vector<vector<int>> graph(N);
 vector<bool> vis(N);
-int c = 0;
-
-// How to get every visited path in dfs
 void dfs(int vertex)
 {
     vis[vertex] = true;
-    bool isleaf = true;
-
-    for (auto &&child : graph[vertex])
-    {
-        // cout << "Parent: " << vertex << " Child: " << child << nl;
-        if (!vis[child])
-        {
-            isleaf = false;
-            dfs(child);
-        }
-    }
-    cout << vertex << nl;
 }
 
 void solve()
 {
-    int n, m;
-    cin >> n >> m;
+    int n;
+    cin >> n;
 
-    vi cat(n);
-    ain(cat, n);
-
-    for (int i = 1; i < n; i++)
+    if (!n & 1)
     {
-        int v1, v2;
-        cin >> v1 >> v2;
-        graph[v1].pb(v2);
+        cout << n / 2 << ' ' << n / 2 << nl;
+        return;
     }
 
-    // for (int i = 1; i <= n; i++)
-    // {
-    //     cout << i << ": ";
-    //     for (auto &&it : graph[i])
-    //     {
-    //         cout << it << ", ";
-    //     }
-    //     cout << nl;
-    // }
+    int x = n / 2, y = n - n / 2;
 
-    dfs(1);
-    cout << c << nl;
+    if (n % 20 != 19)
+    {
+        cout << x << " " << y << nl;
+    }
+    else
+    {
+        string s = to_string(n);
+        string _x, _y;
+        int xs = 0, ys = 0;
+
+        for (int i = s.size() - 1; i >= 0; i--)
+        {
+            int a = s[i] - '0';
+
+            int p = a / 2, q = a - a / 2;
+
+            if (xs > ys)
+            {
+                ys += q, _y += to_string(q);
+                xs += p, _x += to_string(p);
+            }
+            else
+            {
+                xs += q, _x += to_string(q);
+                ys += p, _y += to_string(p);
+            }
+        }
+        reverse(all(_x)), reverse(all(_y));
+
+        cout << stoi(_x) << " " << stoi(_y) << nl;
+    }
 }
 
 int main()
@@ -151,7 +152,7 @@ int main()
 #endif
 
     int ttt = 1, ca = 1;
-    // cin >> ttt;
+    cin >> ttt;
     while (ttt--)
     {
         // cout << "Case " << ca << ": ";
