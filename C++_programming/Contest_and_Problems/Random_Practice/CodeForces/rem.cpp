@@ -9,7 +9,7 @@ int main()
     int a, b;
     while (cin >> a >> b)
     {
-        cout << "a % b = " << a % b << nl;
+        cout << a << " % " << b << " = " << a % b << nl;
     }
     return 0;
 }
