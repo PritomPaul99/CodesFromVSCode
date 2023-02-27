@@ -93,33 +93,64 @@ void siv(int N)
 
 void solve()
 {
-    int n, m;
-    cin >> n >> m;
+    string s;
+    cin >> s;
 
-    if (m % n != 0)
+    int o = 0;
+
+    for (int i = 0; i < s.size(); i++)
     {
-        cout << -1 << nl;
+        if (s[i] == '1')
+            o++;
     }
-    else
+
+    vi a;
+
+    int sum = 0;
+    for (int i = 0; i < s.size(); i++)
     {
-        int d = m / n, cnt = 0;
 
-        while (d % 2 == 0)
+        // ((i == (s.size() - 1)) && s[i] == '1')
+        if (s[i] == '1')
         {
-            d = d / 2;
-            cnt++;
+            if (i == (s.size() - 1))
+            {
+                a.push_back(sum+1);
+            }
+            else
+            {
+                sum += (s[i] - '0');
+            }
         }
-        while (d % 3 == 0)
+        else if (s[i] == '0')
         {
-            d = d / 3;
-            cnt++;
+            if ((i > 0 && s[i - 1] == '1'))
+            {
+                a.push_back(sum);
+                sum = 0;
+            }
+            else
+            {
+                continue;
+            }
         }
+    }
 
-        if (d != 1)
-            cout << -1 << nl;
+    sort(all(a), greater<int>());
+    int _a = 0, _b = 0;
+    for (int i = 0; i < a.size(); i++)
+    {
+        if(!(i&1))
+        {
+            _a += a[i];
+        }
         else
-            cout << cnt << nl;
+        {
+            _b += a[i];
+        }
     }
+
+    cout << max(_a, _b) << nl;
 }
 
 int main()
@@ -132,7 +163,7 @@ int main()
 #endif
 
     int ttt = 1, ca = 1;
-    // cin >> ttt;
+    cin >> ttt;
     while (ttt--)
     {
         // cout << "Case " << ca << ": ";

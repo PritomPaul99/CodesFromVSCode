@@ -1,2 +1,2 @@
 
-    // int sum = a[0];
+    // aout(stat, stat.size());

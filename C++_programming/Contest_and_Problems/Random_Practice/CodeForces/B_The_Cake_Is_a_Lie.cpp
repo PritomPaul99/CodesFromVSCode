@@ -1,4 +1,4 @@
-// #include <iostream>
+//#include <iostream>
 #include <bits/stdc++.h>
 
 // Data Types
@@ -30,9 +30,8 @@ const ll Mod = 1e9 + 7;
 #define srt(v) sort(v.begin(), v.end())
 #define D_sort(v) sort(v.begin(), v.end(), greater<int>())
 // Array
-#define mems(a, x) memset(a, x, sizeof(a))        // Works only for 0 and -1
-#define ass_vel(ar, n, x) fo(i, n) ar[i] = x      // Set value in array
-#define parr(ar, n) fo(i, n) cout << ar[i] << " " // Print array
+#define mems(a, x) memset(a, x, sizeof(a)) // Works only for 0 and -1
+#define ass_vel(ar, n, x) fo(i, n) ar[i] = x // Set value in array
 #define eol cout << endl
 #define a_sort(ar, size) sort(ar, ar + size)
 #define d_sort(arr, size) sort(arr, arr + size, greater<int>())
@@ -41,16 +40,15 @@ const ll Mod = 1e9 + 7;
 #define _min_el(x) *min_element(x.begin(), x.end())
 #define _max_el(x) *max_element(x.begin(), x.end())
 #define ain(arr, n) fo(i, n) cin >> arr[i]
-#define aout(arr, n)                \
-    fo(i, n) cout << arr[i] << " "; \
-    cout << nl
-#define find_(a, n, x) find(a, a + n, x) - a
+#define aout(arr, n) fo(i, n) cout << arr[i] << " "; cout << nl
+#define _find(a, n, x) find(a, a + n, x) - a
 // cout << fixed << setprecision(__n) << x << endl;
 #define FSP(x) fixed << setprecision(x)
-#define pop_cnt(n) __builtin_popcount(n)                             // Assign it to a value to find the number of 1 in a binary number
-#define numBits(n) log2(n) + 1                                       // Assign it to a value to get the number of bits in an integer
-#define DigitNum(n) log10(n) + 1                                     // Assign it to a value to get the number of digit in an integer
+#define pop_cnt(n) __builtin_popcount(n) //Assign it to a value to find the number of 1 in a binary number
+#define numBits(n) log2(n) + 1 //Assign it to a value to get the number of bits in an integer
+#define DigitNum(n) log10(n) + 1 //Assign it to a value to get the number of digit in an integer
 #define BITS(num) bitset<32>(num).to_string().substr(32 - log2(num)) // Binary representation of a decimal number
+#define LCM(a, b) (a / __gcd(a, b) * b)
 // Vector
 #define vi vector<int>
 #define vll vector<ll>
@@ -93,33 +91,10 @@ void siv(int N)
 
 void solve()
 {
-    int n, m;
-    cin >> n >> m;
+    int n, m, k;
+    cin >> n >> m >> k;
 
-    if (m % n != 0)
-    {
-        cout << -1 << nl;
-    }
-    else
-    {
-        int d = m / n, cnt = 0;
-
-        while (d % 2 == 0)
-        {
-            d = d / 2;
-            cnt++;
-        }
-        while (d % 3 == 0)
-        {
-            d = d / 3;
-            cnt++;
-        }
-
-        if (d != 1)
-            cout << -1 << nl;
-        else
-            cout << cnt << nl;
-    }
+    ((n * m - 1) == k) ? YES : NO;
 }
 
 int main()
@@ -132,17 +107,17 @@ int main()
 #endif
 
     int ttt = 1, ca = 1;
-    // cin >> ttt;
+    cin >> ttt;
     while (ttt--)
     {
-        // cout << "Case " << ca << ": ";
+        //cout << "Case " << ca << ": ";
         solve();
-        // ca++;
+        //ca++;
     }
 
 #ifndef ONLINE_JUDGE
     double time = (clock() - start) / CLOCKS_PER_SEC;
-    cerr << "Running Time : " << time << "\n";
+    cerr << "Running Time : "<< time << "\n";
 #endif
     return 0;
 }

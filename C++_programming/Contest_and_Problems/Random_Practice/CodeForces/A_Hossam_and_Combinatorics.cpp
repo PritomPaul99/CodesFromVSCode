@@ -93,33 +93,28 @@ void siv(int N)
 
 void solve()
 {
-    int n, m;
-    cin >> n >> m;
+    int n;
+    cin >> n;
 
-    if (m % n != 0)
+    vll a(n);
+    ain(a, n);
+
+    sort(all(a));
+
+    ll mx = a[n - 1], mn = a[0], mnc = 0, mxc = 0;
+
+    for (int i = 0; i < n; i++)
     {
-        cout << -1 << nl;
+        if (a[i] == mn)
+            mxc++;
+        if (a[i] == mx)
+            mnc++;
     }
+
+    if ((mx - mn) == 0)
+        cout << n * (n - 1ll) * 1ll << nl;
     else
-    {
-        int d = m / n, cnt = 0;
-
-        while (d % 2 == 0)
-        {
-            d = d / 2;
-            cnt++;
-        }
-        while (d % 3 == 0)
-        {
-            d = d / 3;
-            cnt++;
-        }
-
-        if (d != 1)
-            cout << -1 << nl;
-        else
-            cout << cnt << nl;
-    }
+        cout << 2 * mnc * mxc * 1ll << nl;
 }
 
 int main()
@@ -132,7 +127,7 @@ int main()
 #endif
 
     int ttt = 1, ca = 1;
-    // cin >> ttt;
+    cin >> ttt;
     while (ttt--)
     {
         // cout << "Case " << ca << ": ";

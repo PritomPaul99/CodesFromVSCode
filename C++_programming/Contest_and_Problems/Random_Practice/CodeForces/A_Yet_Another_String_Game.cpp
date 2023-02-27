@@ -91,35 +91,40 @@ void siv(int N)
     PrimeNum_0[1] = 1;
 }
 
+string a2z = "abcdefghijklmnopqrstuvwxyz", z2a = "zyxwvutsrqponmlkjihgfedcba";
+
 void solve()
 {
-    int n, m;
-    cin >> n >> m;
+    string s;
+    cin >> s;
 
-    if (m % n != 0)
+    for (int i = 0; i < s.size(); i++)
     {
-        cout << -1 << nl;
-    }
-    else
-    {
-        int d = m / n, cnt = 0;
-
-        while (d % 2 == 0)
+        if (!(i & 1))
         {
-            d = d / 2;
-            cnt++;
+            for (int j = 0; j < 26; j++)
+            {
+                if (a2z[j] != s[i])
+                {
+                    s[i] = a2z[j];
+                    break;
+                }
+            }
         }
-        while (d % 3 == 0)
-        {
-            d = d / 3;
-            cnt++;
-        }
-
-        if (d != 1)
-            cout << -1 << nl;
         else
-            cout << cnt << nl;
+        {
+            for (int j = 0; j < 26; j++)
+            {
+                if (s[i] != z2a[j])
+                {
+                    s[i] = z2a[j];
+                    break;
+                }
+            }
+            
+        }
     }
+    cout << s << nl;
 }
 
 int main()
@@ -132,7 +137,7 @@ int main()
 #endif
 
     int ttt = 1, ca = 1;
-    // cin >> ttt;
+    cin >> ttt;
     while (ttt--)
     {
         // cout << "Case " << ca << ": ";

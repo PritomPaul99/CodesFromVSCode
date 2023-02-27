@@ -93,32 +93,47 @@ void siv(int N)
 
 void solve()
 {
-    int n, m;
-    cin >> n >> m;
+    ll a, s;
+    cin >> a >> s;
 
-    if (m % n != 0)
+    string b;
+
+    while (s)
+    {
+        int x = a % 10, y = s % 10;
+
+        if (y >= x)
+        {
+            b.push_back((y - x) + '0');
+        }
+        else
+        {
+            s = s / 10;
+
+            y = y + ((s % 10) * 10);
+
+            if (y > x && y >= 10 && y <= 19)
+            {
+                b.push_back((y - x) + '0');
+            }
+            else
+            {
+                cout << -1 << nl;
+                return;
+            }
+        }
+        s /= 10, a /= 10;
+    }
+
+
+    if (a > 0)
     {
         cout << -1 << nl;
     }
     else
     {
-        int d = m / n, cnt = 0;
-
-        while (d % 2 == 0)
-        {
-            d = d / 2;
-            cnt++;
-        }
-        while (d % 3 == 0)
-        {
-            d = d / 3;
-            cnt++;
-        }
-
-        if (d != 1)
-            cout << -1 << nl;
-        else
-            cout << cnt << nl;
+        reverse(all(b));
+        cout << stoll(b) << nl;
     }
 }
 
@@ -132,7 +147,7 @@ int main()
 #endif
 
     int ttt = 1, ca = 1;
-    // cin >> ttt;
+    cin >> ttt;
     while (ttt--)
     {
         // cout << "Case " << ca << ": ";

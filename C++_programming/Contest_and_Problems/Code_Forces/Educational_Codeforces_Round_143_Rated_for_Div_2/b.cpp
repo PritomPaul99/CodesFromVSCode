@@ -93,32 +93,96 @@ void siv(int N)
 
 void solve()
 {
-    int n, m;
-    cin >> n >> m;
+    int n, k;
+    cin >> n >> k;
 
-    if (m % n != 0)
+    vector<pair<int, int>> seg;
+    vector<int> S(51);
+
+    for (int i = 0; i < n; i++)
     {
-        cout << -1 << nl;
+        int g, h;
+        cin >> g >> h;
+        seg.push_back({g, h});
+    }
+
+    for (int i = 1; i <= 50; i++)
+    {
+        int cnt = 0;
+        for (auto &&it : seg)
+        {
+            if (i >= it.first && i <= it.second)
+                cnt++;
+        }
+        S[i] = cnt;
+    }
+
+    vector<int> ck;
+
+    for (int i = 1; i <= 50; i++)
+    {
+        if (i == k)
+            continue;
+
+        if (S[i] >= S[k])
+        {
+            ck.pb(i);
+        }
+    }
+    if (ck.size() == 0)
+    {
+        cout << "YES" << nl;
+        return;
     }
     else
     {
-        int d = m / n, cnt = 0;
-
-        while (d % 2 == 0)
+        for (int i = 0; i < ck.size(); i++)
         {
-            d = d / 2;
-            cnt++;
+            for (auto &&it : seg)
+            {
+                if (ck[i] >= it.first && ck[i] <= it.second)
+                {
+                    if (k >= it.first && k <= it.second)
+                        continue;
+                    S[ck[i]]--;
+                }
+            }
         }
-        while (d % 3 == 0)
-        {
-            d = d / 3;
-            cnt++;
-        }
+    }
 
-        if (d != 1)
-            cout << -1 << nl;
-        else
-            cout << cnt << nl;
+    vector<int> S2(51);
+
+    for (int i = 1; i <= 50; i++)
+    {
+        int cnt = 0;
+        for (auto &&it : seg)
+        {
+            if (i >= it.first && i <= it.second)
+                cnt++;
+        }
+        S2[i] = cnt;
+    }
+
+    vector<int> ck2;
+
+    for (int i = 1; i <= 50; i++)
+    {
+        if (i == k)
+            continue;
+
+        if (S[i] >= S[k])
+        {
+            ck2.pb(i);
+        }
+    }
+
+    if (ck2.size() == 0)
+    {
+        cout << "YES" << nl;
+    }
+    else
+    {
+        cout << "NO" << nl;
     }
 }
 
@@ -132,7 +196,7 @@ int main()
 #endif
 
     int ttt = 1, ca = 1;
-    // cin >> ttt;
+    cin >> ttt;
     while (ttt--)
     {
         // cout << "Case " << ca << ": ";

@@ -47,7 +47,7 @@ const ll Mod = 1e9 + 7;
 using namespace std;
 
 int n, arr[110];
-vector<int> v;
+vector<int> bv;
 
 bool is_ok1()
 {

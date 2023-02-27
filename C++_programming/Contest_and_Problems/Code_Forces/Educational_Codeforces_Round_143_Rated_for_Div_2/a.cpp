@@ -96,29 +96,44 @@ void solve()
     int n, m;
     cin >> n >> m;
 
-    if (m % n != 0)
+    string a, b;
+    cin >> a >> b;
+
+    int bc1 = -1, bc2 = -1;
+    int c1 = 0, c2 = 0;
+    for (int i = 0; i < n - 1; i++)
     {
-        cout << -1 << nl;
+        if (a[i] == a[i + 1])
+            bc1 = i + 1, c1++;
+    }
+    for (int i = 0; i < m - 1; i++)
+    {
+        if (b[i] == b[i + 1])
+            bc2 = i + 1, c2++;
+    }
+
+    if ((bc1 == -1) && (bc2 == -1))
+    {
+        cout << "YES" << nl;
+    }
+    else if (bc1 > 0 && bc2 > 0)
+    {
+        cout << "NO" << nl;
     }
     else
     {
-        int d = m / n, cnt = 0;
-
-        while (d % 2 == 0)
+        if (c1 > 1 || c2 > 1)
         {
-            d = d / 2;
-            cnt++;
+            cout << "NO" << nl;
         }
-        while (d % 3 == 0)
+        else if (a[n - 1] == b[m - 1])
         {
-            d = d / 3;
-            cnt++;
+            cout << "NO" << nl;
         }
-
-        if (d != 1)
-            cout << -1 << nl;
         else
-            cout << cnt << nl;
+        {
+            cout << "YES" << nl;
+        }
     }
 }
 
@@ -132,7 +147,7 @@ int main()
 #endif
 
     int ttt = 1, ca = 1;
-    // cin >> ttt;
+    cin >> ttt;
     while (ttt--)
     {
         // cout << "Case " << ca << ": ";
