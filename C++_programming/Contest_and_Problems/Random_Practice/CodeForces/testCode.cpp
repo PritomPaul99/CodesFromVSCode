@@ -2,17 +2,22 @@
 #include <bits/stdc++.h>
 
 using namespace std;
+#define f_input freopen("input.txt", "r", stdin)
+#define f_output freopen("output.txt", "w", stdout)
+
 #define nl '\n'
+
+void solve()
+{
+
+}
 
 int main()
 {
-    string s = "abcdef";
+    int t = 1;
+    // cin >> t;
+    while (t--)
+        solve();
 
-    char x = 6 + '0';
-    int d;
-
-    // cout << typeid(d).name() << nl;
-    auto p = typeid(d).name();
-    cout << p << nl;
     return 0;
 }

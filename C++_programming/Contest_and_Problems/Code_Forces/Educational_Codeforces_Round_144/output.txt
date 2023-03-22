@@ -1,0 +1,10 @@
+YES
+*b
+YES
+*code*
+NO
+YES
+*a
+YES
+abcd
+NO
