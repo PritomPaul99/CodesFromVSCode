@@ -93,8 +93,16 @@ void siv(int N)
 
 void solve()
 {
-    int c = 0;
-    cout << c << nl;
+    string s, c = "codeforces";
+    cin >> s;
+    int cnt = 0;
+
+    for (int i = 0; i < s.size(); i++)
+    {
+        if (s[i] == c[i])
+            cnt++;
+    }
+    cout << 10 - cnt << nl;
 }
 
 int main()

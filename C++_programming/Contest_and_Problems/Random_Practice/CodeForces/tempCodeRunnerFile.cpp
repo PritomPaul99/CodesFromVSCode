@@ -1,2 +1,0 @@
-
-    // aout(stat, stat.size());

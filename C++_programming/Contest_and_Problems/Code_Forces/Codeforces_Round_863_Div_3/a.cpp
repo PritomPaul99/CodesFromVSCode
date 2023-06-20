@@ -93,8 +93,30 @@ void siv(int N)
 
 void solve()
 {
-    int c = 0;
-    cout << c << nl;
+    int n;
+    char x;
+    cin >> n >> x;
+    string s;
+    cin >> s;
+
+    if (s[0] <= x)
+    {
+        s.insert(s.begin(), x);
+        cout << s << nl;
+    }
+    else
+    {
+        for (int i = 0; i < n; i++)
+        {
+           if (x >= s[i] || i+1 == n)
+            {
+                s.insert(s.begin() + i, x);
+                cout << s << nl;
+                break;
+            }
+        }
+        
+    }
 }
 
 int main()

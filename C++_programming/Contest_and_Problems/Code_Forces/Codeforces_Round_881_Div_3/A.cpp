@@ -93,8 +93,38 @@ void siv(int N)
 
 void solve()
 {
-    int c = 0;
-    cout << c << nl;
+    int n;
+    cin >> n;
+    vi a(n);
+    ain(a, n);
+
+    // cout << "sfjksd" << nl;
+
+    sort(all(a));
+
+    // aout(a, n);
+
+    if (n == 1)
+    {
+        cout << 0 << nl;
+    }
+    else if (n == 2)
+    {
+        cout << abs(a[0] - a[1]) << nl;
+    }
+    else if (n == 3)
+    {
+        cout << (a[n - 1] - a[0]) + (a[n - 2] - a[0]) << nl;
+    }
+    else
+    {
+        int sum = 0;
+        for (int i = 0, j = n - 1; i != j; i++, j--)
+        {
+            sum += (a[j] - a[i]);
+        }
+        cout << sum << nl;
+    }
 }
 
 int main()

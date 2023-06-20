@@ -93,8 +93,19 @@ void siv(int N)
 
 void solve()
 {
-    int c = 0;
-    cout << c << nl;
+    int n, k;
+    cin >> n >> k;
+
+    if (n % k == 0)
+    {
+        cout << 2 << nl;
+        cout << n + 1 << " " << -1 << nl;
+    }
+    else
+    {
+        cout << 1 << nl;
+        cout << n << nl;
+    }
 }
 
 int main()

@@ -93,8 +93,57 @@ void siv(int N)
 
 void solve()
 {
-    int c = 0;
-    cout << c << nl;
+    int n;
+    cin >> n;
+
+    vll arr(n);
+    vs s(n);
+
+    int p = 0, q = 0, r = 0;
+
+    for (int i = 0; i < n; i++)
+    {
+        cin >> arr[i] >> s[i];
+        if (s[i] == "01")
+            p = 1;
+        if (s[i] == "10")
+            q = 1;
+        if (s[i] == "11")
+            r = 1;
+    }
+
+    ll a = INT_MAX, b = INT_MAX, ab = INT_MAX;
+
+    if (p + q + r < 2 && r == 0)
+    {
+        cout << -1 << nl;
+        return;
+    }
+    for (int i = 0; i < n; i++)
+    {
+        if (s[i] == "11")
+        {
+            ab = min(ab, arr[i]);
+        }
+        else if (s[i] == "10")
+        {
+            a = min(a, arr[i]);
+        }
+        else if (s[i] == "01")
+        {
+            b = min(b, arr[i]);
+        }
+    }
+
+    if ((ab < a && ab < b) || ab < (a + b))
+    {
+        cout << ab << nl;
+    }
+    else
+    {
+        cout << a + b << nl;
+    }
+    // cout << a << " " << b << " " << ab << nl;
 }
 
 int main()

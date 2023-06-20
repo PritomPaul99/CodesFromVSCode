@@ -93,8 +93,36 @@ void siv(int N)
 
 void solve()
 {
-    int c = 0;
-    cout << c << nl;
+    int n = 4;
+    string s;
+    cin >> s;
+    map<int, int> mp;
+
+    for (int i = 0; i < n; i++)
+    {
+        mp[s[i]]++;
+    }
+    if (mp.size() == 1)
+    {
+        cout << -1 << nl;
+    }
+    else if (mp.size() == 2)
+    {
+        // cout << 6 << nl;
+        for (auto &&it : mp)
+        {
+            if(it.second == 3){
+                cout << 6 << nl;
+
+                return;
+            }
+        }
+        cout << 4 << nl;
+    }
+    else
+    {
+        cout << 4 << nl;
+    }
 }
 
 int main()

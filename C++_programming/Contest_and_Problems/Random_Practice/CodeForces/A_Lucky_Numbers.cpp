@@ -93,8 +93,46 @@ void siv(int N)
 
 void solve()
 {
-    int c = 0;
-    cout << c << nl;
+    string l, r;
+    cin >> l >> r;
+
+    ll a = stoi(l), b = stoi(r);
+
+    if (b - a >= 10)
+    {
+        // cpoint
+        for (int i = b; i >= a; i--)
+        {
+            ll x =  i;
+            string _x = to_string(x);
+            sort(all(_x));
+
+            if (_x[0] == '0' && _x[_x.size() - 1] == '9')
+            {
+                cout << x << nl;
+                break;
+            }
+        }
+    }
+    else
+    {
+        int s1 = a, s2 = INT_MIN;
+        for (int i = a; i <= b; i++)
+        {
+            string _a = to_string(i);
+            sort(all(_a));
+
+            if (_a[_a.size() - 1] - _a[0] > s2)
+            {
+                // cout << _a[_a.size() - 1] - _a[0] << endl;
+
+                s2 = _a[_a.size() - 1] - _a[0];
+                s1 = i;
+            }
+            // cout << s2 << nl;
+        }
+        cout << s1 << nl;
+    }
 }
 
 int main()
@@ -130,12 +168,11 @@ int main()
 * 4) 1 << n == 2 ^ n.
 * 5) x & (1 << i) == 0, ith bit of x is not 0.
 * 6) x & (1 << i) != 0, ith bit of x is 1.
-* 7) If using Siv of Eratosthenes, remember to update the size of the PrimeNum_0 vector.
+* 7) If using Siv of Eratosthenes, remember to update the size of the PrimeNum_0 vector. 
 * 8) sort(data.begin(), data.end(), [](const auto &a, const auto &b){ return a[1] < b[1]; });
 */
 
 /***************************************************************************************************\
-*                                            Written by:                                            *
 *                                                                                                   *
 *     ██▓███   ██▀███   ██▓▄▄▄█████▓ ▒█████   ███▄ ▄███▓     ██▓███   ▄▄▄       █    ██  ██▓        *
 *    ▓██░  ██▒▓██ ▒ ██▒▓██▒▓  ██▒ ▓▒▒██▒  ██▒▓██▒▀█▀ ██▒    ▓██░  ██▒▒████▄     ██  ▓██▒▓██▒        *

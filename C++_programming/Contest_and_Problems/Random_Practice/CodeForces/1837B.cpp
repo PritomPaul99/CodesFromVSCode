@@ -93,8 +93,29 @@ void siv(int N)
 
 void solve()
 {
-    int c = 0;
-    cout << c << nl;
+    int n;
+    cin >> n;
+    string s;
+    cin >> s;
+
+    int cnt = 1, res = 1;
+
+    for (int i = 1; i < n; i++)
+    {
+        if (s[i] == s[i - 1])
+        {
+            // out("..1");
+            cnt++;
+        }
+        else
+        {
+            // out("..2");
+            // out(cnt);
+            cnt = 1;
+        }
+        res = max(cnt, res);
+    }
+    cout << ++res << nl;
 }
 
 int main()

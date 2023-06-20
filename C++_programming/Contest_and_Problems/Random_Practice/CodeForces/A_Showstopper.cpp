@@ -12,7 +12,7 @@ typedef unsigned long long int uint64;
 const ll Mod = 1e9 + 7;
 #define POW(_x, _y) _x << _y
 #define MOD(a, b) (a & (b - 1))
-#define Paw2(n) (ceil(log2(n)) == floor(log2(n)))
+#define isPaw2(n) (ceil(log2(n)) == floor(log2(n))) // check if power of 2 or not
 // File handling
 #define f_input freopen("input.txt", "r", stdin)
 #define f_output freopen("output.txt", "w", stdout)
@@ -36,7 +36,9 @@ const ll Mod = 1e9 + 7;
 #define a_sort(ar, size) sort(ar, ar + size)
 #define d_sort(arr, size) sort(arr, arr + size, greater<int>())
 #define min_el(arr, size) *min_element(arr, arr + size)
+#define min_el(arr) *min_element(arr.begin(), arr.end())
 #define max_el(arr, size) *max_element(arr, arr + size)
+#define max_el(arr) *max_element(arr.begin(), arr.end())
 #define _min_el(x) *min_element(x.begin(), x.end())
 #define _max_el(x) *max_element(x.begin(), x.end())
 #define ain(arr, n) fo(i, n) cin >> arr[i]
@@ -93,8 +95,32 @@ void siv(int N)
 
 void solve()
 {
-    int c = 0;
-    cout << c << nl;
+    int n;
+    cin >> n;
+    vi a(n), b(n);
+    ain(a, n);
+    ain(b, n);
+
+    for (int i = 0; i < n; i++)
+    {
+        if (a[i] > b[i])
+        {
+            swap(a[i], b[i]);
+        }
+    }
+
+    // aout(a, n);
+    // aout(b, n);
+    int mxa = max_el(a), mxb = max_el(b);
+
+    if (a[n - 1] == mxa && b[n - 1] == mxb)
+    {
+        cout << "YES" << nl;
+    }
+    else
+    {
+        cout << "NO" << nl;
+    }
 }
 
 int main()
